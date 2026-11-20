@@ -9,6 +9,7 @@ import com.wangzan101.mika.core.agent.AttachedPage
 import com.wangzan101.mika.core.record.RunMetrics
 import com.wangzan101.mika.ui.components.DirectionalIcon
 import com.wangzan101.mika.ui.components.GlassSurface
+import com.wangzan101.mika.ui.components.StatusGlyph
 import com.wangzan101.mika.ui.components.keepsKeyboard
 import com.wangzan101.mika.ui.components.pageBackground
 import android.content.ClipData
@@ -1130,7 +1131,7 @@ internal fun WorkBlock(ex: Exchange, steers: List<String>, reduceMotion: Boolean
             verticalAlignment = Alignment.Top,
             horizontalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-            BreathingDot(paused, reduceMotion)
+            StatusGlyph(active = !paused)
             Text(
                 ChatCopy.progressLine(ex), Modifier.weight(1f), style = NowText, color = c.ink,
                 maxLines = 2, overflow = TextOverflow.Ellipsis,
