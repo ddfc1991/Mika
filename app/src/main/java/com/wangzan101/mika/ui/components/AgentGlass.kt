@@ -1,0 +1,140 @@
+package com.wangzan101.mika.ui.components
+
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloat
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.rememberInfiniteTransition
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.matchParentSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.wangzan101.mika.ui.theme.MikaTheme
+
+/**
+ * Solid Glass 智能体组件（对话屏用）：
+ * - [StatusGlyph]：状态徽标，三点，运行中第一点绿色脉冲
+ * - [ToolSteps]：工具步骤，时间线，每步标题+说明+状态
+ * - [ContextRing]：上下文环，Canvas 画弧 + 百分比
+ * - [GlassChip]：玻璃胶囊标签
+ * 颜色一律走 [MikaTheme.colors]，不写死。
+ */
+@Composable
+fun StatusGlyph(active: Boolean = true, modifier: Modifier = Modifier) {
+    val c = MikaTheme.colors
+    val infinite = rememberInfiniteTransition()
+    val alpha by infinite.animateFloat(
+        initialValue = 1f, targetValue = 0.3f,
+        animationSpec = infiniteRepeatable(tween(1200), RepeatMode.Reverse),
+    )
+    Row(modifier, horizontalArrangement = Arrangement.spacedBy(3.dp)) {
+        repeat(3) { i ->
+            Box(
+                Modifier.size(4.dp).background(
+                    if (active && i == 0) c.ok.copy(alpha = alpha) else c.ink3.copy(alpha = 0.7f),
+                    CircleShape,
+                ),
+            )
+        }
+    }
+}
+
+/** 一步工具：标题、说明、完成/进行中。 */
+data class ToolStep(val title: String, val note: String, val done: Boolean, val running: Boolean = false)
+
+@Composable
+fun ToolSteps(steps: List<ToolStep>, modifier: Modifier = Modifier) {
+    val c = MikaTheme.colors
+    Column(modifier.fillMaxWidth().background(c.answer, RoundedCornerShape(14.dp)).padding(12.dp)) {
+        Text("工具步骤", color = c.ink2, fontSize = 11.sp, fontWeight = FontWeight.Medium)
+        Spacer(Modifier.height(8.dp))
+        steps.forEach { s ->
+            Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.Top) {
+                Box(Modifier.width(20.dp).padding(top = 4.dp)) {
+                    Box(
+                        Modifier.size(6.dp).align(Alignment.Center).background(
+                            when { s.running -> c.ok; s.done -> c.accent; else -> c.ink3 },
+                            CircleShape,
+                        ),
+                    )
+                }
+                Column(Modifier.weight(1f)) {
+                    Text(s.title, color = c.ink, fontSize = 12.sp, fontWeight = FontWeight.Medium)
+                    Text(s.note, color = c.ink3, fontSize = 10.sp)
+                }
+                when {
+                    s.running -> Text("进行中", color = c.ok, fontSize = 10.sp)
+                    s.done -> Text("完成", color = c.ok, fontSize = 10.sp)
+                }
+            }
+        }
+    }
+}
+
+/** 上下文环：Canvas 画弧 + 百分比，[percent] 0..1。 */
+@Composable
+fun ContextRing(percent: Float, label: String, modifier: Modifier = Modifier) {
+    val c = MikaTheme.colors
+    Box(modifier.size(56.dp)) {
+        Canvas(Modifier.matchParentSize()) {
+            val stroke = 4.dp.toPx()
+            val inset = stroke / 2
+            val arcSize = Size(size.width - stroke, size.height - stroke)
+            drawArc(
+                c.hair, 0f, 360f, false,
+                topLeft = Offset(inset, inset), size = arcSize,
+                style = Stroke(stroke, cap = StrokeCap.Round),
+            )
+            drawArc(
+                c.ok, -90f, 360f * percent.coerceIn(0f, 1f), false,
+                topLeft = Offset(inset, inset), size = arcSize,
+                style = Stroke(stroke, cap = StrokeCap.Round),
+            )
+        }
+        Column(Modifier.align(Alignment.Center), horizontalAlignment = Alignment.CenterHorizontally) {
+            Text("${(percent * 100).toInt()}%", color = c.ink, fontSize = 11.sp, fontWeight = FontWeight.SemiBold)
+            Text(label, color = c.ink3, fontSize = 8.sp)
+        }
+    }
+}
+
+/** 玻璃胶囊标签：[tint] 给底色/描边，不给就用中性。 */
+@Composable
+fun GlassChip(text: String, tint: Color? = null, modifier: Modifier = Modifier) {
+    val c = MikaTheme.colors
+    val bg = tint?.copy(alpha = 0.16f) ?: c.fill
+    val fg = tint ?: c.ink2
+    val edge = tint?.copy(alpha = 0.25f) ?: c.edge
+    Text(
+        text,
+        modifier.background(bg, RoundedCornerShape(8.dp))
+            .border(1.dp, edge, RoundedCornerShape(8.dp))
+            .padding(horizontal = 8.dp, vertical = 3.dp),
+        color = fg, fontSize = 10.sp, fontWeight = FontWeight.Medium,
+    )
+}
