@@ -15,6 +15,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.wangzan101.miga.chat.ConversationSummary
+import com.wangzan101.miga.task.TaskRun
 
 /**
  * HQ 5-tab 主框架：Bots（聊天）/ Sessions / Jobs / Kanban / More。
@@ -24,6 +26,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HqShell(
     botsContent: @Composable () -> Unit,
+    sessions: List<ConversationSummary> = emptyList(),
+    jobs: List<TaskRun> = emptyList(),
+    onOpenSession: (String) -> Unit = {},
     onMoreEntry: (HqMoreEntry) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -32,9 +37,9 @@ fun HqShell(
         Box(Modifier.weight(1f)) {
             when (tab) {
                 HqTab.Bots -> botsContent()
-                HqTab.Sessions -> HqSessionsScreen(onOpenSession = { tab = HqTab.Bots })
-                HqTab.Jobs -> HqJobsScreen()
-                HqTab.Kanban -> HqKanbanScreen()
+                HqTab.Sessions -> HqSessionsScreen(sessions, onOpenSession = { onOpenSession(it.id) })
+                HqTab.Jobs -> HqJobsScreen(jobs)
+                HqTab.Kanban -> HqKanbanScreen(jobs)
                 HqTab.More -> HqMoreScreen(onMoreEntry)
             }
         }

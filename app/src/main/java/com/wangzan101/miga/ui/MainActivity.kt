@@ -638,6 +638,9 @@ private fun MikaRoot(
                 }
             }
                 },
+                sessions = { ConversationStore.shared(context).list() }(),
+                jobs = app.taskState.runs.value,
+                onOpenSession = { id -> nav.pushFromDrawer(Route.Chat); app.chat.openConversation(id) },
                 onMoreEntry = { entry ->
                     when (entry.id) {
                         "settings" -> nav.push(Route.Settings)
