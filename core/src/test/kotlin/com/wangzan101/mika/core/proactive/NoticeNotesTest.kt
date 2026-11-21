@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
-import com.wangzan101.mika.core.model.Capabilities
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.observation.Untrusted
+import com.wangzan101.miga.core.model.Capabilities
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.observation.Untrusted
 import java.time.ZoneOffset
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

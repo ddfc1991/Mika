@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.access
+package com.wangzan101.miga.core.access
 
-import com.wangzan101.mika.core.model.*
+import com.wangzan101.miga.core.model.*
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test

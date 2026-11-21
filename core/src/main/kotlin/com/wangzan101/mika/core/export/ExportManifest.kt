@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.export
+package com.wangzan101.miga.core.export
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

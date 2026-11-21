@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.cap.sandbox.CommandResult
-import com.wangzan101.mika.core.cap.sandbox.FakeSandbox
-import com.wangzan101.mika.core.cap.sandbox.SandboxStatus
-import com.wangzan101.mika.core.knowledge.ScriptEntry
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.cap.sandbox.CommandResult
+import com.wangzan101.miga.core.cap.sandbox.FakeSandbox
+import com.wangzan101.miga.core.cap.sandbox.SandboxStatus
+import com.wangzan101.miga.core.knowledge.ScriptEntry
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.test.runTest
@@ -24,12 +24,12 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
-import com.wangzan101.mika.core.cap.sandbox.SandboxTools
-import com.wangzan101.mika.core.cap.sandbox.SearchLimits
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.vision.JvmTestImageOps
-import com.wangzan101.mika.core.vision.VisionService
-import com.wangzan101.mika.core.vision.says
+import com.wangzan101.miga.core.cap.sandbox.SandboxTools
+import com.wangzan101.miga.core.cap.sandbox.SearchLimits
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.vision.JvmTestImageOps
+import com.wangzan101.miga.core.vision.VisionService
+import com.wangzan101.miga.core.vision.says
 
 private var seq = 0
 private fun call(name: String, args: JsonObject) = Part.ToolCall("c${++seq}", name, args.toString())
@@ -146,9 +146,9 @@ class ToolDispatcherSandboxTest {
 
     // 沙箱就绪时看个人技能:照常返回正文,不列脚本(个人技能不在沙箱的技能目录里)
     @Test fun personalSkillViewWithSandboxReady() = runTest {
-        val catalog = com.wangzan101.mika.core.knowledge.GuideCatalog.withPersonal(
-            com.wangzan101.mika.core.knowledge.GuideCatalog.loadBundled(),
-            com.wangzan101.mika.core.skills.InMemoryPersonalSkills(com.wangzan101.mika.core.skills.personalSkill("my-trip")),
+        val catalog = com.wangzan101.miga.core.knowledge.GuideCatalog.withPersonal(
+            com.wangzan101.miga.core.knowledge.GuideCatalog.loadBundled(),
+            com.wangzan101.miga.core.skills.InMemoryPersonalSkills(com.wangzan101.miga.core.skills.personalSkill("my-trip")),
         )
         val d = toolDispatcher(FakeScreen(), false, catalog, sandbox = sb, workspace = { "conv1" })
         val r = d.execute(call("skill_read", buildJsonObject { put("name", "my-trip") })).content
@@ -328,7 +328,7 @@ class ToolDispatcherSandboxTest {
         // 嵌套的懒惰重复:回溯量随长度多项式爆炸(JDK 对 (a+)+ 一类已有优化,用这种)
         File(ws, "evil.txt").writeText((1..60).joinToString(","))
         val tools = SandboxTools(sb, { "conv1" }, false, SearchLimits(timeMs = 200))
-        val def = com.wangzan101.mika.core.cap.sandbox.SearchFiles.def
+        val def = com.wangzan101.miga.core.cap.sandbox.SearchFiles.def
         val started = System.nanoTime()
         val slow = Args(def, buildJsonObject { put("pattern", "(.*?,){15}P") })
         val r = tools.run { ws, _ -> searchFiles(slow, ws) }.content
@@ -344,7 +344,7 @@ class ToolDispatcherSandboxTest {
     }
 
     @Test fun sandboxErrorsBecomeToolErrors() = runTest {
-        sb.next = { throw com.wangzan101.mika.core.workspace.SandboxError("sandbox_network_isolation_unavailable", "seccomp missing") }
+        sb.next = { throw com.wangzan101.miga.core.workspace.SandboxError("sandbox_network_isolation_unavailable", "seccomp missing") }
         val r = dispatcher().execute(call("run_command", buildJsonObject { put("command", "ls") })).content
         assertEquals("sandbox_network_isolation_unavailable", r.s("error"))
         assertEquals("false", r.s("recoverable"))
@@ -361,13 +361,13 @@ class ToolDispatcherSandboxTest {
 
     @Test fun longNamesFitInBytesAndKeepExtension() {
         val long = "长".repeat(200) + ".csv"
-        val fit = com.wangzan101.mika.core.cap.sandbox.ShareRules.fitName(long)
+        val fit = com.wangzan101.miga.core.cap.sandbox.ShareRules.fitName(long)
         assertTrue(fit.endsWith(".csv"))
-        assertTrue(fit.toByteArray().size <= com.wangzan101.mika.core.cap.sandbox.ShareRules.NAME_MAX_BYTES)
-        assertEquals("short.txt", com.wangzan101.mika.core.cap.sandbox.ShareRules.fitName("short.txt"))
-        val noExt = com.wangzan101.mika.core.cap.sandbox.ShareRules.fitName("名".repeat(200))
-        assertTrue(noExt.toByteArray().size <= com.wangzan101.mika.core.cap.sandbox.ShareRules.NAME_MAX_BYTES)
-        assertEquals("abc.d", com.wangzan101.mika.core.cap.sandbox.ShareRules.fitName("abcdefgh.d", maxChars = 5))
+        assertTrue(fit.toByteArray().size <= com.wangzan101.miga.core.cap.sandbox.ShareRules.NAME_MAX_BYTES)
+        assertEquals("short.txt", com.wangzan101.miga.core.cap.sandbox.ShareRules.fitName("short.txt"))
+        val noExt = com.wangzan101.miga.core.cap.sandbox.ShareRules.fitName("名".repeat(200))
+        assertTrue(noExt.toByteArray().size <= com.wangzan101.miga.core.cap.sandbox.ShareRules.NAME_MAX_BYTES)
+        assertEquals("abc.d", com.wangzan101.miga.core.cap.sandbox.ShareRules.fitName("abcdefgh.d", maxChars = 5))
     }
 
     /** 沙箱工具产出的事实(命令输出、读到的文件、写入与导出的路径)进核查证据;命令进动作清单。 */

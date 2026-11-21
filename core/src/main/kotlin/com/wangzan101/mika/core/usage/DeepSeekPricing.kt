@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.Usage
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.Usage
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.serialization.Serializable

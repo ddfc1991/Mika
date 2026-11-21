@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.vision
+package com.wangzan101.miga.core.vision
 
-import com.wangzan101.mika.core.model.Part
+import com.wangzan101.miga.core.model.Part
 import kotlinx.coroutines.CancellationException
 import java.util.Base64
 import kotlin.math.max

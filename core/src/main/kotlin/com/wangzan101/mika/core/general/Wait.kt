@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.ok
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.ok
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put

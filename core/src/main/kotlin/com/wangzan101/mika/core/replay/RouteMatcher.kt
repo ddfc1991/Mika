@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.replay
+package com.wangzan101.miga.core.replay
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.knowledge.KnowledgeStore
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.decision.DecisionModel
-import com.wangzan101.mika.core.decision.DecisionPolicy
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.knowledge.KnowledgeStore
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.decision.DecisionModel
+import com.wangzan101.miga.core.decision.DecisionPolicy
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.Json

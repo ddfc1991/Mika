@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.skills
+package com.wangzan101.miga.core.skills
 
-import com.wangzan101.mika.core.knowledge.SiteMatch
-import com.wangzan101.mika.core.knowledge.SkillPlaces
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.observation.PlaceKind
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.parseArgs
-import com.wangzan101.mika.core.tool.placeAfter
+import com.wangzan101.miga.core.knowledge.SiteMatch
+import com.wangzan101.miga.core.knowledge.SkillPlaces
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.observation.PlaceKind
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.parseArgs
+import com.wangzan101.miga.core.tool.placeAfter
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.JsonObject
 

@@ -48,6 +48,6 @@ python3 -m unittest discover -s tools/i18n -v
 
 功能分支 feat/capsule-controls 每次推送会触发 Mika Dev APK workflow。先在 fork 的 Actions 页启用工作流；构建成功后，进入该次运行的 Artifacts 区域，下载 Mika-Dev-提交号 的 ZIP，解压后安装 APK。归档还含 SHA256SUMS.txt，保留 14 天。
 
-该 workflow 运行 Android 单测并使用 -PdevInstall 构建 com.wangzan101.mika.dev，应用名为 Mika Dev，可与原 Mika 并行安装。它不继承原应用的模型配置与授权；第一次在 Mika Dev 开启胶囊而手机操作 / 无障碍尚未连接时，会打开 Android 无障碍设置，需由用户明确开启 Mika Dev。测试时若两个胶囊重叠，可先关闭原 Mika 的胶囊。构建失败时另上传测试报告。
+该 workflow 运行 Android 单测并使用 -PdevInstall 构建 com.wangzan101.miga.dev，应用名为 Mika Dev，可与原 Mika 并行安装。它不继承原应用的模型配置与授权；第一次在 Mika Dev 开启胶囊而手机操作 / 无障碍尚未连接时，会打开 Android 无障碍设置，需由用户明确开启 Mika Dev。测试时若两个胶囊重叠，可先关闭原 Mika 的胶囊。构建失败时另上传测试报告。
 
 workflow_dispatch 可用于手动选择构建分支，但 GitHub 只为默认分支已登记的 workflow 显示手动运行入口；本功能分支首次构建直接由 push 触发，无须为了运行 CI 合入 main。

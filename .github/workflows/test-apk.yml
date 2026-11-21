@@ -45,7 +45,7 @@ jobs:
           {
             printf '%s\n' '## Mika Dev test APK'
             printf '%s\n' 'Download the Mika-Dev artifact below, unzip it, and install the APK.'
-            printf '%s\n' 'Package: com.wangzan101.mika.dev. It installs alongside Mika; configure its model and phone permissions separately.'
+            printf '%s\n' 'Package: com.wangzan101.miga.dev. It installs alongside Miga; configure its model and phone permissions separately.'
           } >> "$GITHUB_STEP_SUMMARY"
       - name: Upload test APK
         uses: actions/upload-artifact@v7

@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.cap.root
+package com.wangzan101.miga.core.cap.root
 
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.capability.CapabilityStatus
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ToolContext
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.capability.CapabilityStatus
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ToolContext
 
 internal const val ROOT = "root"
 

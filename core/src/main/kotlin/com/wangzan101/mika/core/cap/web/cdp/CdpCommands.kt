@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.cap.web.cdp
+package com.wangzan101.miga.core.cap.web.cdp
 
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject

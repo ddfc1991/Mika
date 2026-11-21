@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.*
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.testing.*
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.*
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.testing.*
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.*
 import org.junit.Assert.*

@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.workspace.SandboxPaths
 
 /** 技能脚本清单(`scripts/manifest.json`)里的一项;[file] 是技能目录下的相对路径。 */
 @Serializable

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 /**
  * WebView 调试接口的本地抽象套接字:每个开着调试的进程一个,名为 `webview_devtools_remote_<pid>`。

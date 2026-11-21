@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.userscreen.UserScreen
-import com.wangzan101.mika.core.userscreen.UserScreenMessage
-import com.wangzan101.mika.core.userscreen.UserScreenPrompt
-import com.wangzan101.mika.core.userscreen.UserScreenSource
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.userscreen.UserScreen
+import com.wangzan101.miga.core.userscreen.UserScreenMessage
+import com.wangzan101.miga.core.userscreen.UserScreenPrompt
+import com.wangzan101.miga.core.userscreen.UserScreenSource
 import kotlinx.coroutines.CancellationException
 import java.time.ZoneId
 

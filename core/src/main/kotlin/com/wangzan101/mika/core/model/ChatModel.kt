@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
 interface ChatModel {
     val capabilities: Capabilities

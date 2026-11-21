@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.record
+package com.wangzan101.miga.core.record
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject
@@ -7,7 +7,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.verb
+import com.wangzan101.miga.core.testing.verb
 
 class RedactorTest {
     /** Google 新格式的认证 Key(AQ. 开头)和旧的 AIza 一样,经 Redactor 的每条路都遮住。 */

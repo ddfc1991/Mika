@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.settings
+package com.wangzan101.miga.core.settings
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.tool.FakeScreen
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.record
+package com.wangzan101.miga.core.record
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull

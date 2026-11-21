@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core
+package com.wangzan101.miga.core
 
-import com.wangzan101.mika.core.assembly.knownToolNames
+import com.wangzan101.miga.core.assembly.knownToolNames
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File

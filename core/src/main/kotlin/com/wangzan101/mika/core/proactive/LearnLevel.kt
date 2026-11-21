@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
 /**
  * 来源(App)的置信度档位,用户按 App 定:

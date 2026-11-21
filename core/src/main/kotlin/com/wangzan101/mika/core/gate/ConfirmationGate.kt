@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.gate
+package com.wangzan101.miga.core.gate
 
-import com.wangzan101.mika.core.action.ConfirmChoice
-import com.wangzan101.mika.core.risk.IrrevAction
-import com.wangzan101.mika.core.uistate.Hant
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
+import com.wangzan101.miga.core.action.ConfirmChoice
+import com.wangzan101.miga.core.risk.IrrevAction
+import com.wangzan101.miga.core.uistate.Hant
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
 import java.math.BigDecimal
 import kotlin.math.abs
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.Verb
 
 /** 模型申报的一次要花钱的操作;字段已去首尾空白、截短,界面上照此显示。[app] 是包名。 */
 data class ConfirmationRequest(val action: IrrevAction, val target: String, val content: String, val amount: String?, val app: String)

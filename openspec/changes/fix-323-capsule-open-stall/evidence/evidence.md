@@ -19,12 +19,12 @@
    正常应由 `rebindAccessibility()` 的「摘下再放回」触发重绑。
 2. 手工重绑尝试（均无效）：
    - `settings put secure enabled_accessibility_services` 写回——注意第一次误写成短形式
-     `com.wangzan101.mika/.a11y.MikaAccessibilityService`，后改完整形式
-     `com.wangzan101.mika/com.wangzan101.mika.a11y.MikaAccessibilityService`（DeviceSupport 按完整形式做字符串匹配）；
+     `com.wangzan101.miga/.a11y.MikaAccessibilityService`，后改完整形式
+     `com.wangzan101.miga/com.wangzan101.miga.a11y.MikaAccessibilityService`（DeviceSupport 按完整形式做字符串匹配）；
    - 摘下→force-stop→放回；完整 off/on 循环；拉长间隔（5s/15s）循环；
    - 走系统设置 UI（截图 + 视觉模型导航）：无障碍 → 已下载的服务 → Mika（状态「服务已停止」）→
      「使用 Mika」开关 → 系统确认弹窗「是否允许 Mika 使用无障碍服务？」→ 允许。
-3. 系统状态一直停在 `Bound services:{} / Binding services:{com.wangzan101.mika/...MikaAccessibilityService}`，
+3. 系统状态一直停在 `Bound services:{} / Binding services:{com.wangzan101.miga/...MikaAccessibilityService}`，
    `Crashed services:{}` 为空；App 进程存活（`dumpsys activity services` 无该服务的 ServiceRecord，
    即绑定从未到达应用侧），logcat 无重试迹象。
 4. 恢复手段评估：重启大概率可清掉挂起绑定，但本机带 PIN 锁、adb 解不开（AGENTS.md 已知），

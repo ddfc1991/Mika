@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.prompt
+package com.wangzan101.miga.core.prompt
 
-import com.wangzan101.mika.core.assembly.allTools
-import com.wangzan101.mika.core.assembly.knownToolNames
-import com.wangzan101.mika.core.assembly.knownTools
-import com.wangzan101.mika.core.assembly.legacyNames
-import com.wangzan101.mika.core.knowledge.KnowledgeIndex
-import com.wangzan101.mika.core.knowledge.GuideCatalog
+import com.wangzan101.miga.core.assembly.allTools
+import com.wangzan101.miga.core.assembly.knownToolNames
+import com.wangzan101.miga.core.assembly.knownTools
+import com.wangzan101.miga.core.assembly.legacyNames
+import com.wangzan101.miga.core.knowledge.KnowledgeIndex
+import com.wangzan101.miga.core.knowledge.GuideCatalog
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.Verb
 import org.junit.Test
 import java.io.File
 

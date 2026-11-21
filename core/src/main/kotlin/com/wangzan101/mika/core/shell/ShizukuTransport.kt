@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 /**
  * 手机内置助手走哪条通道启动。

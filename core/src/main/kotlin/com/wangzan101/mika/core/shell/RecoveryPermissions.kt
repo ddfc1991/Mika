@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.NonCancellable
@@ -74,7 +74,7 @@ object PermissionCommands {
 
     fun accessibilityService(pkg: String): String {
         // 包名(applicationId)可能带后缀(并存安装的版本),服务类却仍在 App 的命名空间里:包名是类名前缀时用简写,否则写完整类名
-        val service = "com.wangzan101.mika.a11y.MikaAccessibilityService"
+        val service = "com.wangzan101.miga.a11y.MikaAccessibilityService"
         return "$pkg/${if (service.startsWith("$pkg.")) service.removePrefix(pkg) else service}"
     }
     fun grantWriteSecureSettings(pkg: String) = "pm grant $pkg $WRITE_SECURE_SETTINGS"

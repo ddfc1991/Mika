@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.cap.image
+package com.wangzan101.miga.core.cap.image
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.GeneratedImage
-import com.wangzan101.mika.core.model.ImageAspect
-import com.wangzan101.mika.core.model.ImageCapabilities
-import com.wangzan101.mika.core.model.ImageReference
-import com.wangzan101.mika.core.model.ImageRequest
-import com.wangzan101.mika.core.model.ImageResponse
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.vision.LocScreen
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.GeneratedImage
+import com.wangzan101.miga.core.model.ImageAspect
+import com.wangzan101.miga.core.model.ImageCapabilities
+import com.wangzan101.miga.core.model.ImageReference
+import com.wangzan101.miga.core.model.ImageRequest
+import com.wangzan101.miga.core.model.ImageResponse
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.vision.LocScreen
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray

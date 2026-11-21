@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 /** 在 su 的执行端监督命令。标准输入留给 App，关闭时结束这次命令的进程组。 */
 object RootCommandSession {

@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.net.ProxyFailure
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.net.ProxyFailure
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Test

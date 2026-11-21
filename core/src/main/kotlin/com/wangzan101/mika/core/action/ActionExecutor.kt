@@ -1,28 +1,28 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.gate.ConfirmationGate
-import com.wangzan101.mika.core.gate.Irreversible
-import com.wangzan101.mika.core.guard.DIAGNOSTIC_VERBS
-import com.wangzan101.mika.core.guard.GuardVerdict
-import com.wangzan101.mika.core.guard.OperationGuards
-import com.wangzan101.mika.core.guard.PAGE_READ_VERBS
-import com.wangzan101.mika.core.guard.GuardScope
-import com.wangzan101.mika.core.guard.elementsHash
-import com.wangzan101.mika.core.guard.resultFingerprint
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.replay.Anchors
-import com.wangzan101.mika.core.replay.effectiveWrite
-import com.wangzan101.mika.core.uistate.Described
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.interfaces
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.parseArgs
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.gate.ConfirmationGate
+import com.wangzan101.miga.core.gate.Irreversible
+import com.wangzan101.miga.core.guard.DIAGNOSTIC_VERBS
+import com.wangzan101.miga.core.guard.GuardVerdict
+import com.wangzan101.miga.core.guard.OperationGuards
+import com.wangzan101.miga.core.guard.PAGE_READ_VERBS
+import com.wangzan101.miga.core.guard.GuardScope
+import com.wangzan101.miga.core.guard.elementsHash
+import com.wangzan101.miga.core.guard.resultFingerprint
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.replay.Anchors
+import com.wangzan101.miga.core.replay.effectiveWrite
+import com.wangzan101.miga.core.uistate.Described
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.interfaces
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.parseArgs
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -33,13 +33,13 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
-import com.wangzan101.mika.core.tool.SubActions
-import com.wangzan101.mika.core.guard.OffScreenGuard
-import com.wangzan101.mika.core.run.RunProvenance
-import com.wangzan101.mika.core.run.SKIPPED_FOR_NEW_MESSAGE
-import com.wangzan101.mika.core.run.waitOrSteer
-import com.wangzan101.mika.core.tool.failCode
-import com.wangzan101.mika.core.capability.Paced
+import com.wangzan101.miga.core.tool.SubActions
+import com.wangzan101.miga.core.guard.OffScreenGuard
+import com.wangzan101.miga.core.run.RunProvenance
+import com.wangzan101.miga.core.run.SKIPPED_FOR_NEW_MESSAGE
+import com.wangzan101.miga.core.run.waitOrSteer
+import com.wangzan101.miga.core.tool.failCode
+import com.wangzan101.miga.core.capability.Paced
 
 /**
  * 所有改变外部世界的动作唯一的执行入口:[ToolDispatcher.execute] 要一张 [ActionPass],只有这里有。
@@ -88,7 +88,7 @@ class ActionExecutor(
         tools.aim(call.name, args)
         try {
             return aimed(call, origin, followUp, reads, args, offScreen, verb)
-        } catch (e: com.wangzan101.mika.core.access.AppAccessDenied) {
+        } catch (e: com.wangzan101.miga.core.access.AppAccessDenied) {
             val content = buildJsonObject {
                 put("ok", false); put("error", e.code); put("message", e.message); put("retryable", false)
                 e.packageName?.let { put("package", it) }

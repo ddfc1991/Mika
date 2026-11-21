@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.export.markdown
+package com.wangzan101.miga.core.export.markdown
 
 import java.net.URLEncoder
 

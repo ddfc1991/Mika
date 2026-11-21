@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.model.Part
+import com.wangzan101.miga.core.model.Part
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull
@@ -11,9 +11,9 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.put
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.SubActions
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.SubActions
 
 const val SCRIPT_CODE_MAX_CHARS = 8_000
 const val SCRIPT_DEFAULT_TIMEOUT_MS = 30_000

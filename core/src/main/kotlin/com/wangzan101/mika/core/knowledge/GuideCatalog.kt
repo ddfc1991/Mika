@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.skills.PLUGIN_KIND
-import com.wangzan101.mika.core.skills.PersonalSkills
-import com.wangzan101.mika.core.skills.PluginSkills
-import com.wangzan101.mika.core.skills.SkillStatus
-import com.wangzan101.mika.core.teach.TeachSkill
+import com.wangzan101.miga.core.skills.PLUGIN_KIND
+import com.wangzan101.miga.core.skills.PersonalSkills
+import com.wangzan101.miga.core.skills.PluginSkills
+import com.wangzan101.miga.core.skills.SkillStatus
+import com.wangzan101.miga.core.teach.TeachSkill
 
 /** 内置的 App 知识(kind `app`)、站点知识(`site`)、技能(`skill`),用户的个人技能(`personal`),或插件技能(`plugin`);[files] 是可读的文件(主文件在前,其余是附件)。 */
 data class GuideInfo(

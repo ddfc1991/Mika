@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.uistate.DOUBLE_TAP_GAP_MS
-import com.wangzan101.mika.core.uistate.Pace
+import com.wangzan101.miga.core.uistate.DOUBLE_TAP_GAP_MS
+import com.wangzan101.miga.core.uistate.Pace
 import kotlin.math.ceil
 import kotlin.math.hypot
 import kotlin.math.roundToInt

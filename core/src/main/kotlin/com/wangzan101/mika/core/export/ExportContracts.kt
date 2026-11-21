@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.export
+package com.wangzan101.miga.core.export
 
 /**
  * 一次导出的选择:对话编号、勾了哪些消息块、内容选项。

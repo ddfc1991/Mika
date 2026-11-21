@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.chatgpt
+package com.wangzan101.miga.core.chatgpt
 
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.oauth.LoopbackCallback
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.oauth.LoopbackCallback
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking

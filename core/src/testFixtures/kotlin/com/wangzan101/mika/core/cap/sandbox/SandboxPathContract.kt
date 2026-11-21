@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
@@ -9,7 +9,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
 import java.nio.file.Files
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.workspace.SandboxPaths
 
 /**
  * 每个 [SandboxPort] 实现都要满足的路径规则:越界、符号链接逃逸、技能目录只读、完整输出落盘不出工作区。

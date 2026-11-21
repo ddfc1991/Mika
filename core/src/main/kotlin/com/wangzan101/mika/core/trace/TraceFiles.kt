@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.trace
+package com.wangzan101.miga.core.trace
 
 import io.opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest
 import io.opentelemetry.proto.common.v1.ArrayValue

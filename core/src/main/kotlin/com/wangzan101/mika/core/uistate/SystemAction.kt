@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
 /**
  * 经安卓标准接口(intent)做的系统动作:设闹钟、计时器,打开闹钟列表,打开预填好的新日程。

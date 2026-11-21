@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
 import java.io.File
 import java.nio.file.Files
-import com.wangzan101.mika.core.workspace.NioFdSys
-import com.wangzan101.mika.core.workspace.SandboxPaths
-import com.wangzan101.mika.core.knowledge.ScriptEntry
-import com.wangzan101.mika.core.workspace.WorkspaceFileGate
-import com.wangzan101.mika.core.workspace.SandboxTree
+import com.wangzan101.miga.core.workspace.NioFdSys
+import com.wangzan101.miga.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.knowledge.ScriptEntry
+import com.wangzan101.miga.core.workspace.WorkspaceFileGate
+import com.wangzan101.miga.core.workspace.SandboxTree
 
 /** 宿主目录放在临时目录里的沙箱;命令不真跑,按 [next] 回结果并记下收到的参数。 */
 class FakeSandbox(var status: SandboxStatus = SandboxStatus.Ready(network = false)) : SandboxPort {

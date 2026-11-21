@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.prompt
+package com.wangzan101.miga.core.prompt
 
 import org.junit.Assert.assertTrue
 import org.junit.Test

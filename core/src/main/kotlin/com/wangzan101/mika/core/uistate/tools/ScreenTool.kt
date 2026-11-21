@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.uistate.tools
+package com.wangzan101.miga.core.uistate.tools
 
-import com.wangzan101.mika.core.uistate.ScreenFamily
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.uistate.PressKeys
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.uistate.sessions
+import com.wangzan101.miga.core.uistate.ScreenFamily
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.uistate.PressKeys
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.uistate.sessions
 
 /**
  * 一套屏幕工具里的一个:名字是 `<屏>_<动词>`,只作用在 [family] 那块屏上(分发器在调用前记下它)。

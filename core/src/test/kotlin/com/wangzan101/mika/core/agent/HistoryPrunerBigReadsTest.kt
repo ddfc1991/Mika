@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -13,7 +13,7 @@ import kotlinx.serialization.json.put
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.TOOLS
+import com.wangzan101.miga.core.testing.TOOLS
 
 /** 读屏以外的大结果(读网页、命令输出、读文件……)按同一条裁剪线裁:线前的只剩短字段。 */
 class HistoryPrunerBigReadsTest {

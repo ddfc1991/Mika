@@ -1,36 +1,36 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.gate.gateTargetOf
-import com.wangzan101.mika.core.risk.GateTarget
-import com.wangzan101.mika.core.calls.PhoneCallPort
-import com.wangzan101.mika.core.calls.PhoneCallTask
-import com.wangzan101.mika.core.model.Part
+import com.wangzan101.miga.core.gate.gateTargetOf
+import com.wangzan101.miga.core.risk.GateTarget
+import com.wangzan101.miga.core.calls.PhoneCallPort
+import com.wangzan101.miga.core.calls.PhoneCallTask
+import com.wangzan101.miga.core.model.Part
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import com.wangzan101.mika.core.testing.WEB_SCRIPT_TOOL
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.assembly.allTools
-import com.wangzan101.mika.core.cap.audio.AudioPort
-import com.wangzan101.mika.core.cap.image.ImagePort
-import com.wangzan101.mika.core.cap.image.SavedImage
-import com.wangzan101.mika.core.cap.image.StoredImage
-import com.wangzan101.mika.core.cap.transcribe.TranscribePort
-import com.wangzan101.mika.core.cap.transcribe.Transcript
-import com.wangzan101.mika.core.model.GeneratedImage
-import com.wangzan101.mika.core.model.ImageCapabilities
-import com.wangzan101.mika.core.model.ImageReference
-import com.wangzan101.mika.core.model.ImageRequest
-import com.wangzan101.mika.core.model.ImageResponse
-import com.wangzan101.mika.core.model.SavedAudio
-import com.wangzan101.mika.core.model.StoredAudio
-import com.wangzan101.mika.core.model.TtsCapabilities
-import com.wangzan101.mika.core.model.TtsRequest
-import com.wangzan101.mika.core.model.TtsResponse
-import com.wangzan101.mika.core.testing.SANDBOX_TOOLS
-import com.wangzan101.mika.core.testing.WEB_TOOLS
+import com.wangzan101.miga.core.testing.WEB_SCRIPT_TOOL
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.assembly.allTools
+import com.wangzan101.miga.core.cap.audio.AudioPort
+import com.wangzan101.miga.core.cap.image.ImagePort
+import com.wangzan101.miga.core.cap.image.SavedImage
+import com.wangzan101.miga.core.cap.image.StoredImage
+import com.wangzan101.miga.core.cap.transcribe.TranscribePort
+import com.wangzan101.miga.core.cap.transcribe.Transcript
+import com.wangzan101.miga.core.model.GeneratedImage
+import com.wangzan101.miga.core.model.ImageCapabilities
+import com.wangzan101.miga.core.model.ImageReference
+import com.wangzan101.miga.core.model.ImageRequest
+import com.wangzan101.miga.core.model.ImageResponse
+import com.wangzan101.miga.core.model.SavedAudio
+import com.wangzan101.miga.core.model.StoredAudio
+import com.wangzan101.miga.core.model.TtsCapabilities
+import com.wangzan101.miga.core.model.TtsRequest
+import com.wangzan101.miga.core.model.TtsResponse
+import com.wangzan101.miga.core.testing.SANDBOX_TOOLS
+import com.wangzan101.miga.core.testing.WEB_TOOLS
 
 /** 由工具声明的风险推出的分类,和改成声明之前按名字列的表一样;手机、网页两套屏幕工具各有一份同样的动词。 */
 class ToolRiskTest {
@@ -94,12 +94,12 @@ class ToolRiskTest {
         assertEquals(refused, allTools().filter { !it.readOnly }.map { it.name }.toSet())
         // root 命令、通话工具都只在给了端口时登记:各给一个,所有工具都在
         val d = toolDispatcher(FakeScreen(), audio = NoAudioPort, audioSaveEnabled = true, audioSpeakTool = true, transcribe = NoTranscribePort,
-            image = NoImagePort, imageSaveEnabled = true, root = object : com.wangzan101.mika.core.cap.root.RootPort {
-            override suspend fun run(command: String, timeoutMs: Long) = com.wangzan101.mika.core.cap.root.RootRun.Unavailable
-        }, deviceFiles = object : com.wangzan101.mika.core.cap.devicefiles.DeviceFilesPort {
-            override suspend fun search(query: com.wangzan101.mika.core.cap.devicefiles.DeviceFileSearchQuery): com.wangzan101.mika.core.cap.devicefiles.DeviceFileSearchResult = error("read call reached device files")
-            override suspend fun list(path: String?, cursor: String?, limit: Int): com.wangzan101.mika.core.cap.devicefiles.DeviceFilePage = error("read call reached device files")
-            override suspend fun importFile(path: String, workspace: String): com.wangzan101.mika.core.cap.devicefiles.DeviceFileImport = error("read call reached device files")
+            image = NoImagePort, imageSaveEnabled = true, root = object : com.wangzan101.miga.core.cap.root.RootPort {
+            override suspend fun run(command: String, timeoutMs: Long) = com.wangzan101.miga.core.cap.root.RootRun.Unavailable
+        }, deviceFiles = object : com.wangzan101.miga.core.cap.devicefiles.DeviceFilesPort {
+            override suspend fun search(query: com.wangzan101.miga.core.cap.devicefiles.DeviceFileSearchQuery): com.wangzan101.miga.core.cap.devicefiles.DeviceFileSearchResult = error("read call reached device files")
+            override suspend fun list(path: String?, cursor: String?, limit: Int): com.wangzan101.miga.core.cap.devicefiles.DeviceFilePage = error("read call reached device files")
+            override suspend fun importFile(path: String, workspace: String): com.wangzan101.miga.core.cap.devicefiles.DeviceFileImport = error("read call reached device files")
         }, phoneCalls = object : PhoneCallPort {
             override suspend fun state() = JsonObject(emptyMap())
             override suspend fun dial(number: String, simId: String?, task: PhoneCallTask?) = JsonObject(emptyMap())

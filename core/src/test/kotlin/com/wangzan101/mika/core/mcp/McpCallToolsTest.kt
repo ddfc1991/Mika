@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.mcp
+package com.wangzan101.miga.core.mcp
 
-import com.wangzan101.mika.core.calls.PhoneCallPort
-import com.wangzan101.mika.core.calls.PhoneCallTask
-import com.wangzan101.mika.core.remote.*
+import com.wangzan101.miga.core.calls.PhoneCallPort
+import com.wangzan101.miga.core.calls.PhoneCallTask
+import com.wangzan101.miga.core.remote.*
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.*
 import org.junit.Assert.*

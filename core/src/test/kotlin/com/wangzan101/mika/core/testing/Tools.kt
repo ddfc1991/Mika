@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.testing
+package com.wangzan101.miga.core.testing
 
-import com.wangzan101.mika.core.assembly.knownTools
-import com.wangzan101.mika.core.assembly.recordedTools
-import com.wangzan101.mika.core.cap.sandbox.SANDBOX
-import com.wangzan101.mika.core.cap.web.WEB
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.assembly.knownTools
+import com.wangzan101.miga.core.assembly.recordedTools
+import com.wangzan101.miga.core.cap.sandbox.SANDBOX
+import com.wangzan101.miga.core.cap.web.WEB
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
 
 /** 测试用:Mika 全部工具的声明。 */
 internal val TOOLS: ToolIndex get() = knownTools()
@@ -28,11 +28,11 @@ internal const val INTERACT_TOOL = "web_interact"
 
 /** 测试用:不带调用的回复,就是交给用户的最终回答。 */
 internal fun answerReply(text: String) =
-    com.wangzan101.mika.core.model.ModelReply(listOf(com.wangzan101.mika.core.model.Part.Text(text)), com.wangzan101.mika.core.model.StopReason.EndTurn, null)
+    com.wangzan101.miga.core.model.ModelReply(listOf(com.wangzan101.miga.core.model.Part.Text(text)), com.wangzan101.miga.core.model.StopReason.EndTurn, null)
 
 /** 测试用:任务办成了,交出的回答是 [answer],没有核对出问题(核实过,或没有可核对的;来源另测)。 */
-internal fun assertAnswered(answer: String, end: com.wangzan101.mika.core.agent.TaskState) {
-    val s = end as? com.wangzan101.mika.core.agent.TaskState.Succeeded ?: throw AssertionError("not succeeded: $end")
+internal fun assertAnswered(answer: String, end: com.wangzan101.miga.core.agent.TaskState) {
+    val s = end as? com.wangzan101.miga.core.agent.TaskState.Succeeded ?: throw AssertionError("not succeeded: $end")
     org.junit.Assert.assertEquals(answer, s.answer)
     org.junit.Assert.assertTrue("$end", !s.doubtful && s.unconfirmed.isEmpty())
 }

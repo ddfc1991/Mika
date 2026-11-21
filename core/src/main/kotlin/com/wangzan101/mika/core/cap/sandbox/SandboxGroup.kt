@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.tool.Entry
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.EvidenceLog
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.bool
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.int
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.tool.strArray
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.tool.Entry
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.EvidenceLog
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.bool
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.int
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.tool.strArray
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -37,7 +37,7 @@ private const val TIMEOUT = "Time limit in seconds, 1-600 (default 60). The comm
 
 /**
  * 沙箱一组:设备支持时提供(运行环境没准备好时工具调用会等它)。路径都是沙箱里的路径;
- * 不是屏幕操作,不过锁屏关卡,也不进屏幕守卫(沙箱守卫另管)。执行在 [com.wangzan101.mika.core.cap.sandbox.SandboxTools] 里。
+ * 不是屏幕操作,不过锁屏关卡,也不进屏幕守卫(沙箱守卫另管)。执行在 [com.wangzan101.miga.core.cap.sandbox.SandboxTools] 里。
  */
 internal interface SandboxTool : AgentTool {
     override val capability: String get() = SANDBOX

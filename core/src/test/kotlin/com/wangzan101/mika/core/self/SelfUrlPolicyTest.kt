@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.self
+package com.wangzan101.miga.core.self
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull

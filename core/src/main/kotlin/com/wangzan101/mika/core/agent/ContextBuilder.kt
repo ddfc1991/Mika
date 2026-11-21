@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.knowledge.KnowledgeEntry
-import com.wangzan101.mika.core.knowledge.SiteCommandFile
-import com.wangzan101.mika.core.knowledge.Surface
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.observation.PlaceKind
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.knowledge.KnowledgeEntry
+import com.wangzan101.miga.core.knowledge.SiteCommandFile
+import com.wangzan101.miga.core.knowledge.Surface
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.observation.PlaceKind
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 import java.time.Instant
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -42,15 +42,15 @@ enum class Trust(val label: String) {
 enum class ContextKind(val wire: String, val layer: ContextLayer, val trust: Trust, val pinned: Boolean) {
     PriorTurns("prior_turns", ContextLayer.Task, Trust.Record, pinned = true),
     Memory("memory", ContextLayer.Task, Trust.UserMemory, pinned = true),
-    /** 从通知里得来的那一段(见 [com.wangzan101.mika.core.proactive.ObservedContext]):和用户的记忆分开放,各有各的可信度说明。 */
+    /** 从通知里得来的那一段(见 [com.wangzan101.miga.core.proactive.ObservedContext]):和用户的记忆分开放,各有各的可信度说明。 */
     Observed("observed", ContextLayer.Task, Trust.Observed, pinned = true),
     AppKnowledge("app_knowledge", ContextLayer.Knowledge, Trust.Reference, pinned = true),
     SiteKnowledge("site_knowledge", ContextLayer.Knowledge, Trust.Reference, pinned = true),
-    /** 某 App 的屏图(页面结构,见 [com.wangzan101.mika.core.screenmap]);和 APP.md 一样是参考资料,折叠时保留。 */
+    /** 某 App 的屏图(页面结构,见 [com.wangzan101.miga.core.screenmap]);和 APP.md 一样是参考资料,折叠时保留。 */
     ScreenMap("screen_map", ContextLayer.Knowledge, Trust.Reference, pinned = true),
     SkillsIndex("skills_index", ContextLayer.Skills, Trust.Reference, pinned = true),
     Channel("channel", ContextLayer.Runtime, Trust.Runtime, pinned = true),
-    /** 用户发来的此刻的屏幕(见 [com.wangzan101.mika.core.userscreen.UserScreenPrompt]):紧跟在那句话后面,压缩时保留。 */
+    /** 用户发来的此刻的屏幕(见 [com.wangzan101.miga.core.userscreen.UserScreenPrompt]):紧跟在那句话后面,压缩时保留。 */
     UserScreen("user_screen", ContextLayer.Runtime, Trust.Screen, pinned = true),
     RuntimeState("runtime_state", ContextLayer.Runtime, Trust.Runtime, pinned = false),
     Notice("notice", ContextLayer.Runtime, Trust.Mika, pinned = false);

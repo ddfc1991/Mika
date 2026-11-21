@@ -202,7 +202,7 @@ If wireless pairing doesn't work (some vendor ROMs have no working "Wireless deb
 3. On the computer, run (if more than one device is connected, use `adb -s <serial> shell ...` instead):
 
 ```
-adb shell sh /sdcard/Android/data/com.wangzan101.mika/files/usb-start.sh
+adb shell sh /sdcard/Android/data/com.wangzan101.miga/files/usb-start.sh
 ```
 
 When you see `Mika helper starting...`, go back to Mika and check that "Phone control" shows ready. What matters is that the command runs as adb's shell user, not that it comes from a computer: if the phone already has another channel that runs adb shell commands, running the same script through it works too. On most phones you can unplug the cable afterwards and keep using phone control. Some systems stop the helper when the cable is unplugged; if that happens, plug the cable back in and run this command once more to restore it. The wizard doesn't show this option all the time. The same command, with a "Copy" button, appears in the current step as "Can’t use Wireless debugging on this phone? Start from a computer instead" when it's needed: the phone has no Wireless debugging, you tapped "Can’t find Wireless debugging?" in step 4, pairing or connecting failed, or the wizard has been waiting on step 4, step 5 (before the pairing window is found) or "Connect automatically" for about 45 seconds.
@@ -260,7 +260,7 @@ Good to know:
 | "Wireless debugging isn't allowed on this Wi-Fi yet" | Turn on "Wireless debugging" once yourself; in the dialog, tick "Always allow on this network" and tap "Allow". |
 | "Not connected to Wi-Fi" | Join any Wi-Fi network (internet access not required); Mika resumes by itself. |
 | "Pairing expired" | Pair again. Turn on "Disable adb authorization timeout" in Developer options so it won't expire again. |
-| "Phone helper stopped" | The helper was started with the USB start command and doesn't come back by itself after a phone restart. Open Mika once, then run `adb shell sh /sdcard/Android/data/com.wangzan101.mika/files/usb-start.sh` again (you can copy it in "Set up phone control"). If the phone has a working "Wireless debugging", you can also pair once so it comes back by itself after restarts. |
+| "Phone helper stopped" | The helper was started with the USB start command and doesn't come back by itself after a phone restart. Open Mika once, then run `adb shell sh /sdcard/Android/data/com.wangzan101.miga/files/usb-start.sh` again (you can copy it in "Set up phone control"). If the phone has a working "Wireless debugging", you can also pair once so it comes back by itself after restarts. |
 | "Root access was denied" or "Root didn't answer" | Go to Settings › Advanced & other › Root, tap the “Start the phone helper with root” row to request permission again, and allow Mika in the system prompt. If root startup is unavailable, existing Wireless debugging pairing continues to work. |
 | "Root is no longer available" | Mika can't find `su` anymore. Pair Wireless debugging or start from a computer instead; if already paired, Mika falls back to Wireless debugging automatically. |
 | Mika's accessibility switch is greyed out / "Restricted setting" | Recommended: skip that step; Mika turns it on after pairing. To do it by hand: try turning it on once so the system blocks it, then go to Settings › Apps › Mika, tap ⋮ at the top right › Allow restricted settings, and go back to Accessibility settings to turn Mika on. |

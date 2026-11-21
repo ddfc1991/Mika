@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.runTest

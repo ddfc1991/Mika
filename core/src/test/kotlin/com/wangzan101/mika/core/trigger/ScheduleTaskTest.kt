@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.trigger
+package com.wangzan101.miga.core.trigger
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.run.Attendance
-import com.wangzan101.mika.core.run.RunId
-import com.wangzan101.mika.core.run.RunOrigin
-import com.wangzan101.mika.core.run.RunProvenance
-import com.wangzan101.mika.core.run.RunSpec
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.cap.web.FakeWebPort
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.run.Attendance
+import com.wangzan101.miga.core.run.RunId
+import com.wangzan101.miga.core.run.RunOrigin
+import com.wangzan101.miga.core.run.RunProvenance
+import com.wangzan101.miga.core.run.RunSpec
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.cap.web.FakeWebPort
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

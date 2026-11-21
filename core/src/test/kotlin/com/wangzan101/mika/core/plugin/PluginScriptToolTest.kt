@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.plugin
+package com.wangzan101.miga.core.plugin
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.Risk
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.Risk
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.uistate.ScreenFamily
-import com.wangzan101.mika.core.uistate.tools.ScreenTool
-import com.wangzan101.mika.core.tool.AgentTool
+import com.wangzan101.miga.core.uistate.ScreenFamily
+import com.wangzan101.miga.core.uistate.tools.ScreenTool
+import com.wangzan101.miga.core.tool.AgentTool
 
 /** 手机能力的 id,也是手机那一套工具名字的前缀。 */
 const val PHONE = "phone"

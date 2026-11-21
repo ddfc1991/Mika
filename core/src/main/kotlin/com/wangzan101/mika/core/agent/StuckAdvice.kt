@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.guard.GuardVerdict
-import com.wangzan101.mika.core.guard.Severity
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.guard.GuardVerdict
+import com.wangzan101.miga.core.guard.Severity
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull

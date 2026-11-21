@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.tool.SubActions
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.tool.SubActions
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive
@@ -25,16 +25,16 @@ import java.util.regex.PatternSyntaxException
 import java.util.concurrent.atomic.AtomicInteger
 import kotlin.io.path.name
 import kotlin.io.path.relativeTo
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.OutputClip
-import com.wangzan101.mika.core.workspace.GatedFile
-import com.wangzan101.mika.core.workspace.SandboxError
-import com.wangzan101.mika.core.knowledge.ScriptManifest
-import com.wangzan101.mika.core.workspace.WorkspaceFileGate
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.OutputClip
+import com.wangzan101.miga.core.workspace.GatedFile
+import com.wangzan101.miga.core.workspace.SandboxError
+import com.wangzan101.miga.core.knowledge.ScriptManifest
+import com.wangzan101.miga.core.workspace.WorkspaceFileGate
+import com.wangzan101.miga.core.workspace.SandboxPaths
 
 private const val MB = 1L shl 20
 private const val GB = 1L shl 30
@@ -225,7 +225,7 @@ internal class SandboxTools(
             phoneHandler(callId, sub, tools)), ws)
     }
 
-    /** 能调哪些由工具自己声明([com.wangzan101.mika.core.tool.ToolInfo.sandboxCallable]);没给工具表时一个都不开放。 */
+    /** 能调哪些由工具自己声明([com.wangzan101.miga.core.tool.ToolInfo.sandboxCallable]);没给工具表时一个都不开放。 */
     private fun phoneHandler(callId: String, sub: SubActions?, tools: ToolIndex?): PhoneCommandHandler? = sub?.let { runner ->
         val sequence = AtomicInteger()
         PhoneCommandHandler { requested, args ->

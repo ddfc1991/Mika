@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.memory
+package com.wangzan101.miga.core.memory
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelJson
-import com.wangzan101.mika.core.model.ModelJson.field
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.prompt.Prompts
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelJson
+import com.wangzan101.miga.core.model.ModelJson.field
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.prompt.Prompts
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

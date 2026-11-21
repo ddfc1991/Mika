@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.run
+package com.wangzan101.miga.core.run
 
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*

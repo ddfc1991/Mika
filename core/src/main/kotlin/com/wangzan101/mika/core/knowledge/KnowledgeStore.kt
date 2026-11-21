@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Feedback
 import java.io.File
 
 private val GENERIC = setOf("app", "apps", "web", "www", "site", "browser")

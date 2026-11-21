@@ -1,18 +1,18 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.context.StepSummary
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.context.StepSummary
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.booleanOrNull
 import kotlinx.serialization.json.contentOrNull
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
 
 /** [estimate]:[messages] 的 token 粗估(未校准),发出后和真实用量比对用。[rewritten]:这次是否改写了请求前缀。 */
 data class Compressed(

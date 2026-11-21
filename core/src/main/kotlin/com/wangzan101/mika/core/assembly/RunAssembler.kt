@@ -1,16 +1,16 @@
-package com.wangzan101.mika.core.assembly
+package com.wangzan101.miga.core.assembly
 
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.agent.CoreSections
-import com.wangzan101.mika.core.general.GeneralGroup
-import com.wangzan101.mika.core.run.RunSpec
-import com.wangzan101.mika.core.run.Attendance
-import com.wangzan101.mika.core.run.RunOrigin
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolConfig
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.uistate.Interfaces
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.agent.CoreSections
+import com.wangzan101.miga.core.general.GeneralGroup
+import com.wangzan101.miga.core.run.RunSpec
+import com.wangzan101.miga.core.run.Attendance
+import com.wangzan101.miga.core.run.RunOrigin
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolConfig
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.uistate.Interfaces
 
 /** 每个 Run 在开局由 Provider 打开能力；Provider 捕获自己的端口与资源，不进入核心循环。 */
 internal interface CapabilityProvider {

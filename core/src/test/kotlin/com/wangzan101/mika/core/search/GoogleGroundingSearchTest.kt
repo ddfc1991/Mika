@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.search
+package com.wangzan101.miga.core.search
 
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json

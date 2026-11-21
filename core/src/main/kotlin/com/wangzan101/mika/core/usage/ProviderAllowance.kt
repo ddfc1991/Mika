@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.headerOrReject
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.headerOrReject
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonNull

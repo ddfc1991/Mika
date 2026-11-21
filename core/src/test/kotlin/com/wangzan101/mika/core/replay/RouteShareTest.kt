@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.replay
+package com.wangzan101.miga.core.replay
 
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.ToolInfo
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.ToolInfo
+import com.wangzan101.miga.core.tool.Verb
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue

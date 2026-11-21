@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.personal
+package com.wangzan101.miga.core.personal
 
-import com.wangzan101.mika.core.agent.TokenEstimate
-import com.wangzan101.mika.core.model.*
+import com.wangzan101.miga.core.agent.TokenEstimate
+import com.wangzan101.miga.core.model.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

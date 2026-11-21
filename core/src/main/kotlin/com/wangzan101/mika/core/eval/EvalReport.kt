@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.eval
+package com.wangzan101.miga.core.eval
 
-import com.wangzan101.mika.core.record.RunMetrics
-import com.wangzan101.mika.core.record.RunStats
+import com.wangzan101.miga.core.record.RunMetrics
+import com.wangzan101.miga.core.record.RunStats
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -20,7 +20,7 @@ object EvalReport {
         scores: List<Pair<TaskScore, Observed>>,
         skipped: List<Pair<String, String>>,
         prices: Prices?,
-        /** 本次运行的开关组合([com.wangzan101.mika.core.agent.SpeedFlags.describe])。 */
+        /** 本次运行的开关组合([com.wangzan101.miga.core.agent.SpeedFlags.describe])。 */
         flags: String = "none",
         /** 并行评测时整轮从第一题开始到最后一题结束的时间;串行时为空,不出这一行。 */
         totalWallMs: Long? = null,

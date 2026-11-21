@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.Verb
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue

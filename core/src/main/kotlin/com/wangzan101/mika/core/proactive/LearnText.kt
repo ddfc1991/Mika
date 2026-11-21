@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
-import com.wangzan101.mika.core.memory.SensitiveFilter
+import com.wangzan101.miga.core.memory.SensitiveFilter
 import java.text.Normalizer
 
 /**

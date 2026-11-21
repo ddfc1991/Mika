@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.chat.GeneratedAudio
-import com.wangzan101.mika.core.chat.GeneratedPhoto
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.chat.GeneratedAudio
+import com.wangzan101.miga.core.chat.GeneratedPhoto
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 
 /**
  * 一轮对话:用户说了什么、结果如何。[outcome] 是成功时的答案或失败原因;
@@ -18,9 +18,9 @@ import com.wangzan101.mika.core.model.Role
  */
 data class Turn(
     val userText: String, val outcome: String, val status: String, val note: String? = null, val runId: String? = null,
-    val memoryNotes: List<com.wangzan101.mika.core.memory.MemoryNote> = emptyList(),
+    val memoryNotes: List<com.wangzan101.miga.core.memory.MemoryNote> = emptyList(),
     val usedMemory: List<String> = emptyList(),
-    val skillNotes: List<com.wangzan101.mika.core.skills.SkillNote> = emptyList(),
+    val skillNotes: List<com.wangzan101.miga.core.skills.SkillNote> = emptyList(),
     val unconfirmed: List<String> = emptyList(),
     val result: String? = null,
     /** 任务进行中用户插的、已交给这个任务的话(界面在那一轮下面显示)。 */
@@ -33,7 +33,7 @@ data class Turn(
     val groups: List<String> = emptyList(),
     /** 任务结束后留在后台接着运行的那一页的站点(见 web_keep_open);没留为 null。 */
     val keptPage: String? = null,
-    /** 留下的那一页后来关掉的原因([com.wangzan101.mika.core.cap.web.KeptPageClose.wire]);还开着或没留为 null。 */
+    /** 留下的那一页后来关掉的原因([com.wangzan101.miga.core.cap.web.KeptPageClose.wire]);还开着或没留为 null。 */
     val keptPageClosed: String? = null,
     /** 这一轮 Mika 生成并留在工作区里的音频；对话页在回答下面画成音频卡片。 */
     val audios: List<GeneratedAudio> = emptyList(),

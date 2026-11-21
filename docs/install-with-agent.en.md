@@ -24,7 +24,7 @@ If you are the AI agent: read the "Rules" first. Start at step 1 when phone inst
 6. **Before each step, briefly tell the user what you are doing and why, in the user's language.** When a command fails, show the user the exact error, then the likely causes.
 7. The commands below are written for a Unix-style shell (macOS, Linux, or WSL / Git Bash on Windows). In Windows PowerShell, rewrite them to do the same thing.
 
-The package name is `com.wangzan101.mika`.
+The package name is `com.wangzan101.miga`.
 
 ## Step 1: Check the prerequisites
 
@@ -109,7 +109,7 @@ Success: the last line is `Success`.
 Mika uses notifications to show task progress and to ask the user to take over. Skip this step if the SDK level is below 33.
 
 ```
-adb shell pm grant com.wangzan101.mika android.permission.POST_NOTIFICATIONS
+adb shell pm grant com.wangzan101.miga android.permission.POST_NOTIFICATIONS
 ```
 
 Success: no output.
@@ -123,19 +123,19 @@ Mika uses its accessibility service to read the screen and tap. Turn it on by wr
 Mika's accessibility service component (from `MikaAccessibilityService` in `app/src/main/AndroidManifest.xml`):
 
 ```
-com.wangzan101.mika/.a11y.MikaAccessibilityService
+com.wangzan101.miga/.a11y.MikaAccessibilityService
 ```
 
-This is the same component as the long form `com.wangzan101.mika/com.wangzan101.mika.a11y.MikaAccessibilityService`; accept either form when checking whether Mika is already in the list.
+This is the same component as the long form `com.wangzan101.miga/com.wangzan101.miga.a11y.MikaAccessibilityService`; accept either form when checking whether Mika is already in the list.
 
 **Do not remove other accessibility services the user already has on.** Read the current list, append Mika only if it is missing (entries are separated by colons), and write it back:
 
 ```
-ME=com.wangzan101.mika/.a11y.MikaAccessibilityService
+ME=com.wangzan101.miga/.a11y.MikaAccessibilityService
 CUR=$(adb shell settings get secure enabled_accessibility_services | tr -d '\r')
 echo "current: $CUR"
 case ":$CUR:" in
-  *":$ME:"*|*":com.wangzan101.mika/com.wangzan101.mika.a11y.MikaAccessibilityService:"*)
+  *":$ME:"*|*":com.wangzan101.miga/com.wangzan101.miga.a11y.MikaAccessibilityService:"*)
     NEW="$CUR" ;;
   *)
     if [ -z "$CUR" ] || [ "$CUR" = "null" ]; then NEW="$ME"; else NEW="$CUR:$ME"; fi ;;
@@ -154,16 +154,16 @@ Notes: `settings get` prints `null` for a setting that was never written; treat 
 Add Mika to the system's battery-optimization allowlist so background and scheduled tasks are not cut off:
 
 ```
-adb shell cmd deviceidle whitelist +com.wangzan101.mika
+adb shell cmd deviceidle whitelist +com.wangzan101.miga
 ```
 
-Success: it prints `Added: com.wangzan101.mika` (also when it was already there).
-If the phone does not accept `cmd`, use `adb shell dumpsys deviceidle whitelist +com.wangzan101.mika` instead; it does the same.
+Success: it prints `Added: com.wangzan101.miga` (also when it was already there).
+If the phone does not accept `cmd`, use `adb shell dumpsys deviceidle whitelist +com.wangzan101.miga` instead; it does the same.
 
 Check:
 
 ```
-adb shell cmd deviceidle whitelist | grep com.wangzan101.mika
+adb shell cmd deviceidle whitelist | grep com.wangzan101.miga
 ```
 
 ## Step 7: Start Mika's phone helper
@@ -171,10 +171,10 @@ adb shell cmd deviceidle whitelist | grep com.wangzan101.mika
 First, open Mika once (needed for all uses, to initialize the app and connection scripts):
 
 ```
-adb shell am start -n com.wangzan101.mika/.ui.MainActivity
+adb shell am start -n com.wangzan101.miga/.ui.MainActivity
 ```
 
-`adb shell monkey -p com.wangzan101.mika 1` also works. On first launch Mika walks the user through adding a model; they can skip that for now ("Not now" or similar) and do it in step 8.
+`adb shell monkey -p com.wangzan101.miga 1` also works. On first launch Mika walks the user through adding a model; they can skip that for now ("Not now" or similar) and do it in step 8.
 
 On Android 11 or for chat, web and files only, go to step 8 after opening the app. The helper is only needed for phone app control; "Phone control" does not need to be ready in those cases.
 
@@ -205,8 +205,8 @@ You can use B first, then configure A for recovery. This pairing starts Mika's p
 This permission lets Mika turn on Wireless debugging for automatic recovery when that capability is available. **It is not required to start the helper over USB, and it cannot restore a pairing page removed by the system.** Explain that it changes the phone's permission state and get the user's consent before running these commands. If the user declines, skip this step; B still works:
 
 ```
-adb shell pm grant com.wangzan101.mika android.permission.WRITE_SECURE_SETTINGS
-adb shell dumpsys package com.wangzan101.mika | grep 'WRITE_SECURE_SETTINGS: granted'
+adb shell pm grant com.wangzan101.miga android.permission.WRITE_SECURE_SETTINGS
+adb shell dumpsys package com.wangzan101.miga | grep 'WRITE_SECURE_SETTINGS: granted'
 ```
 
 Success: the second command prints `granted=true`.
@@ -233,14 +233,14 @@ Success: the second command prints `granted=true`.
 Mika must have been opened at least once, so it can write its start script to the phone. First check the files and read the script to confirm that it is Mika's generated start script; do not modify it:
 
 ```
-adb shell ls /sdcard/Android/data/com.wangzan101.mika/files/
-adb shell cat /sdcard/Android/data/com.wangzan101.mika/files/usb-start.sh
+adb shell ls /sdcard/Android/data/com.wangzan101.miga/files/
+adb shell cat /sdcard/Android/data/com.wangzan101.miga/files/usb-start.sh
 ```
 
 The file list should contain `usb-start.sh`. With the cable plugged in, run:
 
 ```
-adb shell sh /sdcard/Android/data/com.wangzan101.mika/files/usb-start.sh
+adb shell sh /sdcard/Android/data/com.wangzan101.miga/files/usb-start.sh
 ```
 
 - If it says the file does not exist: open Mika with the command above, wait a few seconds and try again. If it is still missing, the Mika version on the phone may not have this feature yet; use A instead.
@@ -258,7 +258,7 @@ You can use the process list as a supplementary check:
 adb shell ps -A -o USER,PID,NAME | grep -i mika
 ```
 
-You will normally see `shell ... com.wangzan101.mika:helper` and `u0_aXXX ... com.wangzan101.mika`. A running process alone does not prove that handoff has completed. Finally, ask the user to open Mika's Settings and look at the status card at the top: "Phone control" shows ready (with a model set up too, it says "Model set up · Phone control ready"). If it says "Phone control isn't ready", redo the steps above or see "Troubleshooting" below.
+You will normally see `shell ... com.wangzan101.miga:helper` and `u0_aXXX ... com.wangzan101.miga`. A running process alone does not prove that handoff has completed. Finally, ask the user to open Mika's Settings and look at the status card at the top: "Phone control" shows ready (with a model set up too, it says "Model set up · Phone control ready"). If it says "Phone control isn't ready", redo the steps above or see "Troubleshooting" below.
 
 ## Step 8: Add a model
 
@@ -269,7 +269,7 @@ Tell the user: in Mika, open Settings › Model, add a provider, enter their own
 ## Step 9: Check the result
 
 ```
-adb shell dumpsys package com.wangzan101.mika | grep versionName
+adb shell dumpsys package com.wangzan101.miga | grep versionName
 adb shell settings get secure enabled_accessibility_services
 ```
 
@@ -295,7 +295,7 @@ Keep the phone selected in step 1 for all ADB operations: pass the same `--devic
 1. Turn it on. This also attempts to start the phone helper from step 7 when needed:
 
    ```
-   adb shell sh /sdcard/Android/data/com.wangzan101.mika/files/connect-computer.sh
+   adb shell sh /sdcard/Android/data/com.wangzan101.miga/files/connect-computer.sh
    ```
 
    Success: it ends with "Computer access over USB is on" and prints a JSON object with `url`, `headers` and `token`. If it says the file doesn't exist, open Mika once (step 7), wait a few seconds and try again.
@@ -309,7 +309,7 @@ Keep the phone selected in step 1 for all ADB operations: pass the same `--devic
 3. Read the token again whenever you need it (it is the `token` field):
 
    ```
-   adb shell cat /sdcard/Android/data/com.wangzan101.mika/files/mcp-usb.json
+   adb shell cat /sdcard/Android/data/com.wangzan101.miga/files/mcp-usb.json
    ```
 
 4. Check that it answers (put the token in):
@@ -344,7 +344,7 @@ Tell the user:
 
 - After unplugging and replugging the cable (or after adb restarts), `adb forward tcp:8765 tcp:8765` has to be run again. The token stays the same.
 - After a phone restart USB mode is off. Run the command in 1 again; the token changes then, so the MCP configuration needs the new one.
-- To turn it off: `adb shell sh /sdcard/Android/data/com.wangzan101.mika/files/connect-computer.sh off`, the switch in Mika's Settings › Connect a computer › Advanced settings, or "Turn off" on the notification. The old token stops working at once.
+- To turn it off: `adb shell sh /sdcard/Android/data/com.wangzan101.miga/files/connect-computer.sh off`, the switch in Mika's Settings › Connect a computer › Advanced settings, or "Turn off" on the notification. The old token stops working at once.
 
 ## Troubleshooting
 

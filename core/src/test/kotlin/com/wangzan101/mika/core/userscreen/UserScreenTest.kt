@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.userscreen
+package com.wangzan101.miga.core.userscreen
 
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.uistate.VisibleTextLine
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.VisibleTextLine
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull

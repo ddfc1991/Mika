@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.trace
+package com.wangzan101.miga.core.trace
 
-import com.wangzan101.mika.core.agent.TaskState
-import com.wangzan101.mika.core.agent.AgentLoop
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.*
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.uistate.ScreenPort
+import com.wangzan101.miga.core.agent.TaskState
+import com.wangzan101.miga.core.agent.AgentLoop
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.*
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.uistate.ScreenPort
 import io.opentelemetry.proto.trace.v1.Span
 import io.opentelemetry.proto.collector.trace.v1.ExportTraceServiceRequest
 import kotlinx.coroutines.runBlocking

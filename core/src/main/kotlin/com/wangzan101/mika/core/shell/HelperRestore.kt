@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 /**
  * Mika 交给内置助手的心愿:自己的进程被杀后要不要把它拉起来([revive]),拉起来之前要不要把 Mika 的无障碍服务写回系统列表([accessibility])。

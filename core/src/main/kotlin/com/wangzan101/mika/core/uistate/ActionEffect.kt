@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.visual.FrameChange
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.visual.FrameChange
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject

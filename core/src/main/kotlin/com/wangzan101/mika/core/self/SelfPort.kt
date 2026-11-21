@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.self
+package com.wangzan101.miga.core.self
 
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -10,7 +10,7 @@ import kotlinx.serialization.json.putJsonObject
 /**
  * 模型看和操作 Mika 自己的唯一入口(App 实现,核心只认这些数据)。
  *
- * 手机那一套工具不能碰 Mika 自己的包(见 [com.wangzan101.mika.core.action.ConfirmDecision] 的 ownApp):
+ * 手机那一套工具不能碰 Mika 自己的包(见 [com.wangzan101.miga.core.action.ConfirmDecision] 的 ownApp):
  * 不自己给自己点同意、不自己改设置。这个端口是正门,只做几件明确的事:
  * 读自身状态、打开自己的页面/文件、发通知、写剪贴板。每件都在用户开关和当次同意之下。
  */

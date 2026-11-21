@@ -1,24 +1,24 @@
-package com.wangzan101.mika.core.cap.root
+package com.wangzan101.miga.core.cap.root
 
-import com.wangzan101.mika.core.action.ActionRisk
-import com.wangzan101.mika.core.action.Risk as ApprovalRisk
-import com.wangzan101.mika.core.tool.OutputClip
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.observation.Trust
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.int
+import com.wangzan101.miga.core.action.ActionRisk
+import com.wangzan101.miga.core.action.Risk as ApprovalRisk
+import com.wangzan101.miga.core.tool.OutputClip
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.observation.Trust
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.int
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject

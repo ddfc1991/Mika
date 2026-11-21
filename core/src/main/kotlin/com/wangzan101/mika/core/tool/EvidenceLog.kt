@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.observation.ObsForm
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.verify.EvidenceLedger
+import com.wangzan101.miga.core.observation.ObsForm
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.verify.EvidenceLedger
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 

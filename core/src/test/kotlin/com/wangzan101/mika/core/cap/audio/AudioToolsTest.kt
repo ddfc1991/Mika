@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.cap.audio
+package com.wangzan101.miga.core.cap.audio
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.SavedAudio
-import com.wangzan101.mika.core.model.StoredAudio
-import com.wangzan101.mika.core.model.TtsCapabilities
-import com.wangzan101.mika.core.model.TtsRequest
-import com.wangzan101.mika.core.model.TtsResponse
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.vision.LocScreen
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.SavedAudio
+import com.wangzan101.miga.core.model.StoredAudio
+import com.wangzan101.miga.core.model.TtsCapabilities
+import com.wangzan101.miga.core.model.TtsRequest
+import com.wangzan101.miga.core.model.TtsResponse
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.vision.LocScreen
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive

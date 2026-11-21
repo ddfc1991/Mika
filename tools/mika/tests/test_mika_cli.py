@@ -409,12 +409,12 @@ else:
             self.assertEqual("phone-a", body["device"])
             self.assertIn(["-s", "phone-a", "forward", "tcp:0", "tcp:8765"], calls())
             self.assertEqual(["-s", "phone-a", "forward", "--remove", "tcp:" + str(server.server_port)], calls()[-1])
-            root = "/sdcard/Android/data/com.wangzan101.mika/files"
+            root = "/sdcard/Android/data/com.wangzan101.miga/files"
             self.assertIn(["-s", "phone-a", "shell", "sh", root + "/connect-computer.sh"], calls())
             self.assertIn(["-s", "phone-a", "shell", "cat", root + "/mcp-usb.json"], calls())
 
     def test_adb_targets_the_selected_mika_package(self):
-        package = "com.wangzan101.mika.dev"
+        package = "com.wangzan101.miga.dev"
         root = f"/sdcard/Android/data/{package}/files"
         with api() as server:
             adb, env, _, calls = self.fake_adb(
@@ -445,7 +445,7 @@ else:
 
     def test_mika_package_cannot_be_used_with_direct_http(self):
         with api() as server:
-            result, body = self.invoke("doctor", "--package", "com.wangzan101.mika.dev", server=server)
+            result, body = self.invoke("doctor", "--package", "com.wangzan101.miga.dev", server=server)
             self.assertEqual(2, result.returncode, body)
             self.assertEqual("arguments", body["error"]["code"])
             self.assertIn("cannot be used with --url", body["error"]["message"])

@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.model.Usage
-import com.wangzan101.mika.core.testing.TOOLS
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.model.Usage
+import com.wangzan101.miga.core.testing.TOOLS
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

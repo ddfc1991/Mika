@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
 /**
  * press_key 只放行导航和编辑键。音量、电源/休眠/唤醒、Home、最近任务、搜索/助手、相机、媒体键

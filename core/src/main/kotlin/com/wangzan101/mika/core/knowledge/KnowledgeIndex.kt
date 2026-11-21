@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.skills.PersonalSkills
-import com.wangzan101.mika.core.tool.LinkPolicy
+import com.wangzan101.miga.core.skills.PersonalSkills
+import com.wangzan101.miga.core.tool.LinkPolicy
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json

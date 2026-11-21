@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.cap.sandbox.SANDBOX_PACKAGES
+import com.wangzan101.miga.core.cap.sandbox.SANDBOX_PACKAGES
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue

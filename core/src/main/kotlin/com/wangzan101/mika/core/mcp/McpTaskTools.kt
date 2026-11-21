@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.mcp
+package com.wangzan101.miga.core.mcp
 
-import com.wangzan101.mika.core.remote.RemoteStatus
-import com.wangzan101.mika.core.remote.RemoteTasks
-import com.wangzan101.mika.core.remote.RemoteTask
-import com.wangzan101.mika.core.remote.RemoteTaskService
-import com.wangzan101.mika.core.remote.RemoteTaskError
-import com.wangzan101.mika.core.device.DeviceAccess
+import com.wangzan101.miga.core.remote.RemoteStatus
+import com.wangzan101.miga.core.remote.RemoteTasks
+import com.wangzan101.miga.core.remote.RemoteTask
+import com.wangzan101.miga.core.remote.RemoteTaskService
+import com.wangzan101.miga.core.remote.RemoteTaskError
+import com.wangzan101.miga.core.device.DeviceAccess
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
@@ -23,7 +23,7 @@ import kotlinx.serialization.json.putJsonObject
 class McpTaskTools(
     private val service: RemoteTaskService,
     device: DeviceAccess? = null,
-    calls: com.wangzan101.mika.core.calls.PhoneCallPort? = null,
+    calls: com.wangzan101.miga.core.calls.PhoneCallPort? = null,
 ) {
     constructor(tasks: RemoteTasks, pollMs: Long = 250, device: DeviceAccess? = null) :
         this(RemoteTaskService(tasks, pollMs), device)

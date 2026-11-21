@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.testing
+package com.wangzan101.miga.core.testing
 
-import com.wangzan101.mika.core.model.Capabilities
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.model.Usage
+import com.wangzan101.miga.core.model.Capabilities
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.model.Usage
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonNull

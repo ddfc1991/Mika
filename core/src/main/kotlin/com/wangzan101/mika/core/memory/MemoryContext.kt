@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.memory
+package com.wangzan101.miga.core.memory
 
-import com.wangzan101.mika.core.agent.TokenEstimate
+import com.wangzan101.miga.core.agent.TokenEstimate
 
 /** [message] 为 null 表示这次没有记忆可带;[usedIds] 是块里实际列出的条目,顺序同列表。 */
 data class MemoryBlock(val message: String?, val usedIds: List<String>)

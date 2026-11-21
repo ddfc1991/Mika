@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.cap.image
+package com.wangzan101.miga.core.cap.image
 
-import com.wangzan101.mika.core.model.GeneratedImage
-import com.wangzan101.mika.core.model.ImageCapabilities
-import com.wangzan101.mika.core.model.ImageReference
-import com.wangzan101.mika.core.model.ImageRequest
-import com.wangzan101.mika.core.model.ImageResponse
+import com.wangzan101.miga.core.model.GeneratedImage
+import com.wangzan101.miga.core.model.ImageCapabilities
+import com.wangzan101.miga.core.model.ImageReference
+import com.wangzan101.miga.core.model.ImageRequest
+import com.wangzan101.miga.core.model.ImageResponse
 
 /**
  * 图片能力的 App 侧实现:调图片模型、把产物写进工作区、把工作区里的图存进相册。
@@ -17,10 +17,10 @@ interface ImagePort {
     /** 当前模型能做什么；工具在发请求前按它拒绝不支持的调用。 */
     val capabilities: ImageCapabilities
 
-    /** 发一次生成/改图请求；失败抛 [com.wangzan101.mika.core.model.ModelError] 或 [com.wangzan101.mika.core.model.ImageError]。 */
+    /** 发一次生成/改图请求；失败抛 [com.wangzan101.miga.core.model.ModelError] 或 [com.wangzan101.miga.core.model.ImageError]。 */
     suspend fun generate(request: ImageRequest): ImageResponse
 
-    /** 读工作区里的一张参考图；路径越界、不是图片、太大时抛 [com.wangzan101.mika.core.model.ImageError]。 */
+    /** 读工作区里的一张参考图；路径越界、不是图片、太大时抛 [com.wangzan101.miga.core.model.ImageError]。 */
     suspend fun readReference(path: String): ImageReference
 
     /** 把一张图写进工作区 `/workspace/out/images/`，返回最终路径和字节数；写入经工作区 gate，不覆盖、不跟随链接。 */

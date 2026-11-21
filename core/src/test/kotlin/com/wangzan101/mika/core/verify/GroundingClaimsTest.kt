@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.verify
+package com.wangzan101.miga.core.verify
 
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.model.Capabilities
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.model.ToolSpec
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.model.Capabilities
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.model.ToolSpec
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals

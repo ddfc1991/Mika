@@ -1,23 +1,23 @@
-package com.wangzan101.mika.core.cap.transcribe
+package com.wangzan101.miga.core.cap.transcribe
 
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.okObj
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.okObj
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.workspace.SandboxPaths
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.put
 
@@ -29,7 +29,7 @@ internal object AudioTranscribe : AgentTool {
     override val risk = Risk.Read
     override val offScreen = true
     override val concurrency = Concurrency.ParallelSafe
-    override val entry = com.wangzan101.mika.core.tool.Entry.Opens
+    override val entry = com.wangzan101.miga.core.tool.Entry.Opens
     override val def = ToolDef("audio_transcribe",
         Prompts.tool("audio_transcribe"),
         mapOf(
@@ -61,7 +61,7 @@ internal object AudioTranscribe : AgentTool {
         })
     }
 
-    override fun observations(o: kotlinx.serialization.json.JsonObject, r: ToolExecution, log: com.wangzan101.mika.core.tool.EvidenceLog): List<Observation> {
+    override fun observations(o: kotlinx.serialization.json.JsonObject, r: ToolExecution, log: com.wangzan101.miga.core.tool.EvidenceLog): List<Observation> {
         val text = (r.content["text"] as? kotlinx.serialization.json.JsonPrimitive)?.content ?: return emptyList()
         if (text.isBlank()) return emptyList()
         val path = (o["path"] as? kotlinx.serialization.json.JsonPrimitive)?.content ?: return emptyList()

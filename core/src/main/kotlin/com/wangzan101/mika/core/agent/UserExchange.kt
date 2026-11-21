@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.action.ConfirmChoice
-import com.wangzan101.mika.core.action.Refusals
-import com.wangzan101.mika.core.gate.ConfirmationGate
-import com.wangzan101.mika.core.gate.DeclareResult
-import com.wangzan101.mika.core.general.RequestConfirmation
-import com.wangzan101.mika.core.memory.UserUtterances
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.HandBack
-import com.wangzan101.mika.core.tool.HandBackOutcome
-import com.wangzan101.mika.core.tool.Outcome
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.run.Attendance
-import com.wangzan101.mika.core.run.Delivery
-import com.wangzan101.mika.core.run.DeliveryState
-import com.wangzan101.mika.core.run.Interaction
-import com.wangzan101.mika.core.run.LocalInteraction
-import com.wangzan101.mika.core.run.RunOrigin
-import com.wangzan101.mika.core.run.RunProvenance
+import com.wangzan101.miga.core.action.ConfirmChoice
+import com.wangzan101.miga.core.action.Refusals
+import com.wangzan101.miga.core.gate.ConfirmationGate
+import com.wangzan101.miga.core.gate.DeclareResult
+import com.wangzan101.miga.core.general.RequestConfirmation
+import com.wangzan101.miga.core.memory.UserUtterances
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.HandBack
+import com.wangzan101.miga.core.tool.HandBackOutcome
+import com.wangzan101.miga.core.tool.Outcome
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.run.Attendance
+import com.wangzan101.miga.core.run.Delivery
+import com.wangzan101.miga.core.run.DeliveryState
+import com.wangzan101.miga.core.run.Interaction
+import com.wangzan101.miga.core.run.LocalInteraction
+import com.wangzan101.miga.core.run.RunOrigin
+import com.wangzan101.miga.core.run.RunProvenance
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.buildJsonObject
@@ -117,7 +117,7 @@ internal class UserExchange(
         } finally {
             inputReply = null
             resolve(ask)
-        }.also { if (it == null) emit(RunEvent.State(now(), "no_answer", detail(prompt))) else utterances()?.add(UserWords.said(com.wangzan101.mika.core.userscreen.UserScreenMessage.parse(it).words, tools)) }?.let { answerText(it) }
+        }.also { if (it == null) emit(RunEvent.State(now(), "no_answer", detail(prompt))) else utterances()?.add(UserWords.said(com.wangzan101.miga.core.userscreen.UserScreenMessage.parse(it).words, tools)) }?.let { answerText(it) }
     }
 
     suspend fun input(o: Outcome.Input, running: TaskState): ToolExecution {

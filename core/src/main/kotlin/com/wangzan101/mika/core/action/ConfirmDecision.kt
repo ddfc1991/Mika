@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
-import com.wangzan101.mika.core.gate.ConfirmationGate
-import com.wangzan101.mika.core.gate.ConfirmationRequest
-import com.wangzan101.mika.core.risk.IrrevAction
-import com.wangzan101.mika.core.gate.Irreversible
-import com.wangzan101.mika.core.gate.IrreversibleDetector
-import com.wangzan101.mika.core.gate.Permit
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.interfaces
-import com.wangzan101.mika.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.gate.ConfirmationGate
+import com.wangzan101.miga.core.gate.ConfirmationRequest
+import com.wangzan101.miga.core.risk.IrrevAction
+import com.wangzan101.miga.core.gate.Irreversible
+import com.wangzan101.miga.core.gate.IrreversibleDetector
+import com.wangzan101.miga.core.gate.Permit
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.interfaces
+import com.wangzan101.miga.core.tool.ToolDispatcher
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.run.RunProvenance
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.run.RunProvenance
 
 /** 一次动作执行前的审批结论。 */
 sealed interface Decision {

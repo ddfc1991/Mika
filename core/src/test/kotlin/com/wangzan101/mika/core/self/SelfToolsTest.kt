@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.self
+package com.wangzan101.miga.core.self
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.tool.AskPort
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.tool.execute
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.tool.AskPort
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.execute
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonObject

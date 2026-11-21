@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.vision
+package com.wangzan101.miga.core.vision
 
-import com.wangzan101.mika.core.uistate.ScreenFamily
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.ScreenFamily
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertArrayEquals
 import org.junit.Assert.assertEquals

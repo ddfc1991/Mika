@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.assembly.knownTools
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.SubActions
-import com.wangzan101.mika.core.tool.ToolExecution
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.assembly.knownTools
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.SubActions
+import com.wangzan101.miga.core.tool.ToolExecution
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject

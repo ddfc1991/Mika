@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.vision
+package com.wangzan101.miga.core.vision
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 
 /**
  * 让视觉模型看图回答一个问题。只在设置里有能看图的模型时才建;

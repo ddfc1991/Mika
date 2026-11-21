@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.decision
+package com.wangzan101.miga.core.decision
 
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelHttp
-import com.wangzan101.mika.core.model.Usage
-import com.wangzan101.mika.core.net.NetProxy
-import com.wangzan101.mika.core.usage.RunUsageTally
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelHttp
+import com.wangzan101.miga.core.model.Usage
+import com.wangzan101.miga.core.net.NetProxy
+import com.wangzan101.miga.core.usage.RunUsageTally
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.ensureActive

@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.run
+package com.wangzan101.miga.core.run
 
-import com.wangzan101.mika.core.action.ConfirmChoice
+import com.wangzan101.miga.core.action.ConfirmChoice
 import kotlinx.serialization.Serializable
 
 @Serializable

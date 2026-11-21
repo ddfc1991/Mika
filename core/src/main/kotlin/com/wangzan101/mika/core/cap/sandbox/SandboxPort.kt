@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
 import java.io.Closeable
 import java.io.File
 import java.io.InputStream
 import java.io.OutputStream
-import com.wangzan101.mika.core.knowledge.ScriptEntry
-import com.wangzan101.mika.core.workspace.SandboxError
-import com.wangzan101.mika.core.workspace.WorkspaceFileGate
-import com.wangzan101.mika.core.workspace.SandboxTree
+import com.wangzan101.miga.core.knowledge.ScriptEntry
+import com.wangzan101.miga.core.workspace.SandboxError
+import com.wangzan101.miga.core.workspace.WorkspaceFileGate
+import com.wangzan101.miga.core.workspace.SandboxTree
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.serialization.json.JsonObject

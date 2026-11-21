@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
-import com.wangzan101.mika.core.agent.TaskState
-import com.wangzan101.mika.core.mcp.FakeRemoteTasks
+import com.wangzan101.miga.core.agent.TaskState
+import com.wangzan101.miga.core.mcp.FakeRemoteTasks
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob

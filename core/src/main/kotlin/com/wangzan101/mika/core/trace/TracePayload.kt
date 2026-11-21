@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.trace
+package com.wangzan101.miga.core.trace
 
-import com.wangzan101.mika.core.model.InferenceProtocol
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.model.InferenceProtocol
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.serialization.json.*
 import okio.ByteString.Companion.encodeUtf8
 

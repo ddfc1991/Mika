@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.agent.NoticeTurn
-import com.wangzan101.mika.core.agent.Turn
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Trust
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunRecords
-import com.wangzan101.mika.core.record.RunSummary
-import com.wangzan101.mika.core.run.RunId
-import com.wangzan101.mika.core.run.RunSpec
-import com.wangzan101.mika.core.tool.ActionPass
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.agent.NoticeTurn
+import com.wangzan101.miga.core.agent.Turn
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Trust
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunRecords
+import com.wangzan101.miga.core.record.RunSummary
+import com.wangzan101.miga.core.run.RunId
+import com.wangzan101.miga.core.run.RunSpec
+import com.wangzan101.miga.core.tool.ActionPass
+import com.wangzan101.miga.core.tool.FakeScreen
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
@@ -184,15 +184,15 @@ class HistoryReadTest {
             val result = runBlocking { dispatcher.execute(Part.ToolCall("h", HISTORY_READ, args), ActionPass()) }
             assertTrue(args, secret in result.content.toString())
             val emitted = mutableListOf<RunEvent>()
-            val recorder = com.wangzan101.mika.core.action.ActionRecorder(object : com.wangzan101.mika.core.record.RunSink {
+            val recorder = com.wangzan101.miga.core.action.ActionRecorder(object : com.wangzan101.miga.core.record.RunSink {
                 override fun event(e: RunEvent) { emitted += e }
             })
-            recorder.result(1, HISTORY_READ, com.wangzan101.mika.core.tool.Verb.HistoryRead, result.content, JsonObject(emptyMap()), null, null, 0, "model", "h")
+            recorder.result(1, HISTORY_READ, com.wangzan101.miga.core.tool.Verb.HistoryRead, result.content, JsonObject(emptyMap()), null, null, 0, "model", "h")
             val event = emitted.filterIsInstance<RunEvent.ToolResult>().single()
             val encoded = RunEvent.encode(event)
             assertFalse(args, secret in encoded)
             assertFalse(args, "妈妈" in encoded)
-            val exported = com.wangzan101.mika.core.remote.RunRecordExport.redact(kotlinx.serialization.json.Json.parseToJsonElement(encoded)).toString()
+            val exported = com.wangzan101.miga.core.remote.RunRecordExport.redact(kotlinx.serialization.json.Json.parseToJsonElement(encoded)).toString()
             assertFalse(args, secret in exported)
             // 轮次、状态还在;别的轮次的结果照记
             val recorded = kotlinx.serialization.json.Json.parseToJsonElement(event.resultJson) as JsonObject
@@ -208,7 +208,7 @@ class HistoryReadTest {
         }
         // 不是通知提醒的那一轮:单读时结果照记
         val plain = runBlocking { dispatcher.execute(Part.ToolCall("h", HISTORY_READ, """{"turn":2}"""), ActionPass()) }
-        val kept = com.wangzan101.mika.core.record.Redactor.result(com.wangzan101.mika.core.tool.Verb.HistoryRead, plain.content)
+        val kept = com.wangzan101.miga.core.record.Redactor.result(com.wangzan101.miga.core.tool.Verb.HistoryRead, plain.content)
         assertEquals(JsonPrimitive("没找到"), kept["outcome"])
     }
 }

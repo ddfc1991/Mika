@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.agent.HistoryPruner
-import com.wangzan101.mika.core.agent.visibleReads
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.vision.JvmTestImageOps
-import com.wangzan101.mika.core.vision.VisionService
-import com.wangzan101.mika.core.vision.says
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.agent.HistoryPruner
+import com.wangzan101.miga.core.agent.visibleReads
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.vision.JvmTestImageOps
+import com.wangzan101.miga.core.vision.VisionService
+import com.wangzan101.miga.core.vision.says
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.boolean
@@ -25,8 +25,8 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.TOOLS
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.testing.TOOLS
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 /** 每次读屏换下一份元素清单(读完最后一份就一直是它);同名元素位置不变。 */
 private class ListScreen(private vararg val screens: List<String>) : ScreenPort by FakeScreen() {

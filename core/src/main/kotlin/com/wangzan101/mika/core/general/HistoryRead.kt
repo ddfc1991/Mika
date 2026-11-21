@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.agent.NoticeTurn
-import com.wangzan101.mika.core.agent.Turn
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Trust
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunRecords
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.int
-import com.wangzan101.mika.core.tool.okObj
+import com.wangzan101.miga.core.agent.NoticeTurn
+import com.wangzan101.miga.core.agent.Turn
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Trust
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunRecords
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.int
+import com.wangzan101.miga.core.tool.okObj
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
@@ -36,7 +36,7 @@ const val HISTORY_READ = "history_read"
 /**
  * 查这个对话之前几轮的记录:不带 turn 列出之前的轮次(新的在前:第几轮、用户说了什么、结局、时刻),
  * 带 turn 读那一轮记下的东西(完整结局、验收与已确认进度、Mika 的进度说明、读到的原文),按条分页。
- * 只认本次运行开局带来的那几轮([com.wangzan101.mika.core.run.RunSpec.priorTurns],同一个对话),只读;
+ * 只认本次运行开局带来的那几轮([com.wangzan101.miga.core.run.RunSpec.priorTurns],同一个对话),只读;
  * 原文取自运行记录(落盘时已脱敏、截短),不带截图。读到的原文作为观察交给核查,回答里可以引用。
  * 只在给了运行记录、而之前有记过运行的轮次时提供。
  */
@@ -184,7 +184,7 @@ internal object HistoryRead : AgentTool {
 
     /**
      * 一轮的结果。通知提醒那一轮([NoticeTurn])列的是别的 App、别人写的字:套上不可信标记再给,并标上 [NOTICE]——
-     * 模型据此知道这一轮不是用户说的;记运行记录时据此不记它的内容([com.wangzan101.mika.core.record.Redactor.result])。
+     * 模型据此知道这一轮不是用户说的;记运行记录时据此不记它的内容([com.wangzan101.miga.core.record.Redactor.result])。
      */
     private fun outcome(t: Turn, max: Int): String = clip(t.outcome, max).let { if (NoticeTurn.isNotice(t)) NoticeTurn.untrusted(it) else it }
 

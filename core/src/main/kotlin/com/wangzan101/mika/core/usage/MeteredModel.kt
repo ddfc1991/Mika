@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.ModelRole
-import com.wangzan101.mika.core.model.StreamingChatModel
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.model.Usage
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.ModelRole
+import com.wangzan101.miga.core.model.StreamingChatModel
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.model.Usage
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.withContext
 import java.time.Instant

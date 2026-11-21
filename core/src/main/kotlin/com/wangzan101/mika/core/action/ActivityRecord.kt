@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull

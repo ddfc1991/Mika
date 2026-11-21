@@ -6,7 +6,7 @@
 
 ## 全局约定
 
-- 新模块：core 侧 `com.wangzan101.mika.core.screenmap`；app 侧落盘 `app/src/main/java/com/wangzan101/mika/knowledge/`。
+- 新模块：core 侧 `com.wangzan101.miga.core.screenmap`；app 侧落盘 `app/src/main/java/com/wangzan101/mika/knowledge/`。
 - 认屏口径复用 `RouteAnchors.texts(snapshot)`（固定骨架：去数字、去列表/可滚动内容、去输入框、去用户打的字，只留标题栏/标签/按钮）。
 - 屏身份确定性：屏 id = `sha256(app + "\u0000" + 首次骨架锚点签名)` 截前 16 hex；同一批运行记录重建两遍 → 逐字节相同（可整体 `rebuild`）。
 - 序列化用 kotlinx.serialization（先例：`core/replay/Route.kt` 的 `RouteCodec`）。

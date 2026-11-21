@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.FAILURE_MESSAGES
-import com.wangzan101.mika.core.tool.HINT_NOT_SETTLED
-import com.wangzan101.mika.core.tool.HINT_TAP_UNCHANGED
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.refExpired
-import com.wangzan101.mika.core.tool.okObj
-import com.wangzan101.mika.core.tool.switchHint
-import com.wangzan101.mika.core.vision.LocateRegistry
-import com.wangzan101.mika.core.vision.Locator
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.FAILURE_MESSAGES
+import com.wangzan101.miga.core.tool.HINT_NOT_SETTLED
+import com.wangzan101.miga.core.tool.HINT_TAP_UNCHANGED
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.refExpired
+import com.wangzan101.miga.core.tool.okObj
+import com.wangzan101.miga.core.tool.switchHint
+import com.wangzan101.miga.core.vision.LocateRegistry
+import com.wangzan101.miga.core.vision.Locator
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
@@ -21,7 +21,7 @@ import kotlinx.serialization.json.put
 
 /*
  * 工具上下文里的界面状态:开局由 [Interfaces.attach] 放进去,有界面的工具(手机、网页、通用工具里点名屏幕的)从这里取。
- * 工具引擎(core/tool)不认识这些,只经 [com.wangzan101.mika.core.tool.SurfaceLayer] 用到界面一侧。
+ * 工具引擎(core/tool)不认识这些,只经 [com.wangzan101.miga.core.tool.SurfaceLayer] 用到界面一侧。
  */
 
 /** 界面状态在工具上下文里的键。 */

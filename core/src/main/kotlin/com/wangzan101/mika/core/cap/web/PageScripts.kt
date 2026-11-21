@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.script.JsSource
+import com.wangzan101.miga.core.script.JsSource
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

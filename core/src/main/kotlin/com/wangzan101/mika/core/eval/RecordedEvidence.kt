@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.eval
+package com.wangzan101.miga.core.eval
 
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.verify.EvidenceLedger
-import com.wangzan101.mika.core.observation.InputHints
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.observation.PlaceKind
-import com.wangzan101.mika.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.verify.EvidenceLedger
+import com.wangzan101.miga.core.observation.InputHints
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.observation.PlaceKind
+import com.wangzan101.miga.core.record.Redactor
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

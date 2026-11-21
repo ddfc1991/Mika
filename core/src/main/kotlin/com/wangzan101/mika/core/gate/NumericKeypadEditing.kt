@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.gate
+package com.wangzan101.miga.core.gate
 
-import com.wangzan101.mika.core.uistate.Hant
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.uistate.UiStates
+import com.wangzan101.miga.core.uistate.Hant
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.UiStates
 import kotlin.math.abs
 
 /** Recognizes editing keys on a complete, spatially coherent decimal keypad. */

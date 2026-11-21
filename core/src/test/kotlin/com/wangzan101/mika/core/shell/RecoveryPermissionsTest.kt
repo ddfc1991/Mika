@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
@@ -39,10 +39,10 @@ class RecoveryPermissionsTest {
 
     @Test
     fun accessibilityComponentKeepsTheClassNamespaceWithAnApplicationIdSuffix() {
-        assertEquals("com.wangzan101.mika/.a11y.MikaAccessibilityService", PermissionCommands.accessibilityService("com.wangzan101.mika"))
+        assertEquals("com.wangzan101.miga/.a11y.MikaAccessibilityService", PermissionCommands.accessibilityService("com.wangzan101.miga"))
         assertEquals(
-            "com.wangzan101.mika.compat/com.wangzan101.mika.a11y.MikaAccessibilityService",
-            PermissionCommands.accessibilityService("com.wangzan101.mika.compat"),
+            "com.wangzan101.miga.compat/com.wangzan101.miga.a11y.MikaAccessibilityService",
+            PermissionCommands.accessibilityService("com.wangzan101.miga.compat"),
         )
     }
 

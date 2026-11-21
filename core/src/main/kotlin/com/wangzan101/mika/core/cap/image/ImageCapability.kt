@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.cap.image
+package com.wangzan101.miga.core.cap.image
 
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.capability.CapabilityStatus
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ToolContext
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.capability.CapabilityStatus
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ToolContext
 
 /** 图片能力:生成、改图、存相册。没有配置图片模型时整个能力不装,工具也不发给模型。 */
 const val IMAGE = "image"

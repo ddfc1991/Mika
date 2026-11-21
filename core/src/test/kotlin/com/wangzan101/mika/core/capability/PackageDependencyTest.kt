@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.capability
+package com.wangzan101.miga.core.capability
 
 import org.junit.Assert.assertTrue
 import org.junit.Test

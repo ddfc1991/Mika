@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.mcp
+package com.wangzan101.miga.core.mcp
 
-import com.wangzan101.mika.core.remote.RemoteAccess
-import com.wangzan101.mika.core.remote.HttpResponse
-import com.wangzan101.mika.core.remote.HttpRequest
+import com.wangzan101.miga.core.remote.RemoteAccess
+import com.wangzan101.miga.core.remote.HttpResponse
+import com.wangzan101.miga.core.remote.HttpRequest
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

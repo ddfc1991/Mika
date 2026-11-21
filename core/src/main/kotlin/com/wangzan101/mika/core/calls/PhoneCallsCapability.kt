@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.calls
+package com.wangzan101.miga.core.calls
 
-import com.wangzan101.mika.core.action.ActionRisk
-import com.wangzan101.mika.core.action.Risk as ApprovalRisk
-import com.wangzan101.mika.core.capability.*
-import com.wangzan101.mika.core.gate.ConfirmationRequest
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.risk.IrrevAction
-import com.wangzan101.mika.core.tool.*
+import com.wangzan101.miga.core.action.ActionRisk
+import com.wangzan101.miga.core.action.Risk as ApprovalRisk
+import com.wangzan101.miga.core.capability.*
+import com.wangzan101.miga.core.gate.ConfirmationRequest
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.risk.IrrevAction
+import com.wangzan101.miga.core.tool.*
 import kotlinx.serialization.json.*
 
 internal class PhoneCallsCapability(val port: PhoneCallPort) : Capability {

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.trigger
+package com.wangzan101.miga.core.trigger
 
 import java.time.Instant
 import org.junit.Assert.*

@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.workspace.SandboxPaths
 import java.io.File
 import java.util.UUID
 

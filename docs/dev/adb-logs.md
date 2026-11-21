@@ -1,7 +1,7 @@
 # 在 USB 连接的手机上读取完整运行日志
 
 `./gradlew :app:assembleLogs` 生成本地检查包 `app-logs.apk`，显示名称为
-**Mika Logs**，包名为 `com.wangzan101.mika.logs`。它使用本机调试签名，
+**Mika Logs**，包名为 `com.wangzan101.miga.logs`。它使用本机调试签名，
 与官方 Mika 并排安装，不覆盖原应用的对话、密钥和设置。
 
 该构建开启 Android `debuggable`，所以已获 USB 调试授权的电脑可以通过
@@ -13,7 +13,7 @@
 
 ```sh
 adb -s SERIAL install -r app/build/outputs/apk/logs/app-logs.apk
-adb -s SERIAL shell run-as com.wangzan101.mika.logs ls files/runs
+adb -s SERIAL shell run-as com.wangzan101.miga.logs ls files/runs
 python3 tools/pull-logs.py --device SERIAL --output mika-logs.tar
 ```
 

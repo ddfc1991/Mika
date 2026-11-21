@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.prompt.Prompts
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.prompt.Prompts
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.Locale

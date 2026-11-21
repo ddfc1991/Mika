@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
 /**
  * 系统命令在做专门工具做的事(点、滑、打字、按键、打开 App)时,结果里提醒换回那个工具:专门工具在 Mika 的屏上做,

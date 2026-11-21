@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.cap.transcribe
+package com.wangzan101.miga.core.cap.transcribe
 
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.capability.CapabilityStatus
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ToolContext
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.capability.CapabilityStatus
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ToolContext
 
 /** 转写能力:把工作区里的音频文件转成文字。没有配置服务商转写模型时整个能力不装。 */
 const val TRANSCRIBE = "transcribe"

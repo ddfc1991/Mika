@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.visual
+package com.wangzan101.miga.core.visual
 
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.RECALL_KEEP
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.refExpired
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.RECALL_KEEP
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.refExpired
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 

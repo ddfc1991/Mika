@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.prompt.Prompts
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.prompt.Prompts
 
 /**
  * 本任务的工具:[all] 是各能力与核心可能提供的全部工具(按发给模型的顺序),本任务能调用的按配置筛过。

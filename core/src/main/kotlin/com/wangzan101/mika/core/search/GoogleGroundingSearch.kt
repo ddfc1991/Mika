@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.search
+package com.wangzan101.miga.core.search
 
-import com.wangzan101.mika.core.model.ApiKeyText
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.headerOrReject
-import com.wangzan101.mika.core.model.withHeaders
-import com.wangzan101.mika.core.net.NetProxy
-import com.wangzan101.mika.core.net.awaitBody
+import com.wangzan101.miga.core.model.ApiKeyText
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.headerOrReject
+import com.wangzan101.miga.core.model.withHeaders
+import com.wangzan101.miga.core.net.NetProxy
+import com.wangzan101.miga.core.net.awaitBody
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject

@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.oauth
+package com.wangzan101.miga.core.oauth
 
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ModelError
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ModelError
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withTimeout

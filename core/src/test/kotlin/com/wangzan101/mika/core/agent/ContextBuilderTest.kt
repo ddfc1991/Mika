@@ -1,16 +1,16 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.knowledge.KnowledgeEntry
-import com.wangzan101.mika.core.knowledge.Link
-import com.wangzan101.mika.core.knowledge.Surface
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.knowledge.KnowledgeEntry
+import com.wangzan101.miga.core.knowledge.Link
+import com.wangzan101.miga.core.knowledge.Surface
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.tool.FakeScreen
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -19,8 +19,8 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.ZoneId
-import com.wangzan101.mika.core.testing.TOOLS
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.testing.TOOLS
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 class ContextBuilderTest {
     private fun app(name: String, body: String = "正文$name", pkg: String = "p.$name", links: List<Link> = emptyList()) =
@@ -183,11 +183,11 @@ class ContextBuilderTest {
  */
 class RuntimeStateHistoryTest {
     private fun tools(vararg c: Part.ToolCall) = ModelReply(c.toList(), StopReason.ToolUse, null)
-    private val finish = com.wangzan101.mika.core.testing.answerReply("ok")
+    private val finish = com.wangzan101.miga.core.testing.answerReply("ok")
     /** 一次请求按消息逐条序列化;前缀关系按字符串判断。 */
     private fun wire(req: List<Message>) = req.joinToString("\n") { it.toString() }
 
-    private fun run(flags: SpeedFlags, vararg script: ModelReply, web: com.wangzan101.mika.core.cap.web.FakeWebPort? = null): FakeModel {
+    private fun run(flags: SpeedFlags, vararg script: ModelReply, web: com.wangzan101.miga.core.cap.web.FakeWebPort? = null): FakeModel {
         val m = FakeModel(*script, finish)
         runBlocking {
             AgentLoop(m, toolDispatcher(FakeScreen(), web = web), "BASE", maxSteps = 20, clock = { 0L },
@@ -231,7 +231,7 @@ class RuntimeStateHistoryTest {
     }
 
     @Test fun webSurfaceAlwaysShowsCurrentMode() {
-        val web = com.wangzan101.mika.core.cap.web.FakeWebPort()
+        val web = com.wangzan101.miga.core.cap.web.FakeWebPort()
         val go = tools(Part.ToolCall("n1", "web_navigate", """{"url":"https://shop.example.com/a"}"""))
         val desktop = run(SpeedFlags.OFF, go, web = web)
         assertTrue(desktop.requests[1].runtimeStates().last(), desktop.requests[1].runtimeStates().last().startsWith("Current place: website shop.example.com (desktop version)"))
@@ -261,8 +261,8 @@ class RuntimeStateHistoryTest {
     @Test fun systemPromptIsByteIdenticalWithinTask() = runBlocking {
         val m = FakeModel(tools(Part.ToolCall("o1", "phone_observe", "{}")), tools(Part.ToolCall("w1", "wait", """{"seconds":0.1}""")), finish)
         val systems = mutableListOf<String>()
-        val model = object : com.wangzan101.mika.core.model.ChatModel by m {
-            override suspend fun complete(system: String, messages: List<Message>, tools: List<com.wangzan101.mika.core.model.ToolSpec>): ModelReply {
+        val model = object : com.wangzan101.miga.core.model.ChatModel by m {
+            override suspend fun complete(system: String, messages: List<Message>, tools: List<com.wangzan101.miga.core.model.ToolSpec>): ModelReply {
                 systems += system
                 return m.complete(system, messages, tools)
             }
@@ -279,14 +279,14 @@ class RuntimeStateHistoryTest {
 /** 开局已列出全部技能:前台到了关联技能的 App 也不再补技能索引,开局那份不改。 */
 class ForegroundAddsNoSkillsIndexTest {
     @Test fun foregroundAppAddsNoSkillLines() = runBlocking {
-        val catalog = com.wangzan101.mika.core.knowledge.GuideCatalog.loadBundled()
-        val store = com.wangzan101.mika.core.knowledge.KnowledgeStore(com.wangzan101.mika.core.knowledge.KnowledgeStore.loadBundled())
-        val screen = object : com.wangzan101.mika.core.uistate.ScreenPort by FakeScreen() {
-            override suspend fun snapshot() = com.wangzan101.mika.core.uistate.ScreenSnapshot("s", "com.tencent.mm", emptyList(), 1080, 2400)
+        val catalog = com.wangzan101.miga.core.knowledge.GuideCatalog.loadBundled()
+        val store = com.wangzan101.miga.core.knowledge.KnowledgeStore(com.wangzan101.miga.core.knowledge.KnowledgeStore.loadBundled())
+        val screen = object : com.wangzan101.miga.core.uistate.ScreenPort by FakeScreen() {
+            override suspend fun snapshot() = com.wangzan101.miga.core.uistate.ScreenSnapshot("s", "com.tencent.mm", emptyList(), 1080, 2400)
         }
         fun tools(vararg c: Part.ToolCall) = ModelReply(c.toList(), StopReason.ToolUse, null)
         val m = FakeModel(tools(Part.ToolCall("o1", "phone_observe", "{}")), tools(Part.ToolCall("o2", "phone_observe", "{}")),
-            com.wangzan101.mika.core.testing.answerReply("ok"))
+            com.wangzan101.miga.core.testing.answerReply("ok"))
         AgentLoop(m, toolDispatcher(screen, skills = catalog), "B", knowledge = store, skills = catalog).run("看看")
         val first = m.requests.first().filter { ContextBuilder.kindOf(it) == ContextKind.SkillsIndex }
         val last = m.requests.last().filter { ContextBuilder.kindOf(it) == ContextKind.SkillsIndex }

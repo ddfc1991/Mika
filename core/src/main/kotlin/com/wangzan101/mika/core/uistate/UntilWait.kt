@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.tool.Until
-import com.wangzan101.mika.core.tool.UntilOutcome
-import com.wangzan101.mika.core.run.waitOrSteer
+import com.wangzan101.miga.core.tool.Until
+import com.wangzan101.miga.core.tool.UntilOutcome
+import com.wangzan101.miga.core.run.waitOrSteer
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 

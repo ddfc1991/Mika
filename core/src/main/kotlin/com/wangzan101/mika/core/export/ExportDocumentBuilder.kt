@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.export
+package com.wangzan101.miga.core.export
 
-import com.wangzan101.mika.core.agent.AttachmentLines
-import com.wangzan101.mika.core.agent.Conversation
-import com.wangzan101.mika.core.agent.AttachedPage
-import com.wangzan101.mika.core.agent.QuoteMessage
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.userscreen.UserScreenMessage
+import com.wangzan101.miga.core.agent.AttachmentLines
+import com.wangzan101.miga.core.agent.Conversation
+import com.wangzan101.miga.core.agent.AttachedPage
+import com.wangzan101.miga.core.agent.QuoteMessage
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.userscreen.UserScreenMessage
 import java.util.Locale
 
 /**

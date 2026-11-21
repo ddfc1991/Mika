@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelError
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse

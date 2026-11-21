@@ -12,7 +12,7 @@ val gitHash: String = runCatching {
 }.getOrNull()?.takeIf { it.isNotEmpty() } ?: "dev"
 
 android {
-    namespace = "com.wangzan101.mika"
+    namespace = "com.wangzan101.miga"
     compileSdk = 36
 
     signingConfigs {
@@ -27,7 +27,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.wangzan101.mika"
+        applicationId = "com.wangzan101.miga"
         minSdk = 29
         targetSdk = 35
         versionCode = 51

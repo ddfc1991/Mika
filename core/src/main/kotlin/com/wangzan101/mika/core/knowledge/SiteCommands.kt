@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.script.JsSource
+import com.wangzan101.miga.core.script.JsSource
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject

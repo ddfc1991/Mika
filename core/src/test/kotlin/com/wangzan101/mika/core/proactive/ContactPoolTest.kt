@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
 import java.time.ZoneOffset
 import kotlinx.serialization.json.Json

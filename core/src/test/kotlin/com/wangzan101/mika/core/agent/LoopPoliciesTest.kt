@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.tool.placeAfter
-import com.wangzan101.mika.core.guard.GuardVerdict
-import com.wangzan101.mika.core.guard.Severity
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.Outcome
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.tool.placeAfter
+import com.wangzan101.miga.core.guard.GuardVerdict
+import com.wangzan101.miga.core.guard.Severity
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.Outcome
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject

@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.replay
+package com.wangzan101.miga.core.replay
 
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.decision.DecisionModel
-import com.wangzan101.mika.core.decision.DecisionChoice
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.decision.DecisionModel
+import com.wangzan101.miga.core.decision.DecisionChoice
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.awaitCancellation
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.decision
+package com.wangzan101.miga.core.decision
 
 import kotlinx.serialization.json.JsonElement
 

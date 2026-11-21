@@ -1,23 +1,23 @@
-package com.wangzan101.mika.core.skills
+package com.wangzan101.miga.core.skills
 
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.knowledge.GuideCatalog
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.record.RunEvent
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.record.RunEvent
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.TOOLS
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.assembly.knownToolNames
-import com.wangzan101.mika.core.testing.SANDBOX_TOOLS
-import com.wangzan101.mika.core.testing.WEB_TOOLS
+import com.wangzan101.miga.core.testing.TOOLS
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.assembly.knownToolNames
+import com.wangzan101.miga.core.testing.SANDBOX_TOOLS
+import com.wangzan101.miga.core.testing.WEB_TOOLS
 
 class SkillDrafterTest {
     private val goal = "给『老妈』发『明天回家吃饭』"
@@ -44,7 +44,7 @@ class SkillDrafterTest {
         act(1, "phone_launch_app", """{"package":"com.tencent.mm"}""")
         ev += RunEvent.ModelReply(++t, 2, "", "phone_observe", "{}", null, null, null)
         ev += RunEvent.ToolResult(++t, 2, "phone_observe", observeJson, null, 1)
-        ev += com.wangzan101.mika.core.testing.legacyScreenText(++t, 2, "com.tencent.mm", listOf("搜索", "张三:晚上一起吃饭吗", "老妈"))
+        ev += com.wangzan101.miga.core.testing.legacyScreenText(++t, 2, "com.tencent.mm", listOf("搜索", "张三:晚上一起吃饭吗", "老妈"))
         val script = listOf(
             Triple("phone_tap", """{"ref":"@e1","snapshotId":"s1"}""", true),
             Triple("phone_type_text", """{"text":"老妈","ref":"@e1","snapshotId":"s1"}""", true),

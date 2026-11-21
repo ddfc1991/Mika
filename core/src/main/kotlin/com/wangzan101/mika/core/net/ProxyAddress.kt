@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.net
+package com.wangzan101.miga.core.net
 
 import java.net.InetSocketAddress
 import java.net.Proxy

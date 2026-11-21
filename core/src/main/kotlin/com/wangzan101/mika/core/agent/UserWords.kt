@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.ToolDispatcher
 
 /**
  * 用户一句话里他自己的话(开局、插话、回答追问一个口径)。语言提示和回答的语言检查只看他这次打的字([typed]);

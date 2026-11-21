@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.cap.mcp
+package com.wangzan101.miga.core.cap.mcp
 
-import com.wangzan101.mika.core.net.awaitBody
+import com.wangzan101.miga.core.net.awaitBody
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.serialization.json.Json

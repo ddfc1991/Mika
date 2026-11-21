@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.oauth
+package com.wangzan101.miga.core.oauth
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

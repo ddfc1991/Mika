@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.access.AppAccessDenied
-import com.wangzan101.mika.core.access.AppAccessPolicy
-import com.wangzan101.mika.core.access.AppAccessState
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.access.AppAccessDenied
+import com.wangzan101.miga.core.access.AppAccessPolicy
+import com.wangzan101.miga.core.access.AppAccessState
+import com.wangzan101.miga.core.tool.FakeScreen
 import java.lang.reflect.InvocationTargetException
 import java.lang.reflect.Method
 import java.lang.reflect.Proxy

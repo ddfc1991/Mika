@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.visual.FrameGrid
+import com.wangzan101.miga.core.visual.FrameGrid
 import kotlinx.coroutines.delay
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
@@ -197,7 +197,7 @@ enum class AppWait {
 
 /** Agent 观察和操作手机屏幕的唯一入口,由 Android 模块实现。 */
 interface ScreenPort {
-    val appAccess: com.wangzan101.mika.core.access.AppAccessPolicy get() = com.wangzan101.mika.core.access.AppAccessPolicy.ALLOW
+    val appAccess: com.wangzan101.miga.core.access.AppAccessPolicy get() = com.wangzan101.miga.core.access.AppAccessPolicy.ALLOW
 
     /** 仅核对窗口归属,不读取屏幕内容。空屏可用;有窗口但归属未知时拒绝。 */
     suspend fun checkAppAccess() {}

@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.assembly.toolDispatcher
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.FAILURE_MESSAGES
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.execute
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.SystemAction
-import com.wangzan101.mika.core.uistate.SystemActionResult
+import com.wangzan101.miga.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.FAILURE_MESSAGES
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.execute
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.SystemAction
+import com.wangzan101.miga.core.uistate.SystemActionResult
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray

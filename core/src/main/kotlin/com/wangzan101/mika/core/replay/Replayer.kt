@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.replay
+package com.wangzan101.miga.core.replay
 
-import com.wangzan101.mika.core.action.ActionExecutor
-import com.wangzan101.mika.core.action.ActionOutcome
-import com.wangzan101.mika.core.action.Origin
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.uistate.interfaces
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.screenmap.ScreenGraph
-import com.wangzan101.mika.core.screenmap.ScreenMapRender
-import com.wangzan101.mika.core.screenmap.ScreenRecognizer
+import com.wangzan101.miga.core.action.ActionExecutor
+import com.wangzan101.miga.core.action.ActionOutcome
+import com.wangzan101.miga.core.action.Origin
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.interfaces
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.screenmap.ScreenGraph
+import com.wangzan101.miga.core.screenmap.ScreenMapRender
+import com.wangzan101.miga.core.screenmap.ScreenRecognizer
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonElement
@@ -21,7 +21,7 @@ import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
 import kotlin.math.hypot
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.Verb
 
 sealed interface ReplayOutcome {
     /** 走完(或核对通过)的步数。 */

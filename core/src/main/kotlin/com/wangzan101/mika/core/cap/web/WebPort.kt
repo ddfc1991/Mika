@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.uistate.KeyCombo
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.KeyCombo
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenPort
 import kotlinx.serialization.json.JsonObject
-import com.wangzan101.mika.core.uistate.PageDialog
+import com.wangzan101.miga.core.uistate.PageDialog
 
 data class TabInfo(val tabId: String, val url: String, val title: String, val current: Boolean)
 

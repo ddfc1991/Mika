@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.selfcheck
+package com.wangzan101.miga.core.selfcheck
 
 import java.net.URLEncoder
 import java.util.Locale

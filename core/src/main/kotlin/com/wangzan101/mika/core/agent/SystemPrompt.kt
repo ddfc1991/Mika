@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.capability.PromptSections
-import com.wangzan101.mika.core.prompt.Prompts
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.capability.PromptSections
+import com.wangzan101.miga.core.prompt.Prompts
 
 /**
  * 系统提示词:P0 身份(prompts/system/identity.md)、P1 通用准则(system/principles.md,不点名工具),

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
 /**
  * 装在另一份用户(分身、工作资料一类的资料)里的那份 App:[packageName] 包名,[userId] 那份用户的编号(打开时用它指定),

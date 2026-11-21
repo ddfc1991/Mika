@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.run.SKIPPED_FOR_NEW_MESSAGE
-import com.wangzan101.mika.core.tool.FAILURE_MESSAGES
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.fail
+import com.wangzan101.miga.core.run.SKIPPED_FOR_NEW_MESSAGE
+import com.wangzan101.miga.core.tool.FAILURE_MESSAGES
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.fail
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
@@ -11,7 +11,7 @@ import kotlinx.serialization.json.put
 /** 这个网站本任务里看的页、这个 App 换的屏到了上限:不再换页、换屏(见 [PageLimitReached])。 */
 const val PAGE_LIMIT = "page_limit"
 
-/** 换页、换屏之前的停留没让这个动作做:调用方不做它,按 [code] 报(见 [dwellStopped])。网页([com.wangzan101.mika.core.cap.web.PageDwell])和 App 里(手机能力的停留)共用。 */
+/** 换页、换屏之前的停留没让这个动作做:调用方不做它,按 [code] 报(见 [dwellStopped])。网页([com.wangzan101.miga.core.cap.web.PageDwell])和 App 里(手机能力的停留)共用。 */
 internal sealed class DwellStop(message: String) : Exception(message) {
     abstract val code: String
     /** 附在说明后面的细节;没有为 null。 */

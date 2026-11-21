@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.search
+package com.wangzan101.miga.core.search
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

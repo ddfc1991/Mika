@@ -1,17 +1,17 @@
-package com.wangzan101.mika.core.cap.sandbox
+package com.wangzan101.miga.core.cap.sandbox
 
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.capability.CapabilityStatus
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.guard.OffScreenGuard
-import com.wangzan101.mika.core.knowledge.ScriptManifest
-import com.wangzan101.mika.core.knowledge.ScriptState
-import com.wangzan101.mika.core.knowledge.BundledScripts
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.capability.CapabilityStatus
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.guard.OffScreenGuard
+import com.wangzan101.miga.core.knowledge.ScriptManifest
+import com.wangzan101.miga.core.knowledge.ScriptState
+import com.wangzan101.miga.core.knowledge.BundledScripts
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.workspace.SandboxPaths
 
 /**
  * Linux 沙箱:命令、技能脚本、工作区文件。设备支持时提供工具(运行环境没准备好时工具调用会等它);

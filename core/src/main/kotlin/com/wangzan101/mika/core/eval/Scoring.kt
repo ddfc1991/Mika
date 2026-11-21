@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.eval
+package com.wangzan101.miga.core.eval
 
-import com.wangzan101.mika.core.agent.FailKind
-import com.wangzan101.mika.core.agent.TaskState
+import com.wangzan101.miga.core.agent.FailKind
+import com.wangzan101.miga.core.agent.TaskState
 
 @Suppress("EnumEntryName")
 enum class FailureClass {

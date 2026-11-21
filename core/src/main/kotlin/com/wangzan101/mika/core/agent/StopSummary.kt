@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.PACKAGE_NAME_RE
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.PACKAGE_NAME_RE
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withTimeoutOrNull
 import kotlinx.serialization.json.Json

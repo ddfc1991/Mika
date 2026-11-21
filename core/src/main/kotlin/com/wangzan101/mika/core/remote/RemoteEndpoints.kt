@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
-import com.wangzan101.mika.core.device.DeviceAccess
-import com.wangzan101.mika.core.mcp.McpRpc
-import com.wangzan101.mika.core.mcp.McpTaskTools
+import com.wangzan101.miga.core.device.DeviceAccess
+import com.wangzan101.miga.core.mcp.McpRpc
+import com.wangzan101.miga.core.mcp.McpTaskTools
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import java.net.InetAddress
@@ -18,7 +18,7 @@ class RemoteEndpoints(
     private val device: DeviceAccess? = null,
     private val history: RemoteHistory? = null,
     private val records: RunExportSource? = null,
-    private val calls: com.wangzan101.mika.core.calls.PhoneCallPort? = null,
+    private val calls: com.wangzan101.miga.core.calls.PhoneCallPort? = null,
     private val companion: RemoteCompanion? = null,
 ) {
     private val companionApi = companion?.let(::CompanionApi)

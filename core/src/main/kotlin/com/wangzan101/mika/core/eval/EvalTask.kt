@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.eval
+package com.wangzan101.miga.core.eval
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

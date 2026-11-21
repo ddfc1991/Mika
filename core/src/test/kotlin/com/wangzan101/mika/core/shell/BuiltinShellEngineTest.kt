@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
-import com.wangzan101.mika.core.adb.AdbConnectionException
-import com.wangzan101.mika.core.adb.AdbKeyUnreadableException
-import com.wangzan101.mika.core.adb.AdbPairingException
+import com.wangzan101.miga.core.adb.AdbConnectionException
+import com.wangzan101.miga.core.adb.AdbKeyUnreadableException
+import com.wangzan101.miga.core.adb.AdbPairingException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay

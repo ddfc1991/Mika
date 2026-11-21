@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.net.UrlHost
+import com.wangzan101.miga.core.net.UrlHost
 
 /**
  * 选渠道用的事实:已装的包名、在 Mika 里登录着的站点主机名、内置浏览器能不能用、

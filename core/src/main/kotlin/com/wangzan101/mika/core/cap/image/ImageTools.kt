@@ -1,28 +1,28 @@
-package com.wangzan101.mika.core.cap.image
+package com.wangzan101.miga.core.cap.image
 
-import com.wangzan101.mika.core.action.ActionRisk
-import com.wangzan101.mika.core.action.Risk as ApprovalRisk
-import com.wangzan101.mika.core.gate.ConfirmationRequest
-import com.wangzan101.mika.core.model.ImageAspect
-import com.wangzan101.mika.core.model.ImageError
-import com.wangzan101.mika.core.model.ImageRequest
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.risk.IrrevAction
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Entry
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.int
-import com.wangzan101.mika.core.tool.okObj
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.tool.strArray
+import com.wangzan101.miga.core.action.ActionRisk
+import com.wangzan101.miga.core.action.Risk as ApprovalRisk
+import com.wangzan101.miga.core.gate.ConfirmationRequest
+import com.wangzan101.miga.core.model.ImageAspect
+import com.wangzan101.miga.core.model.ImageError
+import com.wangzan101.miga.core.model.ImageRequest
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.risk.IrrevAction
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Entry
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.int
+import com.wangzan101.miga.core.tool.okObj
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.tool.strArray
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.addJsonObject
@@ -182,7 +182,7 @@ internal class ImageSave(private val ask: Boolean) : AgentTool {
 
     /**
      * 保存是改到相册的一步:默认每次都要用户这一次的同意(和 root 命令同一条审批卡)。
-     * 用户关掉「每次保存前先问我」后不再问;无人值守/远程/子任务仍由 [com.wangzan101.mika.core.action.ApprovalPolicy] 拒绝。
+     * 用户关掉「每次保存前先问我」后不再问;无人值守/远程/子任务仍由 [com.wangzan101.miga.core.action.ApprovalPolicy] 拒绝。
      */
     override fun approvalRisk(args: JsonObject): ApprovalRisk = if (ask) {
         ApprovalRisk(ActionRisk.Change, ask = ConfirmationRequest(

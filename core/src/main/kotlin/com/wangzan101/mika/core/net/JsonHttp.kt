@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.net
+package com.wangzan101.miga.core.net
 
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject

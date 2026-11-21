@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.selfcheck
+package com.wangzan101.miga.core.selfcheck
 
 /**
  * 兼容性自检的一项。列的顺序就是跑的顺序;[needs] 里有一项没过(失败或被跳过)这一项就跳过,并写明是缺了哪一项。

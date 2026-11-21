@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
 /** [NoticeFilter.decide] 的结论:留下,或者为什么丢掉。 */
 enum class NoticeDecision {
@@ -26,7 +26,7 @@ enum class NoticeDecision {
  * 包名这一关([decidePackage])在读通知内容之前就做:不在白名单里的通知连内容都不读。
  */
 object NoticeFilter {
-    const val SELF_PREFIX = "com.wangzan101.mika"
+    const val SELF_PREFIX = "com.wangzan101.miga"
     const val TITLE_MAX = 200
     const val TEXT_MAX = 2_000
     const val MESSAGES_MAX = 20

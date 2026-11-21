@@ -25,7 +25,7 @@ import uuid
 
 VERSION = "0.1.0"
 API = "/api/v1"
-DEFAULT_PACKAGE = "com.wangzan101.mika"
+DEFAULT_PACKAGE = "com.wangzan101.miga"
 MAX_RESPONSE = 4 * 1024 * 1024
 FILE_CHUNK = 128 * 1024
 MAX_ATTACH_BYTES = 200 * 1024 * 1024

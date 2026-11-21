@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.proactive
+package com.wangzan101.miga.core.proactive
 
-import com.wangzan101.mika.core.agent.TokenEstimate
-import com.wangzan101.mika.core.observation.Untrusted
+import com.wangzan101.miga.core.agent.TokenEstimate
+import com.wangzan101.miga.core.observation.Untrusted
 import java.time.LocalDate
 
 /**

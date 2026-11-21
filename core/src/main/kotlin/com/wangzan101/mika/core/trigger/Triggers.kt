@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.trigger
+package com.wangzan101.miga.core.trigger
 
 import kotlinx.serialization.Serializable
 import java.time.Instant

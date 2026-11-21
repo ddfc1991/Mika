@@ -1,23 +1,23 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.gate.IrreversibleDetector
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.str
+import com.wangzan101.miga.core.gate.IrreversibleDetector
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.str
 import kotlinx.serialization.json.JsonNull
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
-import com.wangzan101.mika.core.tool.LinkPolicy
-import com.wangzan101.mika.core.uistate.action
-import com.wangzan101.mika.core.uistate.session
+import com.wangzan101.miga.core.tool.LinkPolicy
+import com.wangzan101.miga.core.uistate.action
+import com.wangzan101.miga.core.uistate.session
 
 /**
  * 打开链接或设置页;只在提速开关 deepLinks 打开时提供。不可逆判定里它只是打开页面;

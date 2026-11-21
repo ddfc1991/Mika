@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.cap.audio
+package com.wangzan101.miga.core.cap.audio
 
-import com.wangzan101.mika.core.model.SavedAudio
-import com.wangzan101.mika.core.model.StoredAudio
-import com.wangzan101.mika.core.model.TtsCapabilities
-import com.wangzan101.mika.core.model.TtsRequest
-import com.wangzan101.mika.core.model.TtsResponse
+import com.wangzan101.miga.core.model.SavedAudio
+import com.wangzan101.miga.core.model.StoredAudio
+import com.wangzan101.miga.core.model.TtsCapabilities
+import com.wangzan101.miga.core.model.TtsRequest
+import com.wangzan101.miga.core.model.TtsResponse
 
 /**
  * 音频能力的 App 侧实现:调 TTS、把合成结果写进工作区、把工作区音频存进音乐库。
@@ -14,7 +14,7 @@ interface AudioPort {
     val modelName: String
     val capabilities: TtsCapabilities
 
-    /** 合成一段话;失败抛 [com.wangzan101.mika.core.model.ModelError] 或 [com.wangzan101.mika.core.model.TtsError]。 */
+    /** 合成一段话;失败抛 [com.wangzan101.miga.core.model.ModelError] 或 [com.wangzan101.miga.core.model.TtsError]。 */
     suspend fun synthesize(request: TtsRequest): TtsResponse
 
     /** 把合成结果写进工作区 `/workspace/out/audio/`，返回最终路径；写入经工作区 gate。 */

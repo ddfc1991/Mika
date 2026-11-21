@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.cap.web.cdp.CdpEvaluationException
-import com.wangzan101.mika.core.cap.web.cdp.CdpSession
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.cap.web.cdp.CdpEvaluationException
+import com.wangzan101.miga.core.cap.web.cdp.CdpSession
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.TimeoutCancellationException

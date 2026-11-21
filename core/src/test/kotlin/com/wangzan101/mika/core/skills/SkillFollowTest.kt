@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.skills
+package com.wangzan101.miga.core.skills
 
-import com.wangzan101.mika.core.assembly.knownTools
-import com.wangzan101.mika.core.knowledge.GuideCatalog
-import com.wangzan101.mika.core.knowledge.SkillPlaces
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.record.RunEvent
+import com.wangzan101.miga.core.assembly.knownTools
+import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.core.knowledge.SkillPlaces
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.record.RunEvent
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue

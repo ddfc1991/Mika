@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.net
+package com.wangzan101.miga.core.net
 
-import com.wangzan101.mika.core.agent.RetryPolicy
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ListFailure
-import com.wangzan101.mika.core.model.ModelCatalog
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelListResult
+import com.wangzan101.miga.core.agent.RetryPolicy
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ListFailure
+import com.wangzan101.miga.core.model.ModelCatalog
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelListResult
 import kotlinx.coroutines.test.runTest
 import okhttp3.Credentials
 import okhttp3.OkHttpClient

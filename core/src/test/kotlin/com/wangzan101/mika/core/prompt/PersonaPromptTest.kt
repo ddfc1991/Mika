@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.prompt
+package com.wangzan101.miga.core.prompt
 
-import com.wangzan101.mika.core.agent.SystemPrompt
+import com.wangzan101.miga.core.agent.SystemPrompt
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals

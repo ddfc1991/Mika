@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.run
+package com.wangzan101.miga.core.run
 
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
 import kotlinx.coroutines.CancellationException
 import java.util.concurrent.CopyOnWriteArrayList
 

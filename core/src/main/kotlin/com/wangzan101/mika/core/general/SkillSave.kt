@@ -1,25 +1,25 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.agent.DO_STEPS_TOOL
-import com.wangzan101.mika.core.knowledge.FrontMatter
-import com.wangzan101.mika.core.knowledge.PERSONAL_KIND
-import com.wangzan101.mika.core.memory.SensitiveFilter
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.skills.PersonalSkill
-import com.wangzan101.mika.core.skills.PersonalSkills
-import com.wangzan101.mika.core.skills.SkillDrafter
-import com.wangzan101.mika.core.skills.SkillStatus
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.ok
-import com.wangzan101.mika.core.tool.str
+import com.wangzan101.miga.core.agent.DO_STEPS_TOOL
+import com.wangzan101.miga.core.knowledge.FrontMatter
+import com.wangzan101.miga.core.knowledge.PERSONAL_KIND
+import com.wangzan101.miga.core.memory.SensitiveFilter
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.skills.PersonalSkill
+import com.wangzan101.miga.core.skills.PersonalSkills
+import com.wangzan101.miga.core.skills.SkillDrafter
+import com.wangzan101.miga.core.skills.SkillStatus
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.ok
+import com.wangzan101.miga.core.tool.str
 import kotlinx.serialization.json.put
 
 /**

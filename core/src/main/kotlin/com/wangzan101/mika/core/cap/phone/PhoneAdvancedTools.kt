@@ -1,20 +1,20 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.int
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.uistate.UiTreeNode
-import com.wangzan101.mika.core.uistate.toPx
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.int
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.uistate.UiTreeNode
+import com.wangzan101.miga.core.uistate.toPx
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
@@ -22,10 +22,10 @@ import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.intOrNull
 import kotlinx.serialization.json.put
-import com.wangzan101.mika.core.uistate.action
-import com.wangzan101.mika.core.uistate.lastOrSnapshot
-import com.wangzan101.mika.core.uistate.screen
-import com.wangzan101.mika.core.uistate.session
+import com.wangzan101.miga.core.uistate.action
+import com.wangzan101.miga.core.uistate.lastOrSnapshot
+import com.wangzan101.miga.core.uistate.screen
+import com.wangzan101.miga.core.uistate.session
 
 /** 按界面实际内容推进，直到找到目标或内容停止变化。 */
 internal object PhoneFind : PhoneTool {

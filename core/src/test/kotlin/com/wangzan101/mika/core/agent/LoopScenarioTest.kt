@@ -1,32 +1,32 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.knowledge.KnowledgeStore
-import com.wangzan101.mika.core.knowledge.GuideCatalog
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.cap.sandbox.FakeSandbox
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.testing.FakeChatModel
-import com.wangzan101.mika.core.testing.InterruptibleStream
-import com.wangzan101.mika.core.run.RunId
-import com.wangzan101.mika.core.run.RunInbox
-import com.wangzan101.mika.core.run.RunInput
-import com.wangzan101.mika.core.run.RunSpec
-import com.wangzan101.mika.core.testing.LoopSnapshot
-import com.wangzan101.mika.core.testing.Screen
-import com.wangzan101.mika.core.testing.ScriptedScreen
-import com.wangzan101.mika.core.testing.button
-import com.wangzan101.mika.core.testing.fakeModel
-import com.wangzan101.mika.core.testing.field
-import com.wangzan101.mika.core.testing.label
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.ScriptWebPort
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.verify.Verifier
-import com.wangzan101.mika.core.agent.AttachedPage
-import com.wangzan101.mika.core.cap.web.FakeWebPort
-import com.wangzan101.mika.core.cap.web.PageText
-import com.wangzan101.mika.core.cap.web.ScriptRun
+import com.wangzan101.miga.core.knowledge.KnowledgeStore
+import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.cap.sandbox.FakeSandbox
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.testing.FakeChatModel
+import com.wangzan101.miga.core.testing.InterruptibleStream
+import com.wangzan101.miga.core.run.RunId
+import com.wangzan101.miga.core.run.RunInbox
+import com.wangzan101.miga.core.run.RunInput
+import com.wangzan101.miga.core.run.RunSpec
+import com.wangzan101.miga.core.testing.LoopSnapshot
+import com.wangzan101.miga.core.testing.Screen
+import com.wangzan101.miga.core.testing.ScriptedScreen
+import com.wangzan101.miga.core.testing.button
+import com.wangzan101.miga.core.testing.fakeModel
+import com.wangzan101.miga.core.testing.field
+import com.wangzan101.miga.core.testing.label
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.ScriptWebPort
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.verify.Verifier
+import com.wangzan101.miga.core.agent.AttachedPage
+import com.wangzan101.miga.core.cap.web.FakeWebPort
+import com.wangzan101.miga.core.cap.web.PageText
+import com.wangzan101.miga.core.cap.web.ScriptRun
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.test.advanceUntilIdle
@@ -40,8 +40,8 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.time.ZoneOffset
-import com.wangzan101.mika.core.testing.WEB_SCRIPT_TOOL
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.testing.WEB_SCRIPT_TOOL
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 /**
  * 用假模型驱动真的 AgentLoop 跑典型场景:断言结局,并把每次发给模型的消息序列和金样比对,
@@ -70,7 +70,7 @@ class LoopScenarioTest {
     }
 
     /** 这次请求里最后一段运行时状态的全文。 */
-    private fun List<com.wangzan101.mika.core.model.Message>.runtimeState(): String =
+    private fun List<com.wangzan101.miga.core.model.Message>.runtimeState(): String =
         flatMap { it.parts }.filterIsInstance<Part.Text>().last { ContextBuilder.kindOf(it.text) == ContextKind.RuntimeState }.text
 
     private fun FakeChatModel.lastResult(i: Int): String =
@@ -236,7 +236,7 @@ class LoopScenarioTest {
             answer("找到了")
         }
         val end = loop(main, toolDispatcher(FakeScreen())).run("找搜索按钮")
-        com.wangzan101.mika.core.testing.assertAnswered("找到了", end)
+        com.wangzan101.miga.core.testing.assertAnswered("找到了", end)
         assertEquals(5, main.requests.size)
         // 重发的是同一个请求
         assertEquals(main.requests[3], main.requests[4])

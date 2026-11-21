@@ -1,15 +1,15 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.record.Redactor
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.verify.AnswerSource
-import com.wangzan101.mika.core.verify.AnswerSources
-import com.wangzan101.mika.core.verify.Criteria
-import com.wangzan101.mika.core.verify.Grounding
-import com.wangzan101.mika.core.verify.Verdict
-import com.wangzan101.mika.core.verify.Verification
-import com.wangzan101.mika.core.verify.Verifier
+import com.wangzan101.miga.core.record.Redactor
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.verify.AnswerSource
+import com.wangzan101.miga.core.verify.AnswerSources
+import com.wangzan101.miga.core.verify.Criteria
+import com.wangzan101.miga.core.verify.Grounding
+import com.wangzan101.miga.core.verify.Verdict
+import com.wangzan101.miga.core.verify.Verification
+import com.wangzan101.miga.core.verify.Verifier
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject

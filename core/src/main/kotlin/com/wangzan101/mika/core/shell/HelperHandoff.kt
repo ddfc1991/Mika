@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,7 +18,7 @@ object HelperHandoff {
     private const val FIRST_APP_UID = 10_000
     private const val LAST_APP_UID = 19_999
     const val METHOD_ATTACH = "attach"
-    const val HELPER_CLASS = "com.wangzan101.mika.shell.HelperMain"
+    const val HELPER_CLASS = "com.wangzan101.miga.shell.HelperMain"
 
     // 助手 → Mika
     const val KEY_NONCE = "nonce"

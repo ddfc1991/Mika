@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
-import com.wangzan101.mika.core.agent.AgentLoop
+import com.wangzan101.miga.core.agent.AgentLoop
 
 /**
  * 插话打断流式回复之后发给模型的历史(见 AgentLoop.keepInterrupted):用户的话,

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.atomic.AtomicInteger

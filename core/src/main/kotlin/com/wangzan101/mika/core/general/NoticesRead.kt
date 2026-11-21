@@ -1,27 +1,27 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.agent.NoticeTurn
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.proactive.DigestLevel
-import com.wangzan101.mika.core.proactive.DigestNote
-import com.wangzan101.mika.core.proactive.DigestView
-import com.wangzan101.mika.core.proactive.DigestViewLine
-import com.wangzan101.mika.core.proactive.NoticeSource
-import com.wangzan101.mika.core.proactive.NoticeEntry
-import com.wangzan101.mika.core.proactive.NoticeFilter
-import com.wangzan101.mika.core.run.RunOrigin
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.int
-import com.wangzan101.mika.core.tool.okObj
-import com.wangzan101.mika.core.tool.str
+import com.wangzan101.miga.core.agent.NoticeTurn
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.proactive.DigestLevel
+import com.wangzan101.miga.core.proactive.DigestNote
+import com.wangzan101.miga.core.proactive.DigestView
+import com.wangzan101.miga.core.proactive.DigestViewLine
+import com.wangzan101.miga.core.proactive.NoticeSource
+import com.wangzan101.miga.core.proactive.NoticeEntry
+import com.wangzan101.miga.core.proactive.NoticeFilter
+import com.wangzan101.miga.core.run.RunOrigin
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.int
+import com.wangzan101.miga.core.tool.okObj
+import com.wangzan101.miga.core.tool.str
 import java.time.Instant
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -42,9 +42,9 @@ const val NOTICES_READ = "notices_read"
  * 给出来的不是全部时都明说:记录从几点起才全(`recordedSince`、`incomplete`)、后面还有没给的(`nextOffset`)、
  * 有几个 App 因为来源档位不够格没给(`appsWithheld`)。读不出来是报错,不是「什么都没收到」。
  *
- * 只读,不碰屏幕。数据由 App 给([com.wangzan101.mika.core.proactive.NoticeSource]);没给(功能没开、不是用户在手机上发起的任务)时不出现。
+ * 只读,不碰屏幕。数据由 App 给([com.wangzan101.miga.core.proactive.NoticeSource]);没给(功能没开、不是用户在手机上发起的任务)时不出现。
  * 读到的都是别的 App、别人写的字:每一样都套不可信标记(里面自带的标记先弄坏)。不作为观察记进核查的账本;
- * 进运行记录前文字遮掉(见 [com.wangzan101.mika.core.record.Redactor.result]):通知原文只在本机留两天,不能借运行记录多留。
+ * 进运行记录前文字遮掉(见 [com.wangzan101.miga.core.record.Redactor.result]):通知原文只在本机留两天,不能借运行记录多留。
  * 读过通知的任务,结束后不自动提取记忆(见 RunLearning)。
  */
 internal object NoticesRead : AgentTool {

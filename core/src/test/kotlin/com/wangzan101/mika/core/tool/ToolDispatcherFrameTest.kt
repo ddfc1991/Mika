@@ -1,13 +1,13 @@
-package com.wangzan101.mika.core.tool
+package com.wangzan101.miga.core.tool
 
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenDiagnosis
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.vision.JvmTestImageOps
-import com.wangzan101.mika.core.vision.ModelImage
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenDiagnosis
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.vision.JvmTestImageOps
+import com.wangzan101.miga.core.vision.ModelImage
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.jsonArray
@@ -18,7 +18,7 @@ import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.util.Base64
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 /** 一屏几个按钮;[names] 决定屏上的字,截图按次计数。 */
 private class FrameScreen(var names: List<String> = listOf("搜索")) : ScreenPort by FakeScreen() {

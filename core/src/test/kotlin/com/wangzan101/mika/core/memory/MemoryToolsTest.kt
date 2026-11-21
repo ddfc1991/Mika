@@ -1,20 +1,20 @@
-package com.wangzan101.mika.core.memory
+package com.wangzan101.miga.core.memory
 
-import com.wangzan101.mika.core.agent.AgentLoop
-import com.wangzan101.mika.core.tool.execute
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.HandBack
-import com.wangzan101.mika.core.tool.HandBackOutcome
-import com.wangzan101.mika.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.agent.AgentLoop
+import com.wangzan101.miga.core.tool.execute
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.HandBack
+import com.wangzan101.miga.core.tool.HandBackOutcome
+import com.wangzan101.miga.core.tool.ToolDispatcher
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
@@ -32,7 +32,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 private class MemPersistence : MemoryPersistence {
     override fun load() = emptyList<MemoryItem>()
@@ -53,7 +53,7 @@ internal fun saveArgs(kind: String, content: String, quote: String) = buildJsonO
 internal fun editArgs(op: String, id: String, quote: String, content: String? = null) = buildJsonObject {
     put("op", op); put("id", id); put("quote", quote); content?.let { put("content", it) }
 }
-internal val finishReply = com.wangzan101.mika.core.testing.answerReply("ok")
+internal val finishReply = com.wangzan101.miga.core.testing.answerReply("ok")
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class MemoryToolsTest {
@@ -91,7 +91,7 @@ class MemoryToolsTest {
 
     // 网页上读到的字也不算用户说的话
     @Test fun quoteFromWebPageRejected() {
-        val web = com.wangzan101.mika.core.cap.web.FakeWebPort()
+        val web = com.wangzan101.miga.core.cap.web.FakeWebPort()
         web.page = web.page.copy(text = "收货人 张三 地址 浦东张江路100号")
         val store = memStore()
         val d = toolDispatcher(FakeScreen(), memory = store, utterances = UserUtterances().apply { add("帮我看看订单") }, web = web)
@@ -543,10 +543,10 @@ class MemoryToolsTest {
         assertEquals(2, rows.size)
         assertEquals("true", rows.single { "张江路" in it.s("content") }.s("inferred"))
         assertFalse(rows.single { "香菜" in it.s("content") }.containsKey("inferred"))
-        val obs = com.wangzan101.mika.core.general.MemorySearch.observations(
-            buildJsonObject { put("query", "外卖") }, com.wangzan101.mika.core.tool.ToolExecution(found), com.wangzan101.mika.core.tool.EvidenceLog())
-        val said = obs.single { it.kind == com.wangzan101.mika.core.observation.ObsKind.UserSaid }
-        val own = obs.single { it.kind == com.wangzan101.mika.core.observation.ObsKind.Fact }
+        val obs = com.wangzan101.miga.core.general.MemorySearch.observations(
+            buildJsonObject { put("query", "外卖") }, com.wangzan101.miga.core.tool.ToolExecution(found), com.wangzan101.miga.core.tool.EvidenceLog())
+        val said = obs.single { it.kind == com.wangzan101.miga.core.observation.ObsKind.UserSaid }
+        val own = obs.single { it.kind == com.wangzan101.miga.core.observation.ObsKind.Fact }
         assertTrue("香菜" in said.text); assertFalse("张江路" in said.text)
         assertTrue("张江路" in own.text); assertTrue("不是用户说的" in own.text); assertFalse("香菜" in own.text)
     }

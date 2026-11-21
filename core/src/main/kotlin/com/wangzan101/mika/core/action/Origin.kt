@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
 /** 子步画面怎么存:交给调用方(模型单步按自己的顺序存)、界面变了才当场存、不存。 */
 enum class Frames { Caller, WhenChanged, None }

@@ -1,23 +1,23 @@
-package com.wangzan101.mika.core.self
+package com.wangzan101.miga.core.self
 
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.action.ActionRisk
-import com.wangzan101.mika.core.action.Risk as ApprovalRisk
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.bool
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.ok
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.action.ActionRisk
+import com.wangzan101.miga.core.action.Risk as ApprovalRisk
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.bool
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.ok
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.workspace.SandboxPaths
 import kotlinx.serialization.json.addJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonArray
@@ -26,7 +26,7 @@ import kotlinx.serialization.json.putJsonArray
  * 自身工具:读自身状态、打开自己的页面/文件、发通知、写剪贴板。
  *
  * 这些工具不动屏幕(offScreen),不经过手机/网页那套屏幕关卡;它们的授权是用户设置里的
- * 「允许 Mika 操作自己的界面」,敏感动作还要在 execute 里用 [com.wangzan101.mika.core.tool.AskPort] 当次问用户。
+ * 「允许 Mika 操作自己的界面」,敏感动作还要在 execute 里用 [com.wangzan101.miga.core.tool.AskPort] 当次问用户。
  * 手机工具仍然不能碰 Mika 自己的包(见 ConfirmDecision.ownApp),这里不是绕过它,而是另一条正门。
  */
 internal interface SelfTool : AgentTool {

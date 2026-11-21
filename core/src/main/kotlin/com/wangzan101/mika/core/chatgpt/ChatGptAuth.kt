@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.chatgpt
+package com.wangzan101.miga.core.chatgpt
 
-import com.wangzan101.mika.core.model.HttpSupport
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.oauth.Pkce
+import com.wangzan101.miga.core.model.HttpSupport
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.oauth.Pkce
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

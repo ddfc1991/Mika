@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.agent.FailKind
-import com.wangzan101.mika.core.agent.FakeModel
-import com.wangzan101.mika.core.agent.RunOutcome
-import com.wangzan101.mika.core.agent.TaskState
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.assembly.knownTools
+import com.wangzan101.miga.core.agent.FailKind
+import com.wangzan101.miga.core.agent.FakeModel
+import com.wangzan101.miga.core.agent.RunOutcome
+import com.wangzan101.miga.core.agent.TaskState
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.assembly.knownTools
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse

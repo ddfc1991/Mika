@@ -1,12 +1,12 @@
-package com.wangzan101.mika.core.mcp
+package com.wangzan101.miga.core.mcp
 
-import com.wangzan101.mika.core.calls.PhoneCallPort
-import com.wangzan101.mika.core.calls.CALL_ID_FIELD
-import com.wangzan101.mika.core.calls.CALL_TASK_FIELD
-import com.wangzan101.mika.core.calls.MAX_CALL_ID_LENGTH
-import com.wangzan101.mika.core.calls.parsePhoneCallTask
-import com.wangzan101.mika.core.calls.phoneCallTaskSchema
-import com.wangzan101.mika.core.tool.ArgError
+import com.wangzan101.miga.core.calls.PhoneCallPort
+import com.wangzan101.miga.core.calls.CALL_ID_FIELD
+import com.wangzan101.miga.core.calls.CALL_TASK_FIELD
+import com.wangzan101.miga.core.calls.MAX_CALL_ID_LENGTH
+import com.wangzan101.miga.core.calls.parsePhoneCallTask
+import com.wangzan101.miga.core.calls.phoneCallTaskSchema
+import com.wangzan101.miga.core.tool.ArgError
 import kotlinx.serialization.json.*
 
 /** These tools cannot turn on automatic answering or set credentials: opt-in stays on the phone. */

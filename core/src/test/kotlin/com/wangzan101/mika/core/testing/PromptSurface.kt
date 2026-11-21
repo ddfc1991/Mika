@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.testing
+package com.wangzan101.miga.core.testing
 
-import com.wangzan101.mika.core.model.ToolSpec
+import com.wangzan101.miga.core.model.ToolSpec
 import org.junit.Assert.assertEquals
 import org.junit.Assert.fail
 import java.io.File

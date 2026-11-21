@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.screenmap
+package com.wangzan101.miga.core.screenmap
 
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.replay.Anchors
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.replay.Anchors
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test

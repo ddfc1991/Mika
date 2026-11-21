@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.eval
+package com.wangzan101.miga.core.eval
 
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.testing.TOOLS
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.testing.TOOLS
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
@@ -86,7 +86,7 @@ class EvalClassesTest {
     }
 
     private var t = 0L
-    private fun screen(vararg names: String) = com.wangzan101.mika.core.testing.legacyScreenText(++t, 1, "com.example.shop", names.toList())
+    private fun screen(vararg names: String) = com.wangzan101.miga.core.testing.legacyScreenText(++t, 1, "com.example.shop", names.toList())
     private fun reply(tool: String, args: String = "{}") = RunEvent.ModelReply(++t, 1, "", tool, args, null, null, null)
 
     // 只认紧挨着接管、而且那一屏上看得出来的障碍
@@ -133,9 +133,9 @@ class EvalClassesTest {
 
     @Test fun writtenAppIsTheForegroundAppWhenTyping() {
         val ev = listOf(
-            com.wangzan101.mika.core.testing.legacyScreenText(++t, 1, "com.example.launcher", listOf("桌面")), reply("phone_launch_app", "{\"package\":\"com.example.notes\"}"),
-            com.wangzan101.mika.core.testing.legacyScreenText(++t, 2, "com.example.notes", listOf("新建")), reply("phone_type_text", "{\"text\":\"买牛奶\"}"),
-            com.wangzan101.mika.core.testing.legacyScreenText(++t, 3, "网站 example.com", listOf("搜索")), reply("phone_type_text", "{\"text\":\"x\"}"),
+            com.wangzan101.miga.core.testing.legacyScreenText(++t, 1, "com.example.launcher", listOf("桌面")), reply("phone_launch_app", "{\"package\":\"com.example.notes\"}"),
+            com.wangzan101.miga.core.testing.legacyScreenText(++t, 2, "com.example.notes", listOf("新建")), reply("phone_type_text", "{\"text\":\"买牛奶\"}"),
+            com.wangzan101.miga.core.testing.legacyScreenText(++t, 3, "网站 example.com", listOf("搜索")), reply("phone_type_text", "{\"text\":\"x\"}"),
         )
         assertEquals(listOf("com.example.notes"), RunFacts.appsWrittenIn(ev, TOOLS))
     }

@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
 /**
  * 回复正文里漏出来的工具调用:有的推理服务偶尔没把模型的工具调用解析出来,调用原样当文字回来了。

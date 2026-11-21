@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
-import com.wangzan101.mika.core.observation.ReadTag
+import com.wangzan101.miga.core.observation.ReadTag
 import kotlinx.serialization.Serializable
 
 @Serializable

@@ -1,28 +1,28 @@
-package com.wangzan101.mika.core.skills
+package com.wangzan101.miga.core.skills
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.knowledge.FrontMatter
-import com.wangzan101.mika.core.knowledge.PERSONAL_KIND
-import com.wangzan101.mika.core.knowledge.GuideCatalog
-import com.wangzan101.mika.core.memory.SensitiveFilter
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.PlaceKind
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.verify.AnswerSource
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.knowledge.FrontMatter
+import com.wangzan101.miga.core.knowledge.PERSONAL_KIND
+import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.core.memory.SensitiveFilter
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.PlaceKind
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.verify.AnswerSource
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.contentOrNull
-import com.wangzan101.mika.core.tool.ToolIndex
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.net.UrlHost
+import com.wangzan101.miga.core.tool.ToolIndex
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.net.UrlHost
 
 /**
  * 起草技能的全部输入:[events] 是这次运行的事件,[toolNames] 是 Mika 当前的工具名,
@@ -42,7 +42,7 @@ internal val ACTION_VERBS = setOf(Verb.Tap, Verb.Scroll, Verb.Swipe, Verb.TypeTe
 object Eligibility {
     const val MIN_ACTIONS = 5
 
-    /** null = 可以起草;否则是不起草的原因。[done]:这次运行算办成了([com.wangzan101.mika.core.agent.LearnGate])。 */
+    /** null = 可以起草;否则是不起草的原因。[done]:这次运行算办成了([com.wangzan101.miga.core.agent.LearnGate])。 */
     fun check(events: List<RunEvent>, followedPersonalSkill: String?, tools: ToolIndex, done: Boolean): String? {
         val ended = events.filterIsInstance<RunEvent.TaskEnded>().lastOrNull()
         return when {

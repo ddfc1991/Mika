@@ -1,30 +1,30 @@
-package com.wangzan101.mika.core.general
+package com.wangzan101.miga.core.general
 
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.memory.Change
-import com.wangzan101.mika.core.memory.MemoryContext
-import com.wangzan101.mika.core.memory.MemoryIndex
-import com.wangzan101.mika.core.memory.MemoryKind
-import com.wangzan101.mika.core.memory.MemoryRejected
-import com.wangzan101.mika.core.memory.MemorySource
-import com.wangzan101.mika.core.memory.MemoryStore
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Concurrency
-import com.wangzan101.mika.core.tool.EvidenceLog
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.argStr
-import com.wangzan101.mika.core.tool.fail
-import com.wangzan101.mika.core.tool.ok
-import com.wangzan101.mika.core.tool.str
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.memory.Change
+import com.wangzan101.miga.core.memory.MemoryContext
+import com.wangzan101.miga.core.memory.MemoryIndex
+import com.wangzan101.miga.core.memory.MemoryKind
+import com.wangzan101.miga.core.memory.MemoryRejected
+import com.wangzan101.miga.core.memory.MemorySource
+import com.wangzan101.miga.core.memory.MemoryStore
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Concurrency
+import com.wangzan101.miga.core.tool.EvidenceLog
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.argStr
+import com.wangzan101.miga.core.tool.fail
+import com.wangzan101.miga.core.tool.ok
+import com.wangzan101.miga.core.tool.str
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonElement
 import kotlinx.serialization.json.JsonObject
@@ -40,7 +40,7 @@ private const val MEMORY_SEARCH_LIMIT = 8
  * 用户让一次记好几条时,其中几条不收很正常,为此把整个任务按「操作连续失败」停掉的话,已经存上的那几条也跟着算成了失败。
  * 仍然标成不可恢复:同一条别再试。存储满了、读不出来这类真的故障不走这里。
  *
- * 有上限:同一条(同样的参数、同样的原因)被原样再提,或者一个任务里不收的超过 [com.wangzan101.mika.core.tool.MAX_QUIET_MEMORY_REFUSALS] 条,
+ * 有上限:同一条(同样的参数、同样的原因)被原样再提,或者一个任务里不收的超过 [com.wangzan101.miga.core.tool.MAX_QUIET_MEMORY_REFUSALS] 条,
  * 就不再标「不计入失败」,连续三条就由守卫停下(见 [ToolContext.noteMemoryRefusal])。
  */
 private fun refused(ctx: ToolContext, a: Args, error: String, message: String): ToolExecution {

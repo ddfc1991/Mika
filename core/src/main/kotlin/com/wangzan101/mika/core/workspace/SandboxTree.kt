@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.workspace
+package com.wangzan101.miga.core.workspace
 
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope

@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.BearerToken
-import com.wangzan101.mika.core.model.Capabilities
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.ResponsesModel
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.model.Usage
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.BearerToken
+import com.wangzan101.miga.core.model.Capabilities
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.ResponsesModel
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.model.Usage
 import kotlinx.coroutines.test.runTest
 import okhttp3.OkHttpClient
 import okhttp3.mockwebserver.MockResponse

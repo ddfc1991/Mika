@@ -1,18 +1,18 @@
-package com.wangzan101.mika.core.usage
+package com.wangzan101.miga.core.usage
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Capabilities
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelError
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.ModelRole
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.model.StreamingChatModel
-import com.wangzan101.mika.core.model.ToolSpec
-import com.wangzan101.mika.core.model.Usage
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Capabilities
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelError
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.ModelRole
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.model.StreamingChatModel
+import com.wangzan101.miga.core.model.ToolSpec
+import com.wangzan101.miga.core.model.Usage
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withContext
@@ -73,7 +73,7 @@ class MeteredModelTest {
         val main = Plain { reply(Usage(100, 12, 80)) }.metered(source, sink)
         val noCacheField = Plain { reply(Usage(900, 8)) }.metered(source, sink)
         val explicitMiss = Streaming(reply(Usage(300, 4, cacheReported = true))).metered(source, sink) as StreamingChatModel
-        val ctx = com.wangzan101.mika.core.agent.ContextBuilder()
+        val ctx = com.wangzan101.miga.core.agent.ContextBuilder()
         val messages = ctx.start("hello", memory = "memory", taskImages = listOf(Part.Image("private", width = 30, height = 25))).messages
         withContext(meter) {
             withContext(ConversationMeter.MainRequest(1)) { main.complete("abcd", messages, emptyList()) }

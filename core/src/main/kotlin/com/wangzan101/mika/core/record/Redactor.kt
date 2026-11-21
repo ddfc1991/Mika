@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.record
+package com.wangzan101.miga.core.record
 
 import kotlinx.serialization.SerializationException
 import kotlinx.serialization.json.Json
@@ -6,7 +6,7 @@ import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.booleanOrNull
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.tool.Verb
 
 /**
  * 运行记录的脱敏:密码框里输入的字、形如 API Key 的串一律记为 `***`。

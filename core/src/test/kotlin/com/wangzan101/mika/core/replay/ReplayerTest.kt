@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.replay
+package com.wangzan101.miga.core.replay
 
-import com.wangzan101.mika.core.tool.execute
-import com.wangzan101.mika.core.guard.OperationGuards
-import com.wangzan101.mika.core.action.ActionExecutor
-import com.wangzan101.mika.core.action.ActionRecorder
-import com.wangzan101.mika.core.gate.ConfirmationGate
-import com.wangzan101.mika.core.knowledge.Link
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.UiElement
-import com.wangzan101.mika.core.uistate.Verification
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.tool.execute
+import com.wangzan101.miga.core.guard.OperationGuards
+import com.wangzan101.miga.core.action.ActionExecutor
+import com.wangzan101.miga.core.action.ActionRecorder
+import com.wangzan101.miga.core.gate.ConfirmationGate
+import com.wangzan101.miga.core.knowledge.Link
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.Verification
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.ToolDispatcher
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 internal fun ui(ref: String, role: String, name: String, b: List<Int>, rid: String? = null, clickable: Boolean = true, editable: Boolean = false) =
     UiElement(ref, role, name, (b[0] + b[2]) / 2, (b[1] + b[3]) / 2, b, rid, clickable, editable, false)
@@ -195,7 +195,7 @@ class ReplayerTest {
         }
         val sink = Events()
         val d = toolDispatcher(s, stableRefs = true).also { it.captureTargets = true }
-        d.execute(com.wangzan101.mika.core.model.Part.ToolCall("o", "phone_observe", "{}"))
+        d.execute(com.wangzan101.miga.core.model.Part.ToolCall("o", "phone_observe", "{}"))
         val out = replayerOn(d, sink)
             .run(RouteChoice(Notes.route(), listOf("今天天气不错")))
         assertEquals(ReplayOutcome.Completed(3), out)

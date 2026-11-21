@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.memory
+package com.wangzan101.miga.core.memory
 
 private var fixtureSeq = 0
 

@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.memory.MemoryKind
-import com.wangzan101.mika.core.memory.MemorySource
-import com.wangzan101.mika.core.memory.UserUtterances
-import com.wangzan101.mika.core.memory.finishReply
-import com.wangzan101.mika.core.memory.memStore
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.model.StopReason
-import com.wangzan101.mika.core.proactive.ObservedContext
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.run.RunId
-import com.wangzan101.mika.core.run.RunInbox
-import com.wangzan101.mika.core.run.RunInput
-import com.wangzan101.mika.core.run.RunSpec
-import com.wangzan101.mika.core.tool.FakeScreen
-import com.wangzan101.mika.core.agent.AttachedPage
-import com.wangzan101.mika.core.cap.web.FakeWebPort
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.memory.MemoryKind
+import com.wangzan101.miga.core.memory.MemorySource
+import com.wangzan101.miga.core.memory.UserUtterances
+import com.wangzan101.miga.core.memory.finishReply
+import com.wangzan101.miga.core.memory.memStore
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.model.StopReason
+import com.wangzan101.miga.core.proactive.ObservedContext
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.run.RunId
+import com.wangzan101.miga.core.run.RunInbox
+import com.wangzan101.miga.core.run.RunInput
+import com.wangzan101.miga.core.run.RunSpec
+import com.wangzan101.miga.core.tool.FakeScreen
+import com.wangzan101.miga.core.agent.AttachedPage
+import com.wangzan101.miga.core.cap.web.FakeWebPort
 import kotlinx.coroutines.async
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
@@ -29,8 +29,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.TOOLS
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.testing.TOOLS
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 class AgentLoopMemoryTest {
     private val manual = MemorySource("manual", atMs = 1)
@@ -115,7 +115,7 @@ class AgentLoopMemoryTest {
         val found = model.requests[1].last { it.role == Role.Tool }.parts.filterIsInstance<Part.ToolResult>().single().content
         val result = model.requests[2].last { it.role == Role.Tool }.parts.filterIsInstance<Part.ToolResult>().single().content
         assertTrue("$found -> $result", "\"ok\":true" in result)
-        assertTrue(s.items.value.none { it.id == target.id && it.status == com.wangzan101.mika.core.memory.MemoryStatus.active })
+        assertTrue(s.items.value.none { it.id == target.id && it.status == com.wangzan101.miga.core.memory.MemoryStatus.active })
     }
 
     // 只是在问「如果让你删你会怎么做」:模型万一真提了删除,工具自己不执行,那条记忆还在
@@ -133,10 +133,10 @@ class AgentLoopMemoryTest {
                 sink = object : RunSink { override fun event(e: RunEvent) { events += e } })
                 .run("如果我说把外卖那条记忆删掉,你会怎样处理?先解释,不要执行。")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Succeeded)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Succeeded)
         assertEquals("不靠意图判断", 0, judge.requests.size)
         assertTrue(events.filterIsInstance<RunEvent.ToolResult>().single { it.tool == "memory_edit" }.resultJson.contains("edit_not_requested"))
-        assertTrue("那条还在", s.items.value.any { it.id == target.id && it.status == com.wangzan101.mika.core.memory.MemoryStatus.active })
+        assertTrue("那条还在", s.items.value.any { it.id == target.id && it.status == com.wangzan101.miga.core.memory.MemoryStatus.active })
     }
 
     // 一次记好几条,其中几条按规矩不收:不把整个任务按「操作连续失败」停掉。存上的照存,模型接着如实回答
@@ -157,7 +157,7 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B", memory = s)
                 .run("以后回答简短一点,别的你自己总结几条写进记忆")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Succeeded)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Succeeded)
         assertEquals("只存上了那一条", before + 1, s.items.value.size)
         // 模型走到了最后:五次调用都发生了,接着给出回答
         assertEquals(6, model.requests.size)
@@ -176,7 +176,7 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B", memory = s)
                 .run("以后回答简短一点,别的你自己总结几条写进记忆")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Succeeded)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Succeeded)
         assertEquals(11, model.requests.size)
         assertEquals(before, s.items.value.size)
     }
@@ -193,16 +193,16 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B", memory = s)
                 .run("根据今天的消息看看我是个什么样的人,你自己总结几条写进记忆")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Succeeded)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Succeeded)
         assertEquals(10, s.items.value.size)
-        assertTrue(s.items.value.all { it.source.type == com.wangzan101.mika.core.memory.MemoryContext.INFERRED })
+        assertTrue(s.items.value.all { it.source.type == com.wangzan101.miga.core.memory.MemoryContext.INFERRED })
     }
 
     // 查到一条 Mika 自己归纳的记忆,接着照常回答:这条进了证据账本(工具查到的事实),任务正常结束
     @Test fun aRunThatFindsAnInferredMemoryFinishesNormally() {
         val s = memStore()
         s.add(MemoryKind.fact, "用户常点张江路那家外卖", listOf("外卖"),
-            MemorySource(com.wangzan101.mika.core.memory.MemoryContext.INFERRED, "你自己总结几条写进记忆", atMs = 1)).getOrThrow()
+            MemorySource(com.wangzan101.miga.core.memory.MemoryContext.INFERRED, "你自己总结几条写进记忆", atMs = 1)).getOrThrow()
         val events = mutableListOf<RunEvent>()
         val model = FakeModel(
             ModelReply(listOf(Part.ToolCall("s1", "memory_search", """{"query":"外卖"}""")), StopReason.ToolUse, null),
@@ -212,7 +212,7 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B",
                 sink = object : RunSink { override fun event(e: RunEvent) { events += e } }, memory = s).run("我平时点哪家外卖")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Succeeded)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Succeeded)
         val seen = events.filterIsInstance<RunEvent.Observed>().single { "张江路" in it.text }
         assertEquals("fact", seen.kind)
         assertTrue("不是用户说的" in seen.text)
@@ -232,7 +232,7 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B", memory = s,
                 maxSteps = AgentLoop.UNLIMITED_STEPS).run("以后回答简短一点")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Failed)
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Failed)
         assertTrue(end.toString(), "too_many_failures" in end.toString())
         assertTrue("没有一直转下去:${model.requests.size}", model.requests.size <= 6)
         assertTrue(s.items.value.isEmpty())
@@ -250,8 +250,8 @@ class AgentLoopMemoryTest {
             AgentLoop(model, toolDispatcher(FakeScreen(), memory = s, utterances = UserUtterances()), "B", memory = s,
                 maxSteps = AgentLoop.UNLIMITED_STEPS).run("以后回答简短一点,别的你自己总结几条写进记忆")
         }
-        assertTrue(end.toString(), end is com.wangzan101.mika.core.agent.TaskState.Failed)
-        val limit = com.wangzan101.mika.core.tool.MAX_QUIET_MEMORY_REFUSALS
+        assertTrue(end.toString(), end is com.wangzan101.miga.core.agent.TaskState.Failed)
+        val limit = com.wangzan101.miga.core.tool.MAX_QUIET_MEMORY_REFUSALS
         assertTrue("${model.requests.size}", model.requests.size in (limit + 3)..(limit + 5))
     }
 

@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.skills
+package com.wangzan101.miga.core.skills
 
-import com.wangzan101.mika.core.agent.FailKind
-import com.wangzan101.mika.core.agent.LearnGate
-import com.wangzan101.mika.core.agent.RunOutcome
-import com.wangzan101.mika.core.agent.TaskState
+import com.wangzan101.miga.core.agent.FailKind
+import com.wangzan101.miga.core.agent.LearnGate
+import com.wangzan101.miga.core.agent.RunOutcome
+import com.wangzan101.miga.core.agent.TaskState
 
 @Suppress("EnumEntryName")
 /**

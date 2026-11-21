@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
 
 /**
- * 执行入口的边界:[com.wangzan101.mika.core.tool.ActionPass] 的构造函数是 internal,App 模块造不出来;
+ * 执行入口的边界:[com.wangzan101.miga.core.tool.ActionPass] 的构造函数是 internal,App 模块造不出来;
  * core 里由这里守着只有 core.action 造它、只有 core.action 调不可逆判定与同意核对。
  * 包依赖只能单向:core.action 和 core.guard 不依赖调度它们的 core.agent。
  */
@@ -49,7 +49,7 @@ class SingleEntryTest {
     @Test fun actionAndGuardDoNotDependOnTheLoop() {
         val bad = listOf("action", "guard").flatMap { pkg ->
             File("src/main/kotlin/com/wangzan101/mika/core/$pkg").walkTopDown().filter { it.isFile && it.extension == "kt" }.flatMap { f ->
-                f.readLines().filter { it.startsWith("import com.wangzan101.mika.core.agent.") }.map { "${f.path}: $it" }
+                f.readLines().filter { it.startsWith("import com.wangzan101.miga.core.agent.") }.map { "${f.path}: $it" }
             }.toList()
         }
         assertTrue("执行入口和守卫反过来依赖了主循环:\n" + bad.joinToString("\n"), bad.isEmpty())

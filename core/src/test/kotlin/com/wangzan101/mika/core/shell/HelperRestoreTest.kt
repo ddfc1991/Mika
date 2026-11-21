@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.shell
+package com.wangzan101.miga.core.shell
 
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -7,7 +7,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class HelperRestoreTest {
-    private val mika = PermissionCommands.accessibilityService("com.wangzan101.mika")
+    private val mika = PermissionCommands.accessibilityService("com.wangzan101.miga")
     private val other = "com.example.reader/.ReaderService"
     private val yes = RestoreWish(revive = true, accessibility = true)
 
@@ -136,7 +136,7 @@ class HelperRestoreTest {
         assertEquals(listOf(RestoreCommands.ENABLE_ACCESSIBILITY), RestoreCommands.accessibility("$mika:$other", mika))
         assertEquals(
             listOf(RestoreCommands.ENABLE_ACCESSIBILITY),
-            RestoreCommands.accessibility("com.wangzan101.mika/com.wangzan101.mika.a11y.MikaAccessibilityService", mika),
+            RestoreCommands.accessibility("com.wangzan101.miga/com.wangzan101.miga.a11y.MikaAccessibilityService", mika),
         )
     }
 

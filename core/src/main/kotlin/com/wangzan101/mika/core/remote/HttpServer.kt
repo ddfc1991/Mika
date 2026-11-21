@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
 import java.io.BufferedInputStream
 import java.io.ByteArrayOutputStream

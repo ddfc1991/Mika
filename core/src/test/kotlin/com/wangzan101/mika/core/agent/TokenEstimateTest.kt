@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
@@ -32,7 +32,7 @@ class TokenEstimateTest {
 
     @Test fun imagesWithSizeCountByPixels() {
         // 原分辨率 1224×2700 与压缩后 580×1280(长边 1280)
-        val (w, h) = com.wangzan101.mika.core.vision.ModelImage.scaled(1224, 2700)
+        val (w, h) = com.wangzan101.miga.core.vision.ModelImage.scaled(1224, 2700)
         assertEquals(580 to 1280, w to h)
         assertEquals(4407, TokenEstimate.of(listOf(Message(Role.User, listOf(Part.Image("x", width = 1224, height = 2700)), Author.Mika))))
         assertEquals(990, TokenEstimate.of(listOf(Message(Role.User, listOf(Part.Image("x", width = w, height = h)), Author.Mika))))

@@ -1,26 +1,26 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.agent.AttachedPage
-import com.wangzan101.mika.core.capability.Capability
-import com.wangzan101.mika.core.capability.CapabilityKey
-import com.wangzan101.mika.core.capability.CapabilityStatus
-import com.wangzan101.mika.core.capability.PromptEnv
-import com.wangzan101.mika.core.uistate.Surface
-import com.wangzan101.mika.core.observation.Look
-import com.wangzan101.mika.core.net.UrlHost
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.ActionResult
-import com.wangzan101.mika.core.tool.AgentTool
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.workspace.WorkspacePathCheck
+import com.wangzan101.miga.core.agent.AttachedPage
+import com.wangzan101.miga.core.capability.Capability
+import com.wangzan101.miga.core.capability.CapabilityKey
+import com.wangzan101.miga.core.capability.CapabilityStatus
+import com.wangzan101.miga.core.capability.PromptEnv
+import com.wangzan101.miga.core.uistate.Surface
+import com.wangzan101.miga.core.observation.Look
+import com.wangzan101.miga.core.net.UrlHost
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.ActionResult
+import com.wangzan101.miga.core.tool.AgentTool
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.workspace.WorkspacePathCheck
 import kotlinx.coroutines.CancellationException
-import com.wangzan101.mika.core.uistate.sessions
-import com.wangzan101.mika.core.uistate.DwellStop
-import com.wangzan101.mika.core.uistate.IdleScroll
-import com.wangzan101.mika.core.uistate.PlacePace
+import com.wangzan101.miga.core.uistate.sessions
+import com.wangzan101.miga.core.uistate.DwellStop
+import com.wangzan101.miga.core.uistate.IdleScroll
+import com.wangzan101.miga.core.uistate.PlacePace
 
 private const val EVIDENCE_PAGE_CHARS = 3000
 private val HOST_RE = Regex("^[a-z0-9-]+(\\.[a-z0-9-]+)+$")

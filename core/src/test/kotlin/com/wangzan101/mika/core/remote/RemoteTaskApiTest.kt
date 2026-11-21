@@ -1,9 +1,9 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
-import com.wangzan101.mika.core.agent.TaskState
-import com.wangzan101.mika.core.mcp.FakeRemoteTasks
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSummary
+import com.wangzan101.miga.core.agent.TaskState
+import com.wangzan101.miga.core.mcp.FakeRemoteTasks
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSummary
 import kotlinx.serialization.json.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient

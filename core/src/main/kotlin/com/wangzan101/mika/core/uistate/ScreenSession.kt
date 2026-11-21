@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.uistate
+package com.wangzan101.miga.core.uistate
 
-import com.wangzan101.mika.core.tool.ToolDispatcher
-import com.wangzan101.mika.core.visual.FrameDiff
-import com.wangzan101.mika.core.visual.FrameGrid
-import com.wangzan101.mika.core.visual.Recall
-import com.wangzan101.mika.core.visual.Shots
+import com.wangzan101.miga.core.tool.ToolDispatcher
+import com.wangzan101.miga.core.visual.FrameDiff
+import com.wangzan101.miga.core.visual.FrameGrid
+import com.wangzan101.miga.core.visual.Recall
+import com.wangzan101.miga.core.visual.Shots
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withTimeoutOrNull
@@ -15,24 +15,24 @@ import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlin.math.roundToInt
-import com.wangzan101.mika.core.vision.LocateRegistry
-import com.wangzan101.mika.core.vision.Locator
-import com.wangzan101.mika.core.vision.VisionService
-import com.wangzan101.mika.core.observation.InputHints
-import com.wangzan101.mika.core.observation.Look
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.observation.Place
-import com.wangzan101.mika.core.observation.Trust
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.tool.HINT_PROTECTED
-import com.wangzan101.mika.core.tool.HINT_DISPLAY_CAPTURE
-import com.wangzan101.mika.core.tool.MAX_READ_CHARS
-import com.wangzan101.mika.core.tool.NOTE_CHANGED_DURING_READ
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.okObj
-import com.wangzan101.mika.core.net.UrlHost
+import com.wangzan101.miga.core.vision.LocateRegistry
+import com.wangzan101.miga.core.vision.Locator
+import com.wangzan101.miga.core.vision.VisionService
+import com.wangzan101.miga.core.observation.InputHints
+import com.wangzan101.miga.core.observation.Look
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.observation.Place
+import com.wangzan101.miga.core.observation.Trust
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.tool.HINT_PROTECTED
+import com.wangzan101.miga.core.tool.HINT_DISPLAY_CAPTURE
+import com.wangzan101.miga.core.tool.MAX_READ_CHARS
+import com.wangzan101.miga.core.tool.NOTE_CHANGED_DURING_READ
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.okObj
+import com.wangzan101.miga.core.net.UrlHost
 
 internal const val MAX_ELEMENTS = 200
 /** 一次全量屏幕之后最多接几次差异。 */

@@ -1,19 +1,19 @@
-package com.wangzan101.mika.core.cap.phone
+package com.wangzan101.miga.core.cap.phone
 
-import com.wangzan101.mika.core.observation.ObsKind
-import com.wangzan101.mika.core.observation.Observation
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.LinkPolicy
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.str
-import com.wangzan101.mika.core.uistate.action
-import com.wangzan101.mika.core.workspace.SandboxPaths
+import com.wangzan101.miga.core.observation.ObsKind
+import com.wangzan101.miga.core.observation.Observation
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.LinkPolicy
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.str
+import com.wangzan101.miga.core.uistate.action
+import com.wangzan101.miga.core.workspace.SandboxPaths
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 
@@ -57,7 +57,7 @@ internal object ShareAudio : PhoneTool {
     override fun logTarget(o: JsonObject, r: ToolExecution, ctx: ToolContext): String? =
         (o["package"] as? JsonPrimitive)?.content
 
-    override fun observations(o: JsonObject, r: ToolExecution, log: com.wangzan101.mika.core.tool.EvidenceLog): List<Observation> {
+    override fun observations(o: JsonObject, r: ToolExecution, log: com.wangzan101.miga.core.tool.EvidenceLog): List<Observation> {
         if (r.content["ok"] != JsonPrimitive(true)) return emptyList()
         return listOfNotNull((o["package"] as? JsonPrimitive)?.content?.let { p ->
             Observation(ObsKind.Fact, "$name 打开了 $p 的音频分享页(还没发出)", source = PHONE)

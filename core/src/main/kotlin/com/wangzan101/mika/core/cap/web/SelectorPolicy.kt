@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
 /**
  * 交给页面的 CSS 选择器不许按 value 属性选元素:`input[value^="h"]` 一位一位试,猜得出密码框、隐藏字段的值。

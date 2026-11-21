@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.vision
+package com.wangzan101.miga.core.vision
 
 import java.util.UUID
 

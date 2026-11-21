@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
 import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.CoroutineScope

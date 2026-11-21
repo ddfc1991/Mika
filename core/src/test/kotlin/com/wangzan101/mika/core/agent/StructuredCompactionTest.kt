@@ -1,17 +1,17 @@
-package com.wangzan101.mika.core.agent
+package com.wangzan101.miga.core.agent
 
-import com.wangzan101.mika.core.model.Author
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.model.Role
-import com.wangzan101.mika.core.testing.fakeModel
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.model.Author
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.model.Role
+import com.wangzan101.miga.core.testing.fakeModel
+import com.wangzan101.miga.core.tool.FakeScreen
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
-import com.wangzan101.mika.core.testing.TOOLS
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.testing.TOOLS
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 class StructuredCompactionTest {
     private var seq = 0

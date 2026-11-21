@@ -1,10 +1,10 @@
-package com.wangzan101.mika.core.knowledge
+package com.wangzan101.miga.core.knowledge
 
-import com.wangzan101.mika.core.tool.execute
-import com.wangzan101.mika.core.model.Part
-import com.wangzan101.mika.core.cap.sandbox.FakeSandbox
-import com.wangzan101.mika.core.cap.sandbox.SandboxStatus
-import com.wangzan101.mika.core.tool.FakeScreen
+import com.wangzan101.miga.core.tool.execute
+import com.wangzan101.miga.core.model.Part
+import com.wangzan101.miga.core.cap.sandbox.FakeSandbox
+import com.wangzan101.miga.core.cap.sandbox.SandboxStatus
+import com.wangzan101.miga.core.tool.FakeScreen
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.jsonArray
@@ -17,7 +17,7 @@ import org.junit.Test
 import java.io.File
 import java.net.URLClassLoader
 import java.nio.file.Files
-import com.wangzan101.mika.core.assembly.toolDispatcher
+import com.wangzan101.miga.core.assembly.toolDispatcher
 
 class GuideCatalogTest {
     /** 一个带脚本清单的技能,放在临时目录里当作类路径;清单里有一项文件缺失(构建期校验会拦,这里直接写索引)。 */

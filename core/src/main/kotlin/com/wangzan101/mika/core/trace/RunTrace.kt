@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.trace
+package com.wangzan101.miga.core.trace
 
-import com.wangzan101.mika.core.model.InferenceRequest
-import com.wangzan101.mika.core.model.InferenceProtocol
-import com.wangzan101.mika.core.model.ReportedTokens
-import com.wangzan101.mika.core.model.ChatModel
-import com.wangzan101.mika.core.model.Message
-import com.wangzan101.mika.core.model.ModelReply
-import com.wangzan101.mika.core.record.RunEvent
-import com.wangzan101.mika.core.record.RunSink
-import com.wangzan101.mika.core.tool.Verb
+import com.wangzan101.miga.core.model.InferenceRequest
+import com.wangzan101.miga.core.model.InferenceProtocol
+import com.wangzan101.miga.core.model.ReportedTokens
+import com.wangzan101.miga.core.model.ChatModel
+import com.wangzan101.miga.core.model.Message
+import com.wangzan101.miga.core.model.ModelReply
+import com.wangzan101.miga.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunSink
+import com.wangzan101.miga.core.tool.Verb
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.*

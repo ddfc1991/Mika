@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
-import com.wangzan101.mika.core.net.ProxyFailure
+import com.wangzan101.miga.core.net.ProxyFailure
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

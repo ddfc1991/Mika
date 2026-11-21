@@ -1,23 +1,23 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
-import com.wangzan101.mika.core.prompt.Feedback
+import com.wangzan101.miga.core.prompt.Feedback
 import kotlinx.serialization.json.JsonObject
-import com.wangzan101.mika.core.observation.Untrusted
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.tool.ArgError
-import com.wangzan101.mika.core.tool.Args
-import com.wangzan101.mika.core.tool.Risk
-import com.wangzan101.mika.core.tool.ToolContext
-import com.wangzan101.mika.core.tool.ToolDef
-import com.wangzan101.mika.core.tool.ToolExecution
-import com.wangzan101.mika.core.tool.Verb
-import com.wangzan101.mika.core.tool.FAILURE_MESSAGES
-import com.wangzan101.mika.core.tool.fail
+import com.wangzan101.miga.core.observation.Untrusted
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.tool.ArgError
+import com.wangzan101.miga.core.tool.Args
+import com.wangzan101.miga.core.tool.Risk
+import com.wangzan101.miga.core.tool.ToolContext
+import com.wangzan101.miga.core.tool.ToolDef
+import com.wangzan101.miga.core.tool.ToolExecution
+import com.wangzan101.miga.core.tool.Verb
+import com.wangzan101.miga.core.tool.FAILURE_MESSAGES
+import com.wangzan101.miga.core.tool.fail
 import kotlinx.serialization.json.JsonPrimitive
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.contentOrNull
 import kotlinx.serialization.json.put
-import com.wangzan101.mika.core.uistate.lastSnapshot
+import com.wangzan101.miga.core.uistate.lastSnapshot
 
 /**
  * 页面脚本:自己不动页面,脚本里的每个动作经执行入口回来(守卫、关卡、不可逆判定、记录照常);

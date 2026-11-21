@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.cap.web
+package com.wangzan101.miga.core.cap.web
 
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
@@ -6,10 +6,10 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import kotlin.random.Random
-import com.wangzan101.mika.core.uistate.IdleScroll
-import com.wangzan101.mika.core.uistate.PageLimitReached
-import com.wangzan101.mika.core.uistate.PlacePace
-import com.wangzan101.mika.core.uistate.dwellStopped
+import com.wangzan101.miga.core.uistate.IdleScroll
+import com.wangzan101.miga.core.uistate.PageLimitReached
+import com.wangzan101.miga.core.uistate.PlacePace
+import com.wangzan101.miga.core.uistate.dwellStopped
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonPrimitive
 

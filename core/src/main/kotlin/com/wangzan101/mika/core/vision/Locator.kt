@@ -1,14 +1,14 @@
-package com.wangzan101.mika.core.vision
+package com.wangzan101.miga.core.vision
 
-import com.wangzan101.mika.core.uistate.ScreenFamily
-import com.wangzan101.mika.core.prompt.Prompts
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.uistate.ScreenDiagnosis
-import com.wangzan101.mika.core.uistate.ScreenPort
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.uistate.TreeAdequacy
-import com.wangzan101.mika.core.uistate.TreeQuality
-import com.wangzan101.mika.core.uistate.UiElement
+import com.wangzan101.miga.core.uistate.ScreenFamily
+import com.wangzan101.miga.core.prompt.Prompts
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.uistate.ScreenDiagnosis
+import com.wangzan101.miga.core.uistate.ScreenPort
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.uistate.TreeAdequacy
+import com.wangzan101.miga.core.uistate.TreeQuality
+import com.wangzan101.miga.core.uistate.UiElement
 import kotlinx.coroutines.CancellationException
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonPrimitive

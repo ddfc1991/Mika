@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
-import com.wangzan101.mika.core.net.UrlHost
+import com.wangzan101.miga.core.net.UrlHost
 import kotlin.random.Random
 
 /**

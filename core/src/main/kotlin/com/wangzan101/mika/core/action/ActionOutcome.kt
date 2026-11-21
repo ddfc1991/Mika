@@ -1,11 +1,11 @@
-package com.wangzan101.mika.core.action
+package com.wangzan101.miga.core.action
 
-import com.wangzan101.mika.core.prompt.Feedback
-import com.wangzan101.mika.core.guard.GuardVerdict
-import com.wangzan101.mika.core.risk.IrrevAction
-import com.wangzan101.mika.core.gate.Irreversible
-import com.wangzan101.mika.core.uistate.ScreenSnapshot
-import com.wangzan101.mika.core.tool.ToolExecution
+import com.wangzan101.miga.core.prompt.Feedback
+import com.wangzan101.miga.core.guard.GuardVerdict
+import com.wangzan101.miga.core.risk.IrrevAction
+import com.wangzan101.miga.core.gate.Irreversible
+import com.wangzan101.miga.core.uistate.ScreenSnapshot
+import com.wangzan101.miga.core.tool.ToolExecution
 import kotlinx.serialization.json.JsonArray
 import kotlinx.serialization.json.JsonObject
 import kotlinx.serialization.json.JsonObjectBuilder

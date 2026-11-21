@@ -1,8 +1,8 @@
-package com.wangzan101.mika.core.mcp
+package com.wangzan101.miga.core.mcp
 
-import com.wangzan101.mika.core.remote.RemoteAccess
+import com.wangzan101.miga.core.remote.RemoteAccess
 import kotlinx.serialization.json.Json
-import com.wangzan101.mika.core.remote.RemoteTaskApi
+import com.wangzan101.miga.core.remote.RemoteTaskApi
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
 import kotlinx.serialization.json.putJsonObject

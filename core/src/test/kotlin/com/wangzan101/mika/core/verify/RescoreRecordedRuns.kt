@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.verify
+package com.wangzan101.miga.core.verify
 
-import com.wangzan101.mika.core.record.RunEvent
+import com.wangzan101.miga.core.record.RunEvent
 import org.junit.Assume.assumeTrue
 import org.junit.Test
 import java.io.File

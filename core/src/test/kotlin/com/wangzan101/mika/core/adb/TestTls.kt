@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.adb
+package com.wangzan101.miga.core.adb
 
 import org.conscrypt.Conscrypt
 import java.net.InetAddress

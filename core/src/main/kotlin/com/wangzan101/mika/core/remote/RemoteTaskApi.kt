@@ -1,7 +1,7 @@
-package com.wangzan101.mika.core.remote
+package com.wangzan101.miga.core.remote
 
-import com.wangzan101.mika.core.device.DeviceAccess
-import com.wangzan101.mika.core.device.toJson
+import com.wangzan101.miga.core.device.DeviceAccess
+import com.wangzan101.miga.core.device.toJson
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonArray

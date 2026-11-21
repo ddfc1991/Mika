@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.export
+package com.wangzan101.miga.core.export
 
 /**
  * 导出文档里给人看的文字。core 取不到 Android 资源,由 app 用当前语言构造后传进来;

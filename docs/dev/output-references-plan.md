@@ -57,7 +57,7 @@
 
 - [ ] **Step 2: 跑测试确认失败**
 
-Run: `./gradlew :app:testDebugUnitTest --tests "com.wangzan101.mika.ui.MarkdownModelTest"`
+Run: `./gradlew :app:testDebugUnitTest --tests "com.wangzan101.miga.ui.MarkdownModelTest"`
 Expected: 编译失败 / `workspaceRefs` 未定义
 
 - [ ] **Step 3: 实现 `MarkdownModel.workspaceRefs(markdown: String): List<String>`**
@@ -105,7 +105,7 @@ git commit -m "feat(markdown): 抽出回复里的 /workspace 引用"
 
 - [ ] **Step 2: 跑测试确认失败**
 
-Run: `./gradlew :app:testDebugUnitTest --tests "com.wangzan101.mika.ui.WorkspaceRefTest"`
+Run: `./gradlew :app:testDebugUnitTest --tests "com.wangzan101.miga.ui.WorkspaceRefTest"`
 Expected: FAIL（类型/函数未定义）
 
 - [ ] **Step 3: 实现 `resolveWorkspaceRefs`**

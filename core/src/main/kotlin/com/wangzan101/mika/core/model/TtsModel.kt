@@ -1,4 +1,4 @@
-package com.wangzan101.mika.core.model
+package com.wangzan101.miga.core.model
 
 import java.io.ByteArrayOutputStream
 import java.util.Base64

@@ -13,7 +13,7 @@ spec = importlib.util.spec_from_file_location("pull_logs", SCRIPT)
 pull_logs = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(pull_logs)
 
-PRESENT = b"/data/user/0/com.wangzan101.mika.logs\n"
+PRESENT = b"/data/user/0/com.wangzan101.miga.logs\n"
 
 
 def answered(returncode=0, stderr=b""):

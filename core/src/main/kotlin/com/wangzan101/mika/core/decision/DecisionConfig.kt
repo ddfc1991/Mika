@@ -1,6 +1,6 @@
-package com.wangzan101.mika.core.decision
+package com.wangzan101.miga.core.decision
 
-import com.wangzan101.mika.core.net.LocalHosts
+import com.wangzan101.miga.core.net.LocalHosts
 import kotlinx.serialization.Serializable
 import okhttp3.HttpUrl
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
