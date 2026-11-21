@@ -22,11 +22,11 @@ import com.wangzan101.miga.ui.theme.MikaIcons
 
 /** HQ 底部 5 个 tab。 */
 enum class HqTab(val label: String, val icon: ImageVector) {
-    Bots("Bots", MikaIcons.Chats),
-    Sessions("Sessions", MikaIcons.Route),
-    Jobs("Jobs", MikaIcons.Clock),
-    Kanban("Kanban", MikaIcons.Apps),
-    More("More", MikaIcons.More),
+    Bots("对话", MikaIcons.Chats),
+    Sessions("会话", MikaIcons.Route),
+    Jobs("任务", MikaIcons.Clock),
+    Kanban("看板", MikaIcons.Apps),
+    More("更多", MikaIcons.More),
 }
 
 /**

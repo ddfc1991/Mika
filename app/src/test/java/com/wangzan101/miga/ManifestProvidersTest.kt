@@ -169,7 +169,7 @@ class ManifestProvidersTest {
     }
 
     @Test fun capsuleTileRuntimeKeepsTheSameSystemSafeIcon() {
-        val service = File("src/main/java/com/wangzan101/mika/capsule/CapsuleTileService.kt").readText()
+        val service = File("src/main/java/com/wangzan101/miga/capsule/CapsuleTileService.kt").readText()
         assertTrue(service.contains("Icon.createWithResource(this, R.drawable.ic_notification)"))
         assertTrue(!service.contains("Icon.createWithResource(this, R.mipmap.ic_launcher)"))
     }

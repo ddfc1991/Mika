@@ -51,7 +51,7 @@ fun HqMoreScreen(
                 .padding(horizontal = HqSpace.Page),
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            Text("More", style = HqType.LargeTitle, color = Hq.ink, modifier = Modifier.weight(1f))
+            Text("更多", style = HqType.LargeTitle, color = Hq.ink, modifier = Modifier.weight(1f))
             Box(
                 Modifier
                     .clip(HqShape.Capsule)
@@ -84,7 +84,7 @@ fun HqMoreScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Box(Modifier.size(7.dp).clip(RoundedCornerShape(4.dp)).background(Hq.ok))
                     Spacer(Modifier.width(6.dp))
-                    Text("Connected · 9 Bots · Hermes 0.21.5", style = HqType.Caption, color = Hq.ink2)
+                    Text("已连接 · 9 个机器人 · Hermes 0.21.5", style = HqType.Caption, color = Hq.ink2)
                 }
             }
             Icon(MikaIcons.Forward, null, tint = Hq.ink2, modifier = Modifier.size(16.dp))
@@ -92,22 +92,22 @@ fun HqMoreScreen(
         Spacer(Modifier.height(24.dp))
 
         HqMenuGroup("", listOf(
-            HqMoreEntry("settings", "Settings", MikaIcons.Gear, Hq.ink2),
+            HqMoreEntry("settings", "设置", MikaIcons.Gear, Hq.ink2),
         ), onEntry)
-        HqMenuGroup("BOTS", listOf(
-            HqMoreEntry("profiles", "Bot Profiles", MikaIcons.Shield, Color(0xFFAF52DE)),
-            HqMoreEntry("capabilities", "Capabilities", MikaIcons.Apps, Hq.accent),
-            HqMoreEntry("messaging", "Messaging", MikaIcons.Message, Hq.ok),
+        HqMenuGroup("机器人", listOf(
+            HqMoreEntry("profiles", "机器人配置", MikaIcons.Shield, Color(0xFFAF52DE)),
+            HqMoreEntry("capabilities", "能力", MikaIcons.Apps, Hq.accent),
+            HqMoreEntry("messaging", "消息", MikaIcons.Message, Hq.ok),
         ), onEntry)
-        HqMenuGroup("WORKSPACE", listOf(
-            HqMoreEntry("files", "Files", MikaIcons.Folder, Hq.accent),
-            HqMoreEntry("review", "Review", MikaIcons.Chart, Hq.ok),
-            HqMoreEntry("artifacts", "Artifacts", MikaIcons.Photo, Color(0xFFFF375F)),
+        HqMenuGroup("工作区", listOf(
+            HqMoreEntry("files", "文件", MikaIcons.Folder, Hq.accent),
+            HqMoreEntry("review", "审查", MikaIcons.Chart, Hq.ok),
+            HqMoreEntry("artifacts", "产物", MikaIcons.Photo, Color(0xFFFF375F)),
         ), onEntry)
-        HqMenuGroup("INSIGHTS", listOf(
-            HqMoreEntry("center", "Command Center", MikaIcons.Clock, Hq.ink2),
-            HqMoreEntry("spawn", "Spawn Tree", MikaIcons.Route, Color(0xFF40C8E0)),
-            HqMoreEntry("star", "Star Map", MikaIcons.Spark, Color(0xFFBF5AF2)),
+        HqMenuGroup("洞察", listOf(
+            HqMoreEntry("center", "指挥中心", MikaIcons.Clock, Hq.ink2),
+            HqMoreEntry("spawn", "生成树", MikaIcons.Route, Color(0xFF40C8E0)),
+            HqMoreEntry("star", "星图", MikaIcons.Spark, Color(0xFFBF5AF2)),
         ), onEntry)
         Spacer(Modifier.height(80.dp))
     }

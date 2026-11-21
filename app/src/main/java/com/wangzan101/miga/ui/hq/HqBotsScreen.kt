@@ -32,15 +32,15 @@ import com.wangzan101.miga.ui.theme.MikaIcons
 data class HqBot(val name: String, val group: String, val summary: String, val time: String)
 
 private val demoBots = listOf(
-    HqBot("Hermes", "Pinned", "Ready. All systems go.", "9:41 AM"),
-    HqBot("Deploys", "Pinned", "Run the tests and tell me if 2.4 is ready.", "9:37 AM"),
-    HqBot("Research", "Pinned", "Compared three vector stores.", "9:12 AM"),
-    HqBot("Inbox", "Work", "14 new overnight. 3 need you today.", "9:05 AM"),
-    HqBot("Writing", "Work", "Cut it from 410 words to 180.", "7:30 AM"),
-    HqBot("Finance", "Work", "Two invoices still need your OK.", "Mon"),
-    HqBot("Garden", "Home", "Frost tonight, down to 30°F.", "Sun"),
-    HqBot("Home", "Home", "The pump quote came back at $1,840.", "Sat"),
-    HqBot("Travel", "Home", "Flights and hotel are booked.", "Fri"),
+    HqBot("Hermes", "置顶", "就绪。所有系统正常。", "上午 9:41"),
+    HqBot("部署", "置顶", "跑一下测试，告诉我 2.4 是否就绪。", "上午 9:37"),
+    HqBot("研究", "置顶", "对比了三个向量库。", "上午 9:12"),
+    HqBot("收件箱", "工作", "14 条新消息，3 条需要你今天处理。", "上午 9:05"),
+    HqBot("写作", "工作", "从 410 词精简到 180 词。", "上午 7:30"),
+    HqBot("财务", "工作", "两张发票仍需你确认。", "周一"),
+    HqBot("花园", "家庭", "今晚有霜冻，低至 -1°C。", "周日"),
+    HqBot("家", "家庭", "水泵报价 $1,840 回来了。", "周六"),
+    HqBot("旅行", "家庭", "机票和酒店已订好。", "周五"),
 )
 
 /** 顶排 3 个置顶大 blob（pebble 55dp + 名称）。 */
@@ -95,7 +95,7 @@ fun HqBotsScreen(
         ) {
             Column(Modifier.weight(1f)) {
                 Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("Bots", style = HqType.LargeTitle, color = Hq.ink)
+                    Text("机器人", style = HqType.LargeTitle, color = Hq.ink)
                     Spacer(Modifier.width(6.dp))
                     Icon(MikaIcons.Down, null, tint = Hq.ink2, modifier = Modifier.size(14.dp))
                 }
@@ -116,11 +116,11 @@ fun HqBotsScreen(
         }
 
         Spacer(Modifier.height(20.dp))
-        HqTopPebbles(demoBots.filter { it.group == "Pinned" }, onOpenBot)
+        HqTopPebbles(demoBots.filter { it.group == "置顶" }, onOpenBot)
         Spacer(Modifier.height(24.dp))
 
         // 分组列表
-        demoBots.filter { it.group != "Pinned" }.groupBy { it.group }.forEach { (group, items) ->
+        demoBots.filter { it.group != "置顶" }.groupBy { it.group }.forEach { (group, items) ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
