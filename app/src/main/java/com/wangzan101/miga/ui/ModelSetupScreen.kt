@@ -113,6 +113,8 @@ fun ModelSetupScreen(
     onOpenImage: (() -> Unit)? = null,
     /** 设置里查看 Token 用量;上手流程不传。 */
     onOpenUsage: (() -> Unit)? = null,
+    /** 设置里打开「模型组」;上手流程不传。 */
+    onOpenGroups: (() -> Unit)? = null,
 ) {
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -168,6 +170,7 @@ fun ModelSetupScreen(
         toggleMainLoadBalance = vm::toggleMainLoadBalance,
         openProviders = { showProviders = true },
         next = onDone, openSpeech = onOpenSpeech, openVoice = onOpenVoice, openUsage = onOpenUsage,
+        openGroups = onOpenGroups,
         openDecision = { openDecision = true }, openSignIn = { signInSheet = it },
         setReasoningEffort = vm::setReasoningEffort, setModelContext = vm::setModelContext,
     )
@@ -323,6 +326,8 @@ class ModelSetupActions(
     val openImage: (() -> Unit)? = null,
     /** 打开 Token 用量;为 null 时不显示入口(上手流程)。 */
     val openUsage: (() -> Unit)? = null,
+    /** 打开「模型组」页;为 null 时不显示入口。 */
+    val openGroups: (() -> Unit)? = null,
     /** Independent opt-in decision service; the three model roles remain unchanged. */
     val openDecision: (() -> Unit)? = null,
     val next: () -> Unit = {},
@@ -379,6 +384,11 @@ fun ModelSetupContent(ui: ModelSetupUi, onboarding: Boolean, actions: ModelSetup
                     actions.openUsage?.let { openUsage ->
                         GroupCard {
                             ListRow(MikaIcons.Chart, UsageCopy.TITLE, first = true, onClick = openUsage) { RowChevron() }
+                        }
+                    }
+                    actions.openGroups?.let { openGroups ->
+                        GroupCard {
+                            ListRow(MikaIcons.Apps, stringResource(R.string.models_groups_title), first = true, onClick = openGroups) { RowChevron() }
                         }
                     }
                     RolesSection(ui, onPick, actions.setReasoningEffort, actions.setModelContext)

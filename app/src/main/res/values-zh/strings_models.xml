@@ -262,4 +262,13 @@
     <string name="tool_image_edit">修改图片</string>
     <string name="tool_image_save">保存图片</string>
     <string name="tool_share_image">分享图片到 App</string>
+    <string name="models_groups_title">模型组</string>
+    <string name="models_groups_label">模型组</string>
+    <string name="models_groups_empty">还没有模型组。创建一个来为某个用途打包模型。</string>
+    <string name="models_groups_member_count">%1$d 个模型</string>
+    <string name="models_groups_delete">删除</string>
+    <string name="models_groups_name_hint">组名</string>
+    <string name="models_groups_create">创建</string>
+    <string name="models_groups_cancel">取消</string>
+    <string name="models_groups_add">新建模型组</string>
 </resources>
