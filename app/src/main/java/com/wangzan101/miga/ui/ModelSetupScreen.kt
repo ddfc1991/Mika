@@ -204,6 +204,10 @@ fun ModelSetupScreen(
                 },
                 useAsMain = { vm.useAsMain(provider.id) },
                 setDailyBudget = { vm.setDailyTokenBudget(provider.id, it) },
+                rename = { vm.updateProviderMeta(provider.id, name = it) },
+                setBaseUrl = { vm.updateProviderMeta(provider.id, baseUrl = it) },
+                setEnabled = { vm.updateProviderMeta(provider.id, enabled = it) },
+                setApiFormat = { vm.updateProviderMeta(provider.id, apiFormat = it) },
             )
             if (allModels) {
                 BackHandler { allModels = false }

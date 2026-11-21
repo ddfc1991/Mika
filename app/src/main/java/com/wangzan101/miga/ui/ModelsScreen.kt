@@ -16,6 +16,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -318,6 +320,11 @@ class ProviderDetailActions(
     val addKey: (String) -> Unit = {},
     val removeKey: (String) -> Unit = {},
     val remove: () -> Unit = {},
+    /** 服务商页改元信息:标签、地址、启用状态、请求格式。 */
+    val rename: (String) -> Unit = {},
+    val setBaseUrl: (String) -> Unit = {},
+    val setEnabled: (Boolean) -> Unit = {},
+    val setApiFormat: (String) -> Unit = {},
     /** 把这家的一个模型用作某个用途(「用作」面板里点的)。 */
     val use: (ModelRole, String) -> Unit = { _, _ -> },
     /** 用户说这家的一个模型能不能看图(「用作」面板里的开关)。 */
@@ -350,6 +357,10 @@ fun ProviderDetailContent(ui: ModelSetupUi, p: Provider, actions: ProviderDetail
     var customBudget by remember { mutableStateOf("") }
     var budgetSaveFailed by remember { mutableStateOf(false) }
     var using by remember { mutableStateOf<ModelOption?>(null) }
+    var editingName by remember { mutableStateOf(false) }
+    var editingUrl by remember { mutableStateOf(false) }
+    var editNameText by remember { mutableStateOf("") }
+    var editUrlText by remember { mutableStateOf("") }
     val state = ui.listing[p.id]
     val list = ui.sortedOptions(p)
     Page(ModelsCopy.providerName(p), onBack) {
@@ -364,14 +375,40 @@ fun ProviderDetailContent(ui: ModelSetupUi, p: Provider, actions: ProviderDetail
             // Status pill + endpoint at a glance
             GroupLabel(ModelsCopy.CONNECTION)
             GroupCard {
-                ListRow(null, ModelsCopy.STATUS, first = true) {
+                // 标签（可改名）
+                ListRow(null, "标签", first = true) {
+                    RowValue(p.name)
+                    Text(
+                        "编辑", color = c.accent, style = MikaType.Caption,
+                        modifier = Modifier.clickable { editNameText = p.name; editingName = true },
+                    )
+                }
+                ListRow(null, ModelsCopy.STATUS) {
                     when (state) {
                         ListState.Running -> RowValue(ModelsCopy.LISTING)
                         is ListState.Failed -> RowValue(ModelsCopy.LIST_FAILED, ValueTone.Bad)
-                        else -> RowValue(ModelsCopy.CONNECTED, ValueTone.Ok)
+                        else -> RowValue(if (p.enabled) ModelsCopy.CONNECTED else "已停用", if (p.enabled) ValueTone.Ok else ValueTone.Warn)
                     }
                 }
-                ListRow(null, ModelsCopy.BASE_URL) { RowValue(ModelsCopy.shortUrl(p.baseUrl)) }
+                ListRow(null, ModelsCopy.BASE_URL) {
+                    RowValue(ModelsCopy.shortUrl(p.baseUrl))
+                    Text(
+                        "编辑", color = c.accent, style = MikaType.Caption,
+                        modifier = Modifier.clickable { editUrlText = p.baseUrl; editingUrl = true },
+                    )
+                }
+                // 请求格式
+                ListRow(null, "请求格式") {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("Chat Completions", color = if (p.apiFormat == "chat") c.accent else c.ink2, style = MikaType.Caption, modifier = Modifier.clickable { actions.setApiFormat("chat") }.padding(4.dp))
+                        Spacer(Modifier.width(8.dp))
+                        Text("Responses", color = if (p.apiFormat == "responses") c.accent else c.ink2, style = MikaType.Caption, modifier = Modifier.clickable { actions.setApiFormat("responses") }.padding(4.dp))
+                    }
+                }
+                // 启用状态
+                ListRow(null, "状态") {
+                    MikaSwitch(checked = p.enabled, onCheckedChange = { actions.setEnabled(it) })
+                }
             }
             (state as? ListState.Failed)?.let { FooterNote(ModelSetupCopy.failed(it.message), color = c.bad) }
 
@@ -683,6 +720,52 @@ fun ProviderDetailContent(ui: ModelSetupUi, p: Provider, actions: ProviderDetail
                 }, Modifier.testTag("confirm-delete")) { Text(ModelsCopy.DELETE_CONFIRM, color = c.bad) }
             },
             dismissButton = { TextButton({ confirmDelete = false }) { Text(ModelSetupCopy.CANCEL) } },
+        )
+    }
+    if (editingName) {
+        MikaDialog(
+            onDismissRequest = { editingName = false },
+            title = { Text("改标签") },
+            text = {
+                BasicTextField(
+                    editNameText,
+                    { editNameText = it },
+                    Modifier.fillMaxWidth().testTag("edit-name-input"),
+                    singleLine = true,
+                    textStyle = MikaType.Body.copy(color = c.ink),
+                    cursorBrush = SolidColor(c.accent),
+                )
+            },
+            confirmButton = {
+                TextButton({
+                    actions.rename(editNameText)
+                    editingName = false
+                }) { Text("保存") }
+            },
+            dismissButton = { TextButton({ editingName = false }) { Text("取消") } },
+        )
+    }
+    if (editingUrl) {
+        MikaDialog(
+            onDismissRequest = { editingUrl = false },
+            title = { Text("改 API 地址") },
+            text = {
+                BasicTextField(
+                    editUrlText,
+                    { editUrlText = it },
+                    Modifier.fillMaxWidth().testTag("edit-url-input"),
+                    singleLine = true,
+                    textStyle = MikaType.Body.copy(color = c.ink),
+                    cursorBrush = SolidColor(c.accent),
+                )
+            },
+            confirmButton = {
+                TextButton({
+                    actions.setBaseUrl(editUrlText)
+                    editingUrl = false
+                }) { Text("保存") }
+            },
+            dismissButton = { TextButton({ editingUrl = false }) { Text("取消") } },
         )
     }
 }

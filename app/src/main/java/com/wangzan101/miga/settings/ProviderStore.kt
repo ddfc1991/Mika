@@ -168,6 +168,10 @@ data class Provider(
     val visionOverrides: Map<String, Boolean> = emptyMap(),
     /** 这家每天所有模型、用途合计的已报告 Token 预算；null 不限制。 */
     val dailyTokenBudget: Long? = null,
+    /** 用户关掉这家(停用)时不再被选作新用途;默认开。 */
+    val enabled: Boolean = true,
+    /** 这家默认请求格式:"chat"=Chat Completions,"responses"=Responses。 */
+    val apiFormat: String = "chat",
 ) {
     val key: String get() = ProviderConnection.keyOf(kind, baseUrl, name)
 
@@ -508,6 +512,27 @@ class ProviderStore(
         if (apiKey != null) setKey(p.id, apiKey)
         writeConfig()
         return p
+    }
+
+    /** 服务商页改元信息:标签、地址、启用状态、请求格式;null 表示不改那一项。 */
+    @Synchronized
+    fun updateProviderMeta(
+        providerId: String,
+        name: String? = null,
+        baseUrl: String? = null,
+        enabled: Boolean? = null,
+        apiFormat: String? = null,
+    ): Provider? {
+        val p = provider(providerId) ?: return null
+        val np = p.copy(
+            name = name?.takeIf { it.isNotBlank() } ?: p.name,
+            baseUrl = baseUrl?.takeIf { it.isNotBlank() } ?: p.baseUrl,
+            enabled = enabled ?: p.enabled,
+            apiFormat = apiFormat ?: p.apiFormat,
+        )
+        _providers.value = _providers.value.map { if (it.id == providerId) np else it }
+        writeConfig()
+        return np
     }
 
     /** 记下服务商最近一次列出的模型。列出来了,就说明「没测过」不再成立(跳过测试存下的那家在这里清掉标记)。 */

@@ -984,6 +984,18 @@ class ModelSetupViewModel(
         return saved
     }
 
+    /** 服务商页改元信息(标签/地址/启用/请求格式)。 */
+    fun updateProviderMeta(
+        providerId: String,
+        name: String? = null,
+        baseUrl: String? = null,
+        enabled: Boolean? = null,
+        apiFormat: String? = null,
+    ) {
+        store.updateProviderMeta(providerId, name, baseUrl, enabled, apiFormat)
+        sync()
+    }
+
     fun setModelVision(providerId: String, model: String, sees: Boolean) {
         store.setModelVision(providerId, model, sees)
         sync()
