@@ -644,13 +644,13 @@ private fun MikaRoot(
                         "memory" -> nav.push(Route.Memory)
                         "models" -> nav.push(Route.Models)
                         "profiles" -> nav.push(Route.Persona)
-                        "capabilities" -> nav.push(Route.Screens)
+                        "capabilities" -> nav.push(Route.Models)
                         "messaging" -> nav.reset()
                         "files" -> { filesFromDrawer = false; filesConversation = app.chat.ui.value.conversationId; nav.push(Route.Files) }
-                        "review" -> nav.push(Route.Screens)
-                        "artifacts" -> nav.push(Route.Screens)
+                        "review" -> nav.push(Route.Teach)
+                        "artifacts" -> nav.push(Route.Files)
                         "center" -> nav.push(Route.Plans)
-                        "spawn" -> nav.push(Route.Screens)
+                        "spawn" -> nav.push(Route.Teach)
                         "star" -> nav.push(Route.Memory)
                         else -> {}
                     }
