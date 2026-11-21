@@ -76,6 +76,7 @@ import com.wangzan101.miga.cap.phone.setup.DeveloperSettings
 import com.wangzan101.miga.cap.phone.setup.PairingNotifier
 import com.wangzan101.miga.core.shell.BuiltinShellStatus
 import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.ui.hq.HqShell
 import com.wangzan101.miga.ui.theme.MikaTheme
 import com.wangzan101.miga.ui.theme.animationsOff
 import com.wangzan101.miga.ui.theme.appearanceDark
@@ -552,6 +553,8 @@ private fun MikaRoot(
                 app.chat.refresh()
                 onStopOrDispose {}
             }
+            HqShell(
+                botsContent = {
             ChatWithDrawer(
                 vm = app.chat,
                 check = check,
@@ -634,6 +637,16 @@ private fun MikaRoot(
                     }
                 }
             }
+                },
+                onMoreEntry = { entry ->
+                    when (entry.id) {
+                        "settings" -> nav.push(Route.Settings)
+                        "memory" -> nav.push(Route.Memory)
+                        "models" -> nav.push(Route.Models)
+                        else -> {}
+                    }
+                },
+            )
         }
         Route.Settings -> {
             val autonomous by app.approvals.autonomous.collectAsState()

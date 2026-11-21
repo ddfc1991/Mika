@@ -1,0 +1,47 @@
+package com.wangzan101.miga.ui.hq
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+
+/**
+ * HQ 5-tab 主框架：Bots（聊天）/ Sessions / Jobs / Kanban / More。
+ * [botsContent] 是聊天本体（Miga 现有 ChatScreen），其余 tab 是 HQ 复刻屏。
+ * 点 bot 打开聊天时由外层控制。
+ */
+@Composable
+fun HqShell(
+    botsContent: @Composable () -> Unit,
+    onMoreEntry: (HqMoreEntry) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    var tab by rememberSaveable { mutableStateOf(HqTab.Bots) }
+    Column(modifier = modifier.fillMaxSize().background(Hq.bg)) {
+        Box(Modifier.weight(1f)) {
+            when (tab) {
+                HqTab.Bots -> botsContent()
+                HqTab.Sessions -> HqSessionsScreen()
+                HqTab.Jobs -> HqJobsScreen()
+                HqTab.Kanban -> HqKanbanScreen()
+                HqTab.More -> HqMoreScreen(onMoreEntry)
+            }
+        }
+        Box(
+            Modifier
+                .navigationBarsPadding()
+                .padding(top = 8.dp),
+        ) {
+            HqTabBar(current = tab, onSelect = { tab = it })
+        }
+    }
+}
