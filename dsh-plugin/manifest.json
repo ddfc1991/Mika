@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "id": "dsh-purge",
+  "name": "破甲人格 (dsh-purge)",
+  "version": "1.1.90",
+  "kind": "capability",
+  "author": "HunYiSage (移植 ddfc1991)",
+  "description": "破甲/越狱/jailbreak 人格预设 — 按模型可换提示词。纯提示词层，不碰宿主文件。仅授权安全研究。",
+  "permissions": [],
+  "tools": [],
+  "skills": [
+    {
+      "name": "dsh-purge",
+      "path": "skills/dsh-purge/SKILL.md",
+      "display": "破甲人格 (dsh-purge)"
+    }
+  ],
+  "promptTransform": null
+}

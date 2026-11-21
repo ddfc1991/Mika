@@ -87,7 +87,7 @@ object ProviderPresets {
         ProviderPreset("自定义", ProviderConfig.Kind.OpenAiCompat, "", caps()),
         // Magpie 多协议网关（本机 com.magpie.android，127.0.0.1:3425，无鉴权）——OpenAI 兼容 provider
         ProviderPreset("Magpie 网关", ProviderConfig.Kind.OpenAiCompat, "http://127.0.0.1:3425/v1", caps(vision = true, context = 128_000),
-            selfHosted = true, familyTokens = listOf("glm", "deepseek", "qwen", "grok", "claude")),
+            selfHosted = true),
     )
 
     val custom: ProviderPreset get() = all.last()
