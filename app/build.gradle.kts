@@ -15,6 +15,16 @@ android {
     namespace = "com.wangzan101.mika"
     compileSdk = 36
 
+    signingConfigs {
+        // 固定签名：让每次 build 签名一致，能覆盖安装不清数据（CI debug keystore 每次不同会签名不匹配）
+        create("miga") {
+            storeFile = file("miga-debug.keystore")
+            storePassword = "miga123"
+            keyAlias = "miga"
+            keyPassword = "miga123"
+        }
+    }
+
     defaultConfig {
         applicationId = "com.wangzan101.mika"
         minSdk = 29
@@ -65,7 +75,7 @@ android {
         // 用本机调试签名,能直接覆盖调试包、保留数据;可被性能工具采样。./gradlew :app:assemblePerf
         create("perf") {
             initWith(getByName("release"))
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("miga")
             isProfileable = true
             matchingFallbacks += "release"
             // 真机比较滑动手感也用优化包,仍覆盖 .dev 测试版并保留它的数据。
