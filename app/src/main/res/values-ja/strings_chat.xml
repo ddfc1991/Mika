@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">共有された内容で現在の下書きが置き換えられます。</string>
     <string name="chat_working_on">%1$s で作業中</string>
     <string name="chat_working">作業中</string>
+    <string name="chat_speaking">話し中</string>
     <string name="share_draft_failed">共有された内容を会話に追加できませんでした</string>
     <string name="chat_wait_previous_task">前のタスクが終わってから始まります</string>
     <string name="chat_wait_unlock">ロック解除を待っています</string>

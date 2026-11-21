@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">El contenido compartido reemplazará el borrador actual.</string>
     <string name="chat_working_on">Trabajando en %1$s</string>
     <string name="chat_working">Trabajando</string>
+    <string name="chat_speaking">Hablando</string>
     <string name="share_draft_failed">No se pudo añadir el contenido compartido a la conversación</string>
     <string name="chat_wait_previous_task">Empieza cuando termine la tarea anterior</string>
     <string name="chat_wait_unlock">Esperando a que desbloquees</string>

@@ -16,6 +16,7 @@
     <string name="chat_example_replace_action">جایگزینی پیش‌نویس</string>
     <string name="chat_working_on">در حال کار در %1$s</string>
     <string name="chat_working">در حال انجام</string>
+    <string name="chat_speaking">در حال صحبت</string>
     <string name="share_draft_failed">افزودن مورد اشتراک‌گذاری‌شده به گفتگوی جدید ممکن نشد</string>
     <string name="chat_wait_previous_task">پس از پایان کار قبلی شروع می‌شود</string>
     <string name="chat_wait_unlock">در انتظار باز کردن قفل توسط شما</string>

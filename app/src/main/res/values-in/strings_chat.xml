@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">Konten yang dibagikan akan mengganti draf saat ini.</string>
     <string name="chat_working_on">Bekerja di %1$s</string>
     <string name="chat_working">Bekerja</string>
+    <string name="chat_speaking">Berbicara</string>
     <string name="share_draft_failed">Konten yang dibagikan tidak dapat ditambahkan ke percakapan</string>
     <string name="chat_wait_previous_task">Dimulai setelah tugas sebelumnya selesai</string>
     <string name="chat_wait_unlock">Menunggu Anda membuka kunci</string>

@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">سيستبدل المحتوى المشارَك المسودة الحالية.</string>
     <string name="chat_working_on">جارٍ العمل على %1$s</string>
     <string name="chat_working">جارٍ العمل</string>
+    <string name="chat_speaking">يتحدث</string>
     <string name="share_draft_failed">تعذّرت إضافة المحتوى المشارَك إلى المحادثة</string>
     <string name="chat_wait_previous_task">سيبدأ بعد اكتمال المهمة السابقة</string>
     <string name="chat_wait_unlock">بانتظار إلغاء قفل الهاتف</string>

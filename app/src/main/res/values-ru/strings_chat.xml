@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">Поделённый материал заменит текущий черновик.</string>
     <string name="chat_working_on">Работает в приложении «%1$s»</string>
     <string name="chat_working">Работает</string>
+    <string name="chat_speaking">Говорит</string>
     <string name="share_draft_failed">Не удалось добавить материал в разговор</string>
     <string name="chat_wait_previous_task">Начнётся после завершения предыдущей задачи</string>
     <string name="chat_wait_unlock">Ждёт, пока вы разблокируете телефон</string>

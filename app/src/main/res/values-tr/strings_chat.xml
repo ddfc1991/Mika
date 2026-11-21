@@ -42,6 +42,7 @@
     <string name="share_draft_replace_body">Bu paylaşılan içerik mevcut taslağınızın yerini alacak.</string>
     <string name="chat_working_on">%1$s içinde çalışıyor</string>
     <string name="chat_working">Çalışıyor</string>
+    <string name="chat_speaking">Konuşuyor</string>
     <string name="share_draft_failed">Bu paylaşım sohbete eklenemedi</string>
     <string name="chat_wait_previous_task">Önceki görev bitince başlar</string>
     <string name="chat_wait_unlock">Kilidi açmanız bekleniyor</string>
