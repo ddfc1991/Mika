@@ -12,6 +12,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,11 +58,15 @@ fun HqTabBar(
     ) {
         HqTab.entries.forEach { tab ->
             val selected = tab == current
-            val color = if (selected) Hq.accent else Hq.ink2
+            val interaction = remember { MutableInteractionSource() }
+            val pressed by interaction.collectIsPressedAsState()
+            val scale by animateFloatAsState(if (pressed) 0.90f else 1f, label = "tabScale")
+            val color by animateColorAsState(if (selected) Hq.accent else Hq.ink2, label = "tabColor")
             Column(
                 modifier = Modifier
+                    .graphicsLayer { scaleX = scale; scaleY = scale }
                     .clip(RoundedCornerShape(14.dp))
-                    .clickable { onSelect(tab) }
+                    .clickable(interactionSource = interaction, indication = null) { onSelect(tab) }
                     .then(
                         if (selected) Modifier.background(Hq.accent.copy(alpha = 0.14f)) else Modifier
                     )

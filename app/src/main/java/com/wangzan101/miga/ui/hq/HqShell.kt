@@ -16,6 +16,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.animation.togetherWith
+import androidx.compose.animation.core.tween
 import com.wangzan101.miga.chat.ConversationSummary
 import com.wangzan101.miga.task.TaskRun
 
@@ -36,12 +43,22 @@ fun HqShell(
     var tab by rememberSaveable { mutableStateOf(HqTab.Bots) }
     Column(modifier = modifier.fillMaxSize().background(Hq.bg).statusBarsPadding()) {
         Box(Modifier.weight(1f)) {
-            when (tab) {
-                HqTab.Bots -> botsContent()
-                HqTab.Sessions -> HqSessionsScreen(sessions, onOpenSession = { onOpenSession(it.id) })
-                HqTab.Jobs -> HqJobsScreen(jobs)
-                HqTab.Kanban -> HqFeedScreen(tasks = jobs, sessions = sessions, onOpenSession = { onOpenSession(it) })
-                HqTab.More -> HqMoreScreen(onMoreEntry)
+            AnimatedContent(
+                targetState = tab,
+                transitionSpec = {
+                    (fadeIn(tween(220)) + slideInHorizontally(tween(220)) { it / 10 }).togetherWith(
+                        fadeOut(tween(140)) + slideOutHorizontally(tween(140)) { -it / 10 }
+                    )
+                },
+                label = "tabSwitch",
+            ) { t ->
+                when (t) {
+                    HqTab.Bots -> botsContent()
+                    HqTab.Sessions -> HqSessionsScreen(sessions, onOpenSession = { onOpenSession(it.id) })
+                    HqTab.Jobs -> HqJobsScreen(jobs)
+                    HqTab.Kanban -> HqFeedScreen(tasks = jobs, sessions = sessions, onOpenSession = { onOpenSession(it) })
+                    HqTab.More -> HqMoreScreen(onMoreEntry)
+                }
             }
         }
         Box(
