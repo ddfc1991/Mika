@@ -32,7 +32,7 @@ fun HqShell(
         Box(Modifier.weight(1f)) {
             when (tab) {
                 HqTab.Bots -> botsContent()
-                HqTab.Sessions -> HqSessionsScreen()
+                HqTab.Sessions -> HqSessionsScreen(onOpenSession = { tab = HqTab.Bots })
                 HqTab.Jobs -> HqJobsScreen()
                 HqTab.Kanban -> HqKanbanScreen()
                 HqTab.More -> HqMoreScreen(onMoreEntry)

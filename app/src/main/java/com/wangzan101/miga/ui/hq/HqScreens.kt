@@ -41,6 +41,7 @@ private val demoSessions = listOf(
 /** Sessions 屏：日期分组 + 会话列表。 */
 @Composable
 fun HqSessionsScreen(
+    onOpenSession: (HqSession) -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -91,7 +92,7 @@ fun HqSessionsScreen(
                 Icon(MikaIcons.Down, null, tint = Hq.accent.copy(alpha = 0.6f), modifier = Modifier.size(13.dp))
             }
             items.forEach { s ->
-                HqSessionRow(s)
+                HqSessionRow(s, onClick = { onOpenSession(s) })
             }
             Spacer(Modifier.height(10.dp))
         }
@@ -99,11 +100,11 @@ fun HqSessionsScreen(
 }
 
 @Composable
-private fun HqSessionRow(s: HqSession) {
+private fun HqSessionRow(s: HqSession, onClick: () -> Unit = {}) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { }
+            .clickable(onClick = onClick)
             .padding(horizontal = HqSpace.Page, vertical = 10.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
@@ -132,7 +133,7 @@ private val demoJobs = listOf(
 
 /** Jobs 屏：cron 任务三分组。 */
 @Composable
-fun HqJobsScreen(modifier: Modifier = Modifier) {
+fun HqJobsScreen(onOpenJob: (HqJob) -> Unit = {}, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -173,6 +174,7 @@ fun HqJobsScreen(modifier: Modifier = Modifier) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
+                        .clickable { onOpenJob(job) }
                         .padding(horizontal = HqSpace.Page, vertical = 3.dp)
                         .clip(HqShape.Card)
                         .background(Hq.surface)
@@ -205,7 +207,7 @@ private val demoKanban = listOf(
 
 /** Kanban 屏：列芯片 + 任务卡。 */
 @Composable
-fun HqKanbanScreen(modifier: Modifier = Modifier) {
+fun HqKanbanScreen(onOpenTask: (HqTask) -> Unit = {}, modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -259,6 +261,7 @@ fun HqKanbanScreen(modifier: Modifier = Modifier) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
+                    .clickable { onOpenTask(task) }
                     .padding(horizontal = HqSpace.Page, vertical = 5.dp)
                     .clip(RoundedCornerShape(18.dp))
                     .background(Hq.surface)

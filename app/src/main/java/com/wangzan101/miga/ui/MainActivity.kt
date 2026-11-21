@@ -643,6 +643,15 @@ private fun MikaRoot(
                         "settings" -> nav.push(Route.Settings)
                         "memory" -> nav.push(Route.Memory)
                         "models" -> nav.push(Route.Models)
+                        "profiles" -> nav.push(Route.Persona)
+                        "capabilities" -> nav.push(Route.Screens)
+                        "messaging" -> nav.reset()
+                        "files" -> { filesFromDrawer = false; filesConversation = app.chat.ui.value.conversationId; nav.push(Route.Files) }
+                        "review" -> nav.push(Route.Screens)
+                        "artifacts" -> nav.push(Route.Screens)
+                        "center" -> nav.push(Route.Plans)
+                        "spawn" -> nav.push(Route.Screens)
+                        "star" -> nav.push(Route.Memory)
                         else -> {}
                     }
                 },
