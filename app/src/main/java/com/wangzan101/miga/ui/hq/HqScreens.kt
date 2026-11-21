@@ -28,7 +28,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.wangzan101.miga.ui.theme.MikaIcons
 
-private data class HqSession(val title: String, val summary: String, val time: String, val bot: String)
+data class HqSession(val title: String, val summary: String, val time: String, val bot: String)
 
 private val demoSessions = listOf(
     HqSession("发布说明", "部署 · 2.4 带来 14 项变更：更快的同步、新的导出流程", "上午 9:37", "部署"),
@@ -123,7 +123,7 @@ private fun HqSessionRow(s: HqSession, onClick: () -> Unit = {}) {
     }
 }
 
-private data class HqJob(val name: String, val schedule: String, val next: String)
+data class HqJob(val name: String, val schedule: String, val next: String)
 
 private val demoJobs = listOf(
     HqJob("夜间发布构建", "工作日 8:00", "下次：周一 8:00"),
@@ -196,7 +196,7 @@ fun HqJobsScreen(onOpenJob: (HqJob) -> Unit = {}, modifier: Modifier = Modifier)
     }
 }
 
-private data class HqTask(val title: String, val meta: String, val col: String)
+data class HqTask(val title: String, val meta: String, val col: String)
 
 private val demoKanban = listOf(
     HqTask("批准 2.4 发布说明", "部署 · 3小时 · 2条评论", "阻塞"),
