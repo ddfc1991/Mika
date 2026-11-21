@@ -266,4 +266,14 @@
     <string name="tool_image_edit">ویرایش تصویر</string>
     <string name="tool_image_save">ذخیرهٔ تصویر</string>
     <string name="tool_share_image">اشتراک تصویر با برنامه</string>
+
+    <string name="models_groups_title">Model groups</string>
+    <string name="models_groups_label">Groups</string>
+    <string name="models_groups_empty">No model groups yet. Create one to bundle models for a purpose.</string>
+    <string name="models_groups_member_count">%1$d models</string>
+    <string name="models_groups_delete">Delete</string>
+    <string name="models_groups_name_hint">Group name</string>
+    <string name="models_groups_create">Create</string>
+    <string name="models_groups_cancel">Cancel</string>
+    <string name="models_groups_add">New group</string>
 </resources>
