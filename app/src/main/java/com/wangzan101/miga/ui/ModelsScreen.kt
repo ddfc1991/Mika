@@ -159,9 +159,9 @@ internal fun RoleCard(icon: ImageVector, label: String, line: ModelsCopy.RoleLin
 
 private val RoleTileShape = MikaShapes.Chip
 
-/** 服务商一行:左边是名字首字的图标块;[warning] 是要提醒的一句(用提醒色另起一行)。 */
+/** 服务商一行(Mibot 款:圆点状态 + 名字 + key 状态 + 模型数);[warning] 是要提醒的一句(用提醒色另起一行)。 */
 @Composable
-internal fun ProviderRow(p: Provider, line: String, first: Boolean, warning: String? = null, onClick: () -> Unit) {
+internal fun ProviderRow(p: Provider, line: String, first: Boolean, warning: String? = null, hasKey: Boolean = false, onClick: () -> Unit) {
     val c = MikaTheme.colors
     Column {
         if (!first) Hairline()
@@ -169,9 +169,13 @@ internal fun ProviderRow(p: Provider, line: String, first: Boolean, warning: Str
             Modifier.fillMaxWidth().clickable(onClick = onClick).testTag("provider-${p.name}").padding(horizontal = 16.dp).padding(vertical = 11.dp),
             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            Box(Modifier.size(MikaSize.Tile).background(c.neutralSoft, MikaShapes.Tile), contentAlignment = Alignment.Center) {
-                Text(p.name.take(1).uppercase(), style = MikaType.Caption.copy(fontWeight = FontWeight.Bold), color = c.ink)
-            }
+            // Mibot 款:圆点状态(绿=已配置/激活, 灰=未配置)
+            Box(
+                Modifier.size(8.dp).background(
+                    color = if (hasKey) c.ok else c.ink3.copy(alpha = 0.25f),
+                    shape = CircleShape,
+                ),
+            )
             Column(Modifier.weight(1f)) {
                 Text(ModelsCopy.providerName(p), style = MikaType.Body, color = c.ink, maxLines = 1)
                 val poolCount = com.wangzan101.miga.core.model.KeyPoolManager.shared.keyCount(p.id)

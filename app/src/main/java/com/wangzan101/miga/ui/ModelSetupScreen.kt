@@ -419,7 +419,7 @@ private fun ProvidersSection(ui: ModelSetupUi, actions: ModelSetupActions) {
                 val warning = ModelsCopy.UNVERIFIED.takeIf {
                     ui.unverified(p).isNotEmpty() || (ui.untested(p) && ui.rolesOf(p).isNotEmpty())
                 }
-                ProviderRow(p, line, first = i == 0, warning = warning) { actions.openProvider(p.id) }
+                ProviderRow(p, line, first = i == 0, warning = warning, hasKey = p.id in ui.keyed) { actions.openProvider(p.id) }
             }
             if (!ui.showForm) {
                 ListRow(
