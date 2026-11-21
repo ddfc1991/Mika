@@ -163,7 +163,7 @@ fun VoiceModelScreen(store: ProviderStore, onBack: () -> Unit) {
                     test = try {
                         val response = tts.synthesize(
                             TtsRequest(
-                                "你好，我是 Mika。这是一段声音测试。",
+                                "你好，我是 Miga。这是一段声音测试。",
                                 voice.ifBlank { null },
                                 speed.toFloatOrNull()?.coerceIn(0.25f, 4.0f),
                                 "wav",

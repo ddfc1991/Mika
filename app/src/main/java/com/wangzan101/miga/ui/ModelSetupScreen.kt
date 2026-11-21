@@ -839,7 +839,7 @@ private fun FallbackSection(ui: ModelSetupUi, role: ModelRole = ModelRole.Main, 
         }
     }
     if (hasAny) {
-        FooterNote("If your primary $roleLabel model hits rate limits or is unavailable, Mika switches to your backup models automatically so tasks never get interrupted.")
+        FooterNote("If your primary $roleLabel model hits rate limits or is unavailable, Miga switches to your backup models automatically so tasks never get interrupted.")
     }
 }
 

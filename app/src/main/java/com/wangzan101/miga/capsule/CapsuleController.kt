@@ -1527,7 +1527,7 @@ class CapsuleController(
     /** 回到 Mika 的那个对话(和点通知同一个入口)。 */
     private fun open(conversationId: String?) {
         runCatching { context.startActivity(TaskService.openAppIntent(context, conversationId)) }
-            .onFailure { Log.w(TAG, "could not open Mika from capsule", it) }
+            .onFailure { Log.w(TAG, "could not open Miga from capsule", it) }
     }
 
     private fun appLabel(pkg: String): String = appLabels.getOrPut(pkg) { ConfirmationNotifier.appLabel(context, pkg) }
@@ -1544,7 +1544,7 @@ class CapsuleController(
     private fun dp(v: Int) = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, v.toFloat(), context.resources.displayMetrics).toInt()
 
     private companion object {
-        const val TAG = "MikaCapsule"
+        const val TAG = "MigaCapsule"
         /** 看得见的胶囊离屏幕左右边、离状态栏和底部。 */
         const val EDGE_MARGIN_DP = 12
         const val TOP_GAP_DP = 8

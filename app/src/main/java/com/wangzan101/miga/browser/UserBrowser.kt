@@ -833,7 +833,7 @@ class UserBrowser private constructor(private val app: Context) {
     }
 
     companion object {
-        private const val TAG = "MikaUserBrowser"
+        private const val TAG = "MigaUserBrowser"
         /** 这个标签不属于任何任务。 */
         const val OWNER = "user-browser"
         private const val PROBE_DELAY_MS = 1_500L

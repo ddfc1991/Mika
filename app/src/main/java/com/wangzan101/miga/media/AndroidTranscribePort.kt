@@ -43,7 +43,7 @@ class AndroidTranscribePort(
         val store = ProviderStore.get(context)
         val provider = store.provider(choice.providerId) ?: throw TranscribeError.Unsupported("the configured speech provider was removed")
         if (!Transcriber.supports(provider)) throw TranscribeError.Unsupported("this provider cannot transcribe files; choose a provider speech model in Settings › Speech to text")
-        val transcriber = Transcriber(ProviderStore.modelHttp, ClientHeaders.of("Mika", provider.sessionHeader, ModelSession.fresh()))
+        val transcriber = Transcriber(ProviderStore.modelHttp, ClientHeaders.of("Miga", provider.sessionHeader, ModelSession.fresh()))
         val text = transcriber.transcribe(
             provider, store.providerKey(provider.id), choice.model, choice.method, bytes, language,
             mimeOf(path.substringAfterLast('.', "")), path.substringAfterLast('/'),

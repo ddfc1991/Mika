@@ -139,7 +139,7 @@ class GrantedFolderFiles(private val resolver: ContentResolver) : FolderFiles {
     private fun resolveGrant(path: String, write: Boolean = false): Pair<Uri, List<String>> {
         val parts = FolderFiles.parts(path)
         val permission = permissions().firstOrNull { rootPath(it.uri) == "/folders/${parts.first()}" }
-            ?: fail("folder_access_denied", "Folder access was removed. Ask the user to choose the folder again in Mika settings.")
+            ?: fail("folder_access_denied", "Folder access was removed. Ask the user to choose the folder again in Miga settings.")
         if (!permission.isReadPermission || (write && !permission.isWritePermission))
             fail("folder_access_denied", "The folder is not authorized for this operation.")
         return permission.uri to parts.drop(1)

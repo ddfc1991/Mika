@@ -59,7 +59,7 @@ class MikaInCallService : InCallService() {
     private fun debugMute(source: String, muted: Boolean) {
         if (BuildConfig.DEBUG && muteDebugEvents < 24) {
             muteDebugEvents++
-            Log.d("MikaCallMute", "source=$source muted=$muted")
+            Log.d("MigaCallMute", "source=$source muted=$muted")
         }
     }
 

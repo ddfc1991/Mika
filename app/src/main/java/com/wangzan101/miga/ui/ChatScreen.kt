@@ -1667,7 +1667,7 @@ private fun ReplyIcon(icon: ImageVector, label: String, tint: Color = MikaTheme.
 
 /** 复制回答正文的纯文字到剪贴板。 */
 private fun copyAnswer(context: Context, answer: String) {
-    val clip = ClipData.newPlainText("Mika", MarkdownModel.toPlainText(answer))
+    val clip = ClipData.newPlainText("Miga", MarkdownModel.toPlainText(answer))
     context.getSystemService(ClipboardManager::class.java).setPrimaryClip(clip)
     Toast.makeText(context, R.string.chat_copied, Toast.LENGTH_SHORT).show()
 }

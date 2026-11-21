@@ -77,6 +77,6 @@ class ImageExporter(private val context: Context) {
     }
 
     private companion object {
-        const val DIRECTORY = "Pictures/Mika"
+        const val DIRECTORY = "Pictures/Miga"
     }
 }

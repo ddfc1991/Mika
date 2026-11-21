@@ -72,6 +72,6 @@ class AudioShareExporter(private val context: Context) {
     }
 
     private companion object {
-        const val DIRECTORY = "Download/Mika/share"
+        const val DIRECTORY = "Download/Miga/share"
     }
 }

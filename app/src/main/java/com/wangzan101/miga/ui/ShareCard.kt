@@ -68,7 +68,7 @@ fun ShareCardContent(goal: String, answer: String, logo: ImageBitmap, modifier: 
         Row(verticalAlignment = Alignment.CenterVertically) {
             Image(logo, null, Modifier.size(40.dp).clip(MikaShapes.Chip), contentScale = ContentScale.Crop)
             Spacer(Modifier.width(10.dp))
-            Text("Mika", style = MikaType.Title.copy(fontWeight = FontWeight.Bold), color = ink)
+            Text("Miga", style = MikaType.Title.copy(fontWeight = FontWeight.Bold), color = ink)
         }
         Spacer(Modifier.height(20.dp))
         Text(stringResource(R.string.share_card_question), style = MikaType.Hint.copy(fontWeight = FontWeight.SemiBold), color = LightColors.accent)

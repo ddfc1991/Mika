@@ -126,7 +126,7 @@
             android:enableOnBackInvokedCallback="true"
             android:exported="true"
             android:launchMode="singleTask"
-            android:theme="@style/Theme.Mika"
+            android:theme="@style/Theme.Miga"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -173,7 +173,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard|uiMode|density"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Mika" />
+            android:theme="@style/Theme.Miga" />
 
         <!-- 用户自己打开的终端:只从 App 内进,不导出;转屏不重建,输入法调窗口高度 -->
         <activity
@@ -181,7 +181,7 @@
             android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard|uiMode|density"
             android:exported="false"
             android:windowSoftInputMode="adjustResize"
-            android:theme="@style/Theme.Mika" />
+            android:theme="@style/Theme.Miga" />
 
         <!-- 网页接管:把后台的网页标签(同一个 WebView)拿到主屏给用户处理 -->
         <activity

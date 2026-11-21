@@ -98,7 +98,7 @@ class ShizukuTransportTest {
         arrayOf(IMikaShell::class.java),
     ) { proxy, method, args ->
         when (method.name) {
-            "toString" -> "FakeIMikaShell"
+            "toString" -> "FakeIMigaShell"
             "hashCode" -> System.identityHashCode(proxy)
             "equals" -> args?.firstOrNull() === proxy
             else -> null

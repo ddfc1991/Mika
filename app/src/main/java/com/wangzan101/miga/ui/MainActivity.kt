@@ -351,7 +351,7 @@ class MainActivity : ComponentActivity() {
         const val EXTRA_TEACH_GOAL = "teach_goal"
         private const val STATE_SHARE_IN_CURRENT = "share_in_current"
         private const val STATE_SHARE_HANDLED = "share_handled"
-        private const val TAG = "MikaMain"
+        private const val TAG = "MigaMain"
 
         /** 主界面(聊天)此刻是否在前台可见。任务完成时据此决定要不要弹完成通知(#731)。 */
         @Volatile var foreground: Boolean = false

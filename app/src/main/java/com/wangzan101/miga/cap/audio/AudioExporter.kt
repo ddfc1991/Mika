@@ -76,6 +76,6 @@ class AudioExporter(private val context: Context) {
     }
 
     private companion object {
-        const val DIRECTORY = "Music/Mika"
+        const val DIRECTORY = "Music/Miga"
     }
 }

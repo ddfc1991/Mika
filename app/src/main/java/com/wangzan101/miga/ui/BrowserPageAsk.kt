@@ -387,7 +387,7 @@ class PageChat(private val context: Context, private val browser: UserBrowser, p
     fun touched() = browser.userTouched()
 
     private companion object {
-        const val TAG = "MikaPageChat"
+        const val TAG = "MigaPageChat"
         /** 运行记录里网页那一屏的对象写成「网站 <域名>」。 */
         const val SITE_PREFIX = "网站 "
     }

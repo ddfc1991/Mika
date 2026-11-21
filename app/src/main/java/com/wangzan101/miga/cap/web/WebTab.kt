@@ -468,7 +468,7 @@ class WebTab(
     }
 
     companion object {
-        private const val TAG = "MikaWebTab"
+        private const val TAG = "MigaWebTab"
         private const val PROFILE = "mika"
 
         /**

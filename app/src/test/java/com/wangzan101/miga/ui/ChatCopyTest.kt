@@ -262,7 +262,7 @@ class ChatCopyTest {
     @Test fun placeholderFollowsTheComposer() {
         assertEquals(ChatCopy.EMPTY_PROMPT, ChatCopy.placeholder(ComposerMode.Idle, hasHistory = false))
         assertEquals("继续说点什么…", ChatCopy.placeholder(ComposerMode.Idle, hasHistory = true))
-        assertEquals("回答 Mika 的问题", ChatCopy.placeholder(ComposerMode.Answer, hasHistory = true))
+        assertEquals("回答 Miga 的问题", ChatCopy.placeholder(ComposerMode.Answer, hasHistory = true))
         assertEquals("补充或改要求…", ChatCopy.placeholder(ComposerMode.Busy, hasHistory = true))
     }
 
@@ -295,12 +295,12 @@ class ChatCopyTest {
 
     @Test fun sandboxCopyMarksProjectWorkspacesDistinctly() {
         val projectWs = com.wangzan101.miga.cap.sandbox.WorkspaceUsage(
-            dirName = "p-proj1", conversationId = null, title = "Mika 开发", bytes = 1024L, busy = false, projectId = "proj1",
+            dirName = "p-proj1", conversationId = null, title = "Miga 开发", bytes = 1024L, busy = false, projectId = "proj1",
         )
         val chatWs = com.wangzan101.miga.cap.sandbox.WorkspaceUsage(
             dirName = "c-chat1", conversationId = "chat1", title = "闲聊", bytes = 512L, busy = false, projectId = null,
         )
-        assertEquals("项目 · Mika 开发", SandboxCopy.workspaceTitle(projectWs))
+        assertEquals("项目 · Miga 开发", SandboxCopy.workspaceTitle(projectWs))
         assertEquals("闲聊", SandboxCopy.workspaceTitle(chatWs))
     }
 }

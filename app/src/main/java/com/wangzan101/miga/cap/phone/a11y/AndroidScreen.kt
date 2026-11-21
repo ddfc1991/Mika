@@ -1044,7 +1044,7 @@ class AndroidScreen(
     }
 
     internal companion object {
-        const val TAG = "MikaScreen"
+        const val TAG = "MigaScreen"
         /** 动作开始后多久之内主屏冒出来的任务算这个动作开出来的。 */
         const val SPILL_WINDOW_MS = 6_000L
         /**
@@ -1121,7 +1121,7 @@ class AndroidScreen(
             "but new text containing it appeared on the screen after typing (e.g. suggestions), so the app seems to have received it. Observe to check before submitting."
         const val HINT_SHARE_PICKER = "The system is asking which of the app's share screens to use (the screen lists them). " +
             "Tap the one the task needs (for a message, the one that sends to a contact or chat); do not share again."
-        const val HINT_COLD_IGNORED = "coldIgnored: app has a task outside Mika's screen, so it was not restarted (that would wipe the user's state there). It was opened as-is; navigate back to its start screen yourself if needed."
+        const val HINT_COLD_IGNORED = "coldIgnored: app has a task outside Miga's screen, so it was not restarted (that would wipe the user's state there). It was opened as-is; navigate back to its start screen yourself if needed."
         const val MAX_ANCESTORS = 8
 
         // 悬停、触摸探索、手势识别、无障碍焦点这些不是界面内容的变化

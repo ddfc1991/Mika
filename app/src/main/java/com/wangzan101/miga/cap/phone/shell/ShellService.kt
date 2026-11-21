@@ -613,7 +613,7 @@ class ShellService(
             asMika.send(context, 0, null, null, null, null, options.toBundle())
             START_OK
         } catch (t: Throwable) {
-            Log.w(TAG, "sending ${intent.action} as Mika failed", t)
+            Log.w(TAG, "sending ${intent.action} as Miga failed", t)
             START_ERROR
         }
     }
@@ -1658,7 +1658,7 @@ class ShellService(
         // 只连 Mika 自己进程的调试套接字:别的 App 的网页不经这里
         val uid = runCatching { DevtoolsSocket.procUid(File("/proc/$pid/status").readText()) }.getOrNull()
         if (uid != allowedUid) {
-            Log.w(TAG, "devtools socket refused: pid $pid is not Mika's (uid $uid)")
+            Log.w(TAG, "devtools socket refused: pid $pid is not Miga's (uid $uid)")
             return null
         }
         val socket = LocalSocket()
@@ -1781,7 +1781,7 @@ class ShellService(
     }
 
     companion object {
-        private const val TAG = "MikaShell"
+        private const val TAG = "MigaShell"
         private const val MAX_TASKS = 100
         private const val TAP_MS = 50L
         // injectStroke 一笔的上限:点数、从按下到抬起的毫秒数
@@ -1818,7 +1818,7 @@ class ShellService(
         const val CLIP_SET = 0
         const val CLIP_UNREADABLE = 1
         const val CLIP_FAILED = 2
-        private const val CLIP_LABEL = "Mika"
+        private const val CLIP_LABEL = "Miga"
         // AppOpsManager 里这个名字是隐藏的
         private const val OPSTR_READ_CLIPBOARD = "android:read_clipboard"
         private const val READ_CLIPBOARD_IN_BACKGROUND = "android.permission.READ_CLIPBOARD_IN_BACKGROUND"

@@ -167,7 +167,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
     /** 已安装的插件:zip 安装、启停与只读技能;任务开始时给技能目录一份固定快照。 */
     val plugins by lazy {
         com.wangzan101.miga.plugin.PluginRegistry(filesDir, scope,
-            log = { msg, e -> Log.w("MikaPlugin", msg, e) })
+            log = { msg, e -> Log.w("MigaPlugin", msg, e) })
     }
 
     /** 人格:命名的自定义提示词层,存在 settings 目录;不加密,不含密钥。 */
@@ -183,7 +183,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
                 p.runId?.let { runId ->
                     scope.launch(Dispatchers.IO) {
                         runCatching { conversations.updateTurn(p.conversationId, runId) { it.copy(keptPageClosed = reason.wire) } }
-                            .onFailure { android.util.Log.w("MikaApp", "could not note the kept page closing", it) }
+                            .onFailure { android.util.Log.w("MigaApp", "could not note the kept page closing", it) }
                     }
                 }
             }
@@ -198,7 +198,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
 
     /** 模型配置与 Key;建出的模型都套上计量,记到 [usage]。 */
     override val providers: ProviderStore by lazy {
-        ProviderStore.create(this, usage, "Mika/${BuildConfig.VERSION_NAME}", usage::providerTokensToday,
+        ProviderStore.create(this, usage, "Miga/${BuildConfig.VERSION_NAME}", usage::providerTokensToday,
             proactiveUsage = usage::proactiveTokensToday, proactiveLimit = { FeatureFlags.get(this).proactiveDailyTokenBudget() },
             proactiveCalls = usage::proactiveCallsToday)
     }
@@ -213,7 +213,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
     val chatGptSignIn by lazy {
         com.wangzan101.miga.settings.ChatGptSignIns(scope,
             keepAlive = { com.wangzan101.miga.settings.ChatGptSignInService.start(this) },
-            log = { msg, e -> Log.w("MikaChatGpt", msg, e) })
+            log = { msg, e -> Log.w("MigaChatGpt", msg, e) })
     }
 
     /** 经验路线。 */
@@ -550,7 +550,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
         scope.launch(Dispatchers.IO) {
             runCatching { updateMirrors.ensureLoaded() }
             runCatching { com.wangzan101.miga.task.AndroidDeviceFiles.cleanupStaging(SandboxDirs(this@MikaApp)) }
-                .onFailure { Log.w("MikaImport", "Could not clean device import staging", it) }
+                .onFailure { Log.w("MigaImport", "Could not clean device import staging", it) }
         }
         // 界面以外的文字(通知、服务、悬浮胶囊)按 App 语言取
         AppLanguage.applyDefaultLocale(this)
@@ -580,7 +580,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
         // 上次异常退出时留下的改动(App 被静音)在这里恢复
         scope.launch { taskRecovery.recover() }
         // 上次进程被杀时没结束的运行:现在就标为中断并告知,不等任务服务起来
-        if (!quit) runRecovery.recover().let { if (it.isNotEmpty()) Log.w("MikaTask", "${it.size} runs interrupted by process restart") }
+        if (!quit) runRecovery.recover().let { if (it.isNotEmpty()) Log.w("MigaTask", "${it.size} runs interrupted by process restart") }
         // 用户已绑定并打开微信渠道时恢复监听；完全退出期间由各运行入口统一拒绝补起
         wechat.ensureRunning()
         if (flags.proactive()) proactive.start(paused = quit)
@@ -589,7 +589,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
         // 自动归档:太久没新消息的对话收进归档(设置里开着才跑);退出期间等下次打开再补
         if (!quit) autoArchiveNow()
         // 给电脑跑的「经 USB 连接」脚本;顺带清掉上次开机留下的 USB 连接信息
-        scope.launch(Dispatchers.IO) { runCatching { mcp.writeUsbScript() }.onFailure { Log.w("MikaMcp", "cannot write USB script", it) } }
+        scope.launch(Dispatchers.IO) { runCatching { mcp.writeUsbScript() }.onFailure { Log.w("MigaMcp", "cannot write USB script", it) } }
         // 上次导出写到一半被杀留下的空壳条目
         scope.launch { runCatching { ShareExporter(this@MikaApp).cleanPending() } }
         // 上次存音乐库写到一半被杀留下的空壳条目
@@ -628,7 +628,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
                     currentId = (conversations.currentChat() as? CurrentChat.Open)?.id,
                     isRunning = { it in taskState.activeConversations.value },
                 )
-            }.onFailure { Log.w("MikaChat", "could not auto archive conversations", it) }
+            }.onFailure { Log.w("MigaChat", "could not auto archive conversations", it) }
         }
     }
 
@@ -644,7 +644,7 @@ class MikaApp : Application(), WebOwner, SandboxOwner, TaskEnvironment.Owner, Ph
             runCatching {
                 TriggerRuntime.syncTimeZone(this@MikaApp)
                 TriggerRuntime.rearm(this@MikaApp)
-            }.onFailure { Log.w("MikaTrigger", "could not restore schedules after quit", it) }
+            }.onFailure { Log.w("MigaTrigger", "could not restore schedules after quit", it) }
         }
     }
 }
