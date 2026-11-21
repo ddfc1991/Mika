@@ -10,6 +10,7 @@ import com.wangzan101.mika.core.record.RunMetrics
 import com.wangzan101.mika.ui.components.DirectionalIcon
 import com.wangzan101.mika.ui.components.GlassSurface
 import com.wangzan101.mika.ui.components.StatusGlyph
+import com.wangzan101.mika.ui.components.CatGirlAvatar
 import com.wangzan101.mika.ui.components.keepsKeyboard
 import com.wangzan101.mika.ui.components.pageBackground
 import android.content.ClipData
@@ -500,7 +501,8 @@ fun ChatScreen(
                     GlassSurface(backdrop = backdrop) {
                         Row(Modifier.clickable(role = Role.Button, onClickLabel = stringResource(R.string.chat_usage_title)) { showUsage = true }
                             .testTag("chat-usage-title").padding(horizontal = 14.dp, vertical = 8.dp),
-                            verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(4.dp)) {
+                            verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            CatGirlAvatar(speaking = vm.speaking.collectAsState().value, size = 34)
                             Text(ChatCopy.APP_TITLE, style = MikaType.Title, color = c.ink, maxLines = 1)
                         }
                     }
