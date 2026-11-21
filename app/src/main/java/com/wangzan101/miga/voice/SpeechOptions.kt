@@ -52,6 +52,7 @@ object SpeechOptions {
                 val p = providers.firstOrNull { it.id == choice.providerId } ?: return unset
                 Summary(choice.model, p.name, false)
             }
+            SpeechChoice.SenseVoice -> Summary(tr(R.string.speech_sensevoice_model), tr(R.string.speech_sensevoice_local), false)
         }
     }
 

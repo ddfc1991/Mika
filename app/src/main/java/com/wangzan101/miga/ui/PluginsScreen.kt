@@ -95,7 +95,7 @@ fun PluginsScreen(registry: PluginRegistry, onBack: () -> Unit) {
                     context.assets.open(assetPath).use { input ->
                         tmp.outputStream().use { input.copyTo(it) }
                     }
-                    installer.installZip(tmp)
+                    installer.installZip(tmp).getOrThrow()
                 }.getOrElse { it }
             }
             result.onSuccess { record ->

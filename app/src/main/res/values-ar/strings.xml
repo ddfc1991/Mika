@@ -87,6 +87,9 @@
     <string name="speech_bailian_other_model">آخر</string>
     <string name="speech_bailian_privacy">عند الحفظ يتصل مرة واحدة بهذا المفتاح للتحقق دون إرسال صوت. أثناء الضغط للتحدث يُرسل الصوت إلى Alibaba Cloud ويُحتسب حسب المدة. يُحفظ المفتاح مشفّرًا على هذا الهاتف.</string>
     <string name="speech_bailian_missing">اضبط مفتاح API لـ Bailian في الإعدادات › النموذج › تحويل الكلام إلى نص.</string>
+    <string name="speech_sensevoice_model">SenseVoice (على الجهاز)</string>
+    <string name="speech_sensevoice_local">تحويل نصي دون اتصال على الجهاز — لا حاجة لمفتاح API.</string>
+    <string name="speech_sensevoice_missing">نموذج SenseVoice غير جاهز — نزّله في الإعدادات › النموذج › تحويل الكلام إلى نص.</string>
     <string name="speech_bailian_remove">إزالة مفتاح API المحفوظ</string>
     <string name="speech_live_save">الاتصال والاستخدام</string>
     <string name="speech_live_testing">جارٍ الاتصال…</string>

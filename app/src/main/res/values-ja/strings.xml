@@ -87,6 +87,9 @@
     <string name="speech_bailian_other_model">その他</string>
     <string name="speech_bailian_privacy">保存時にこのキーで一度接続して確認します（音声は送りません）。押して話している間、音声は Alibaba Cloud に送られ、時間に応じて課金されます。キーはこの端末で暗号化して保存されます。</string>
     <string name="speech_bailian_missing">設定 › モデル › 音声文字変換 で Bailian の API キーを設定してください。</string>
+    <string name="speech_sensevoice_model">SenseVoice（オンデバイス）</string>
+    <string name="speech_sensevoice_local">オンデバイスでオフライン文字起こし — API キー不要。</string>
+    <string name="speech_sensevoice_missing">SenseVoice モデルが未準備です — 設定 › モデル › 音声文字変換 でダウンロードしてください。</string>
     <string name="speech_bailian_remove">保存した API キーを削除</string>
     <string name="speech_live_save">接続して使う</string>
     <string name="speech_live_testing">接続中…</string>

@@ -135,6 +135,8 @@ dependencies {
     implementation(libs.zxing.core)
     implementation(libs.shizuku.api)
     implementation(libs.shizuku.provider)
+    // 本地语音转写:离线 SenseVoice(sherpa-onnx),绕开系统识别、不用密钥
+    implementation(libs.sherpa.onnx)
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

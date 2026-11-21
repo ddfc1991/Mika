@@ -98,6 +98,9 @@ fun SettingsScreen(
     /** 任务运行里的「自主模式」:当前值和换它的办法。 */
     autonomous: Boolean = false,
     onAutonomous: (Boolean) -> Unit = {},
+    /** AI 自主管理:AI 能自主使用功能(模型/账户金库/记忆/插件)并主动找你确认关键操作。 */
+    selfServe: Boolean = false,
+    onSelfServe: ((Boolean) -> Unit)? = null,
     /** 查到的新版本号;有它时「关于 Mika」一行写「x 可更新」带红点。 */
     updateVersion: String? = null,
     onOpenAbout: () -> Unit = {},
@@ -245,6 +248,7 @@ fun SettingsScreen(
             onOpenRecommendations = { page = SettingsPage.Recommendations },
             onOpenPersonas = onOpenPersonas,
             onOpenAdvanced = { page = SettingsPage.Advanced },
+            selfServe = selfServe, onSelfServe = onSelfServe,
             onOpenVault = { page = SettingsPage.Vault },
             onOpenBrowser = onOpenBrowser,
             onOpenFiles = onOpenFiles,

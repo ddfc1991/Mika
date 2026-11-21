@@ -225,6 +225,7 @@ internal object VoiceCopy {
         is SpeechEngineSpec.Bailian -> spec.model
         is SpeechEngineSpec.System -> tr(if (spec.onDevice) R.string.voice_engine_phone_offline else R.string.voice_engine_phone)
         is SpeechEngineSpec.Provider -> spec.model
+        is SpeechEngineSpec.SenseVoice -> tr(R.string.speech_sensevoice_model)
         is SpeechEngineSpec.Unavailable -> ""
     }
 
@@ -251,6 +252,7 @@ internal object VoiceCopy {
         SpeechEngineSpec.Why.SystemFailed -> tr(R.string.voice_unavailable_system_failed)
         SpeechEngineSpec.Why.ProviderGone -> tr(R.string.voice_unavailable_provider_gone)
         SpeechEngineSpec.Why.Off -> tr(R.string.voice_unavailable_off)
+        SpeechEngineSpec.Why.SenseVoiceNotReady -> tr(R.string.speech_sensevoice_missing)
     }
 
     /** 最后十秒的倒数;还早时为 null。 */
