@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -33,7 +34,7 @@ fun HqShell(
     modifier: Modifier = Modifier,
 ) {
     var tab by rememberSaveable { mutableStateOf(HqTab.Bots) }
-    Column(modifier = modifier.fillMaxSize().background(Hq.bg)) {
+    Column(modifier = modifier.fillMaxSize().background(Hq.bg).statusBarsPadding()) {
         Box(Modifier.weight(1f)) {
             when (tab) {
                 HqTab.Bots -> botsContent()
