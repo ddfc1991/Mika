@@ -10,7 +10,7 @@ import java.io.File
  * 包依赖只能单向:core.action 和 core.guard 不依赖调度它们的 core.agent。
  */
 class SingleEntryTest {
-    private val action = File("src/main/kotlin/com/wangzan101/mika/core/action").canonicalPath + File.separator
+    private val action = File("src/main/kotlin/com/wangzan101/miga/core/action").canonicalPath + File.separator
     private val roots = listOf(File("src/main/kotlin"), File("../app/src/main/java"))
 
     /** 源码里的代码行(整行注释不算;行内的字符串、网址照常算)。 */
@@ -48,7 +48,7 @@ class SingleEntryTest {
 
     @Test fun actionAndGuardDoNotDependOnTheLoop() {
         val bad = listOf("action", "guard").flatMap { pkg ->
-            File("src/main/kotlin/com/wangzan101/mika/core/$pkg").walkTopDown().filter { it.isFile && it.extension == "kt" }.flatMap { f ->
+            File("src/main/kotlin/com/wangzan101/miga/core/$pkg").walkTopDown().filter { it.isFile && it.extension == "kt" }.flatMap { f ->
                 f.readLines().filter { it.startsWith("import com.wangzan101.miga.core.agent.") }.map { "${f.path}: $it" }
             }.toList()
         }
