@@ -144,6 +144,7 @@ import com.wangzan101.mika.task.SteerState
 import com.wangzan101.mika.task.TaskService
 import com.wangzan101.mika.task.unconsumed
 import com.wangzan101.mika.ui.components.ActionSheet
+import com.wangzan101.mika.voice.VoicePlayback
 import com.wangzan101.mika.ui.components.SheetAction
 import com.wangzan101.mika.ui.components.BarIconButton
 import com.wangzan101.mika.ui.components.ButtonKind
@@ -502,7 +503,7 @@ fun ChatScreen(
                         Row(Modifier.clickable(role = Role.Button, onClickLabel = stringResource(R.string.chat_usage_title)) { showUsage = true }
                             .testTag("chat-usage-title").padding(horizontal = 14.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            CatGirlAvatar(speaking = vm.speaking.collectAsState().value, size = 34)
+                            CatGirlAvatar(speaking = vm.voice.collectAsState().value != VoicePlayback.Idle, size = 34)
                             Text(ChatCopy.APP_TITLE, style = MikaType.Title, color = c.ink, maxLines = 1)
                         }
                     }
