@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">no decision given</string>
     <string name="proactive_triage_capped">this app reached today\'s alert limit</string>
     <string name="notice_hint_title">Worth a look</string>
-    <string name="notice_hint_capsule_desc">Mika, %1$d notifications worth a look</string>
+    <string name="notice_hint_capsule_desc">Miga, %1$d notifications worth a look</string>
     <string name="notice_hint_open">Show notifications worth a look</string>
     <string name="notice_hint_entry">Worth a look (%1$d)</string>
     <string name="notice_hint_feedback">Seen %1$d · handled before seeing %2$d</string>

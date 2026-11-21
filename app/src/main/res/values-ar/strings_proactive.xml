@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">لا قرار</string>
     <string name="proactive_triage_capped">بلغ هذا التطبيق حد التنبيهات لليوم</string>
     <string name="notice_hint_title">يستحق النظر</string>
-    <string name="notice_hint_capsule_desc">Mika، إشعارات تستحق النظر: %1$d</string>
+    <string name="notice_hint_capsule_desc">Miga، إشعارات تستحق النظر: %1$d</string>
     <string name="notice_hint_open">عرض الإشعارات التي تستحق النظر</string>
     <string name="notice_hint_entry">يستحق النظر (%1$d)</string>
     <string name="notice_hint_feedback">شوهد %1$d · عولج قبل رؤيته %2$d</string>

@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">判定なし</string>
     <string name="proactive_triage_capped">このアプリは今日の通知上限に達しました</string>
     <string name="notice_hint_title">知らせる価値あり</string>
-    <string name="notice_hint_capsule_desc">Mika、知らせる価値のある通知 %1$d 件</string>
+    <string name="notice_hint_capsule_desc">Miga、知らせる価値のある通知 %1$d 件</string>
     <string name="notice_hint_open">知らせる価値のある通知を見る</string>
     <string name="notice_hint_entry">知らせる価値あり (%1$d)</string>
     <string name="notice_hint_feedback">確認済み %1$d · 見る前に処理 %2$d</string>

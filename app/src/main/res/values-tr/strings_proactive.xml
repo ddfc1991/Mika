@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">karar verilmedi</string>
     <string name="proactive_triage_capped">bu uygulama bugünün uyarı sınırına ulaştı</string>
     <string name="notice_hint_title">Bakmaya değer</string>
-    <string name="notice_hint_capsule_desc">Mika, bakmaya değer %1$d bildirim</string>
+    <string name="notice_hint_capsule_desc">Miga, bakmaya değer %1$d bildirim</string>
     <string name="notice_hint_open">Bakmaya değer bildirimleri göster</string>
     <string name="notice_hint_entry">Bakmaya değer (%1$d)</string>
     <string name="notice_hint_feedback">Görülen %1$d · görmeden önce halledilen %2$d</string>

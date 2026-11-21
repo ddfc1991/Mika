@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">판정 없음</string>
     <string name="proactive_triage_capped">이 앱은 오늘 알림 한도에 도달함</string>
     <string name="notice_hint_title">알릴 만함</string>
-    <string name="notice_hint_capsule_desc">Mika, 알릴 만한 알림 %1$d개</string>
+    <string name="notice_hint_capsule_desc">Miga, 알릴 만한 알림 %1$d개</string>
     <string name="notice_hint_open">알릴 만한 알림 보기</string>
     <string name="notice_hint_entry">알릴 만함 (%1$d)</string>
     <string name="notice_hint_feedback">확인함 %1$d · 보기 전에 처리함 %2$d</string>

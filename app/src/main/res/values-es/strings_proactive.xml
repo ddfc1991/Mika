@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">sin decisión</string>
     <string name="proactive_triage_capped">esta app alcanzó el límite de avisos de hoy</string>
     <string name="notice_hint_title">Vale la pena verlas</string>
-    <string name="notice_hint_capsule_desc">Mika, %1$d notificaciones que vale la pena ver</string>
+    <string name="notice_hint_capsule_desc">Miga, %1$d notificaciones que vale la pena ver</string>
     <string name="notice_hint_open">Ver notificaciones que vale la pena ver</string>
     <string name="notice_hint_entry">Vale la pena verlas (%1$d)</string>
     <string name="notice_hint_feedback">Vistas %1$d · atendidas sin verlas %2$d</string>

@@ -41,7 +41,7 @@
     <string name="proactive_triage_no_verdict">بدون تصمیم</string>
     <string name="proactive_triage_capped">این برنامه به سقف هشدار امروز رسیده است</string>
     <string name="notice_hint_title">ارزش دیدن</string>
-    <string name="notice_hint_capsule_desc">Mika، اعلان‌های ارزشمند برای دیدن: %1$d</string>
+    <string name="notice_hint_capsule_desc">Miga، اعلان‌های ارزشمند برای دیدن: %1$d</string>
     <string name="notice_hint_open">نمایش اعلان‌های ارزشمند برای دیدن</string>
     <string name="notice_hint_entry">ارزش دیدن (%1$d)</string>
     <string name="notice_hint_feedback">دیده‌شده %1$d · رسیدگی‌شده پیش از دیدن %2$d</string>
