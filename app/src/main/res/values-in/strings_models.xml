@@ -197,6 +197,8 @@
     <string name="main_fallback_what">Takes over when the main model is unavailable</string>
     <string name="main_fallback_pick">Pick a fallback model</string>
     <string name="main_fallback_clear">No fallback</string>
+    <string name="load_balance_title">Penyeimbangan beban</string>
+    <string name="load_balance_sub">Bergantian antara model utama dan cadangan, bukan hanya beralih</string>
     <string name="main_fallback_failed">Could not set the fallback model</string>
     <string name="main_fallback_is_main">This is the current main model, so it cannot also be its fallback</string>
     <string name="role_voice">Voice model</string>

@@ -68,6 +68,8 @@
     <string name="main_fallback_what">主模型不能用時接手</string>
     <string name="main_fallback_pick">選一個備援模型</string>
     <string name="main_fallback_clear">不設定備援</string>
+    <string name="load_balance_title">負載均衡</string>
+    <string name="load_balance_sub">在主模型和備援模型之間輪詢，而不是只在主模型失敗時才接手</string>
     <string name="main_fallback_failed">備援模型設定失敗</string>
     <string name="main_fallback_is_main">這個模型就是目前主模型，不能同時當備援</string>
     <string name="role_vision_hint">不選也能用，只靠文字讀取螢幕。</string>

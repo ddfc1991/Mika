@@ -39,6 +39,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import com.wangzan101.mika.ui.components.MikaDialog
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -164,6 +165,7 @@ fun ModelSetupScreen(
         openProvider = { openProvider = it; allModels = false; showProviders = false }, pickRole = { picking = it },
         pickFallback = { pickingFallbackRole = ModelRole.Main; pickingFallbackSlot = it },
         pickRoleFallback = { r, s -> pickingFallbackRole = r; pickingFallbackSlot = s },
+        toggleMainLoadBalance = vm::toggleMainLoadBalance,
         openProviders = { showProviders = true },
         next = onDone, openSpeech = onOpenSpeech, openVoice = onOpenVoice, openUsage = onOpenUsage,
         openDecision = { openDecision = true }, openSignIn = { signInSheet = it },
@@ -309,6 +311,8 @@ class ModelSetupActions(
     val pickRole: (ModelRole) -> Unit = {},
     val pickFallback: (Int) -> Unit = {},
     val pickRoleFallback: (ModelRole, Int) -> Unit = { _, _ -> },
+    /** 切换主模型备援链的负载均衡（Mibot RoutingStrategy.loadBalance）。 */
+    val toggleMainLoadBalance: () -> Unit = {},
     /** 打开「服务商」页(已连接的服务商 + 添加表单)。 */
     val openProviders: () -> Unit = {},
     /** 打开「语音转文字」的选择页;为 null 时不显示这张卡(上手流程)。 */
@@ -386,7 +390,7 @@ fun ModelSetupContent(ui: ModelSetupUi, onboarding: Boolean, actions: ModelSetup
                                 first = true, onClick = openDecision) { RowChevron() }
                         }
                     }
-                    FallbackSection(ui, ModelRole.Main, actions.pickRoleFallback)
+                    FallbackSection(ui, ModelRole.Main, actions.pickRoleFallback, actions.toggleMainLoadBalance)
                     FallbackSection(ui, ModelRole.Vision, actions.pickRoleFallback)
                     FallbackSection(ui, ModelRole.Light, actions.pickRoleFallback)
                 }
@@ -780,7 +784,7 @@ private fun ImageModelSection(ui: ModelSetupUi, onImage: (() -> Unit)?) {
 
 /** Backup models for a role: seamless failover if the primary model hits limits or goes down. */
 @Composable
-private fun FallbackSection(ui: ModelSetupUi, role: ModelRole = ModelRole.Main, onPickFallback: (ModelRole, Int) -> Unit) {
+private fun FallbackSection(ui: ModelSetupUi, role: ModelRole = ModelRole.Main, onPickFallback: (ModelRole, Int) -> Unit, onToggleLoadBalance: (() -> Unit)? = null) {
     val fallbacks = ui.roles.fallbacks(role)
     val slots = minOf(fallbacks.size + 1, com.wangzan101.mika.settings.MAX_FALLBACKS)
     val roleLabel = when (role) {
@@ -794,6 +798,22 @@ private fun FallbackSection(ui: ModelSetupUi, role: ModelRole = ModelRole.Main, 
         else "$roleLabel Model Backups"
     )
     GroupCard {
+        // 主模型备援链：负载均衡（Mibot RoutingStrategy.loadBalance）——主模型和备援之间轮询
+        if (role == ModelRole.Main && onToggleLoadBalance != null) {
+            val lb = ui.roles.mainLoadBalance
+            Row(
+                Modifier.fillMaxWidth().clickable(onClick = onToggleLoadBalance)
+                    .padding(horizontal = 14.dp, vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Column {
+                    Text(stringResource(R.string.load_balance_title), style = MikaType.Title, color = MikaTheme.colors.ink)
+                    Text(stringResource(R.string.load_balance_sub), style = MikaType.Hint, color = MikaTheme.colors.ink2)
+                }
+                Switch(checked = lb, onCheckedChange = { onToggleLoadBalance() })
+            }
+        }
         for (slot in 0 until slots) {
             val isFilled = slot < fallbacks.size
             val label = if (isFilled) "Backup Model ${slot + 1}" else "+ Add Backup Model"
@@ -801,7 +821,7 @@ private fun FallbackSection(ui: ModelSetupUi, role: ModelRole = ModelRole.Main, 
                 ModelsCopy.FALLBACK_ICON,
                 label,
                 ModelsCopy.fallbackLine(ui, role, slot),
-                first = slot == 0,
+                first = slot == 0 && !(role == ModelRole.Main && onToggleLoadBalance != null),
                 tag = "role-fallback-${role.name.lowercase()}-$slot",
             ) {
                 onPickFallback(role, slot)

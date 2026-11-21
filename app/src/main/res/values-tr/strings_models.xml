@@ -68,6 +68,8 @@
     <string name="main_fallback_what">Ana model kullanılamadığında devralır</string>
     <string name="main_fallback_pick">Bir yedek model seçin</string>
     <string name="main_fallback_clear">Yedek yok</string>
+    <string name="load_balance_title">Yük dengeleme</string>
+    <string name="load_balance_sub">Ana ve yedek modeller arasında yalnızca geçiş değil, dönüşümlü kullanım</string>
     <string name="main_fallback_failed">Yedek model ayarlanamadı</string>
     <string name="main_fallback_is_main">Bu şu anki ana model, bu yüzden kendi yedeği de olamaz</string>
     <string name="role_vision_hint">İsteğe bağlı: olmadan Mika ekranı metin olarak okur.</string>

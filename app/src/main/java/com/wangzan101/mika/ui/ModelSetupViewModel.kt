@@ -967,6 +967,11 @@ class ModelSetupViewModel(
         sync()
     }
 
+    fun toggleMainLoadBalance() {
+        store.setMainLoadBalance(!store.roles.value.mainLoadBalance)
+        sync()
+    }
+
     fun setModelContext(configId: String, settings: ModelContextSettings): Boolean {
         val saved = store.setModelContext(configId, settings)
         sync()

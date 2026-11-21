@@ -224,6 +224,11 @@ data class RoleChoices(
     val visionFallbacks: List<String> = emptyList(),
     /** 轻量模型的备援配置 id，按接手顺序。 */
     val lightFallbacks: List<String> = emptyList(),
+    /**
+     * 主模型备援链是否负载均衡（Mibot RoutingStrategy.loadBalance）：
+     * true=主模型和备援之间轮询（每次调用轮流），false=只在主模型失败时才接手备援（默认）。
+     */
+    val mainLoadBalance: Boolean = false,
     /** 按用途保存,同一个模型可在不同用途选不同档位;「用主模型」连同它的档位一起跟随。 */
     val reasoningEfforts: Map<ModelRole, String> = emptyMap(),
 ) {
@@ -290,6 +295,7 @@ data class RoleChoices(
             visionFallbacks = visionFallbacks.filter { it in valid },
             lightFallbacks = lightFallbacks.filter { it in valid },
             reasoningEfforts = reasoningEfforts.filterKeys { role -> (get(role) as? RoleChoice.Model)?.configId in valid },
+            mainLoadBalance = mainLoadBalance,
         )
     }
 }
@@ -378,6 +384,8 @@ class ProviderStore(
     internal val providerKeyRevisions = _providerKeyRevisions.asStateFlow()
 
     private val _configs = MutableStateFlow<List<ProviderConfig>>(emptyList())
+    /** 负载均衡轮询计数器（主模型备援链 loadBalance 时轮流换）。 */
+    private val loadBalanceCounter = java.util.concurrent.atomic.AtomicInteger()
     val configs: StateFlow<List<ProviderConfig>> = _configs.asStateFlow()
 
     private val _roles = MutableStateFlow(RoleChoices())
@@ -681,6 +689,14 @@ class ProviderStore(
         return true
     }
 
+    /** 主模型备援链负载均衡开关（Mibot RoutingStrategy.loadBalance）。 */
+    @Synchronized
+    fun setMainLoadBalance(on: Boolean) {
+        if (_roles.value.mainLoadBalance == on) return
+        _roles.value = _roles.value.copy(mainLoadBalance = on)
+        writeConfig()
+    }
+
     @Synchronized
     fun setModelContext(configId: String, settings: ModelContextSettings): Boolean {
         val cfg = _configs.value.firstOrNull { it.id == configId } ?: return false
@@ -757,7 +773,18 @@ class ProviderStore(
      * [session] 是这次调用属于的对话(同一段对话里建的模型都给同一个);服务商声明了会话头的,每个请求都带上它。
      */
     fun modelFor(role: ModelRole, session: ModelSession = ModelSession.fresh()): ChatModel? =
-        meteredFor(role, session, UsagePurpose.of(role), ::checkDailyBudget)
+        if (role == ModelRole.Main && _roles.value.mainLoadBalance) meteredBalanced(role, session)
+        else meteredFor(role, session, UsagePurpose.of(role), ::checkDailyBudget)
+
+    /** 主模型备援链负载均衡：主模型 + 备援之间轮询（每次调用轮流换），Mibot RoutingStrategy.loadBalance。 */
+    private fun meteredBalanced(role: ModelRole, session: ModelSession): ChatModel? {
+        val primaryId = _roles.value.resolve(role) ?: return meteredFor(role, session, UsagePurpose.of(role), ::checkDailyBudget)
+        val ids = listOf(primaryId) + _roles.value.fallbacks(role).filter { it != primaryId }
+        val valid = ids.mapNotNull(::configById)
+        if (valid.isEmpty()) return null
+        val idx = Math.floorMod(loadBalanceCounter.getAndIncrement(), valid.size)
+        return meteredWith(valid[idx], role, session, UsagePurpose.of(role), ::checkDailyBudget)
+    }
 
     /**
      * 主动能力用的模型:轻量模型,没有时用主模型;用量记在 [UsagePurpose.Proactive] 名下。
