@@ -22,6 +22,7 @@ android {
             storePassword = "miga123"
             keyAlias = "miga"
             keyPassword = "miga123"
+            storeType = "PKCS12"
         }
     }
 
@@ -66,6 +67,10 @@ android {
     sourceSets.getByName("androidTest").assets.srcDir(rootProject.file("eval/tasks"))
 
     buildTypes {
+        // 固定签名：debug/assembleDebug 也用 miga keystore，让每次 CI build 签名一致，可覆盖安装不清数据
+        getByName("debug") {
+            signingConfig = signingConfigs.getByName("miga")
+        }
         // 真机验收时并排安装,保留发行版和用户数据;默认构建标识不变。
         if (providers.gradleProperty("devInstall").isPresent) getByName("debug") {
             applicationIdSuffix = ".dev"
