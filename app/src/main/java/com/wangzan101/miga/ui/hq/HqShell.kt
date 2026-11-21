@@ -37,6 +37,7 @@ fun HqShell(
     sessions: List<ConversationSummary> = emptyList(),
     jobs: List<TaskRun> = emptyList(),
     onOpenSession: (String) -> Unit = {},
+    onDeleteSession: (String) -> Unit = {},
     onMoreEntry: (HqMoreEntry) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -56,7 +57,7 @@ fun HqShell(
                     HqTab.Bots -> botsContent()
                     HqTab.Sessions -> HqSessionsScreen(sessions, onOpenSession = { onOpenSession(it.id) })
                     HqTab.Jobs -> HqJobsScreen(jobs)
-                    HqTab.Kanban -> HqFeedScreen(tasks = jobs, sessions = sessions, onOpenSession = { onOpenSession(it) })
+                    HqTab.Kanban -> HqFeedScreen(tasks = jobs, sessions = sessions, onOpenSession = { onOpenSession(it) }, onDeleteSession = onDeleteSession)
                     HqTab.More -> HqMoreScreen(onMoreEntry)
                 }
             }
