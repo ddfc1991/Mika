@@ -40,7 +40,7 @@ fun HqShell(
                 HqTab.Bots -> botsContent()
                 HqTab.Sessions -> HqSessionsScreen(sessions, onOpenSession = { onOpenSession(it.id) })
                 HqTab.Jobs -> HqJobsScreen(jobs)
-                HqTab.Kanban -> HqKanbanScreen(jobs)
+                HqTab.Kanban -> HqFeedScreen(tasks = jobs, sessions = sessions, onOpenSession = { onOpenSession(it) })
                 HqTab.More -> HqMoreScreen(onMoreEntry)
             }
         }

@@ -25,7 +25,7 @@ enum class HqTab(val label: String, val icon: ImageVector) {
     Bots("对话", MikaIcons.Chats),
     Sessions("会话", MikaIcons.Route),
     Jobs("任务", MikaIcons.Clock),
-    Kanban("看板", MikaIcons.Apps),
+    Kanban("动态", MikaIcons.Apps),
     More("更多", MikaIcons.More),
 }
 
