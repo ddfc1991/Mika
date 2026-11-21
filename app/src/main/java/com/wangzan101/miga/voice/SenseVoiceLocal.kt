@@ -14,8 +14,9 @@ import java.io.File
  * - 可选 language/use_itn 参数
  *
  * [ready] 为真(模型文件齐全)才能转写;否则界面引导去下载模型。
- * sherpa-onnx 的 JNI 加载在 [transcribe] 里做(首次调用时 [ensureLoaded]);[transcribe]
- * 输入 16kHz 单声道 PCM(WAV 编码由 [Wav.encode] 产出),输出识别文字。
+ * sherpa-onnx 通过**反射**调用(编译期无依赖,引擎/模型装上才真转写,
+ * 否则报"引擎未安装"友好错误)。这样不会因为 Maven 版本号挂编译。
+ * 输入 16kHz 单声道 PCM,输出识别文字。
  */
 class SenseVoiceLocal(context: Context) {
     private val modelDir = File(context.filesDir, "sensevoice")
@@ -32,37 +33,51 @@ class SenseVoiceLocal(context: Context) {
     companion object {
         val MODEL_URL = "https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.tar.bz2"
         val MODEL_TAR = "sherpa-onnx-sense-voice-zh-en-ja-ko-yue-2024-07-17.tar.bz2"
+
+        // sherpa-onnx 类名(反射用,编译期无依赖)
+        private const val CLS_RECOGNIZER = "com.k2fsa.sherpa.onnx.OfflineRecognizer"
+        private const val CLS_RECOGNIZER_CFG = "com.k2fsa.sherpa.onnx.OfflineRecognizerConfig"
+        private const val CLS_MODEL_CFG = "com.k2fsa.sherpa.onnx.OfflineModelConfig"
+        private const val CLS_STREAM = "com.k2fsa.sherpa.onnx.OfflineStream"
     }
 
-    private var recognizer: com.k2fsa.sherpa.onnx.OfflineRecognizer? = null
+    @Volatile private var engine: Any? = null
     private var loadFailed = false
 
     @Synchronized
-    private fun ensureLoaded(): com.k2fsa.sherpa.onnx.OfflineRecognizer {
-        recognizer?.let { return it }
+    private fun ensureLoaded(): Any {
+        engine?.let { return it }
         if (loadFailed) throw ModelError.BadResponse("SenseVoice 引擎加载失败(模型或 so 损坏)")
-        val cfg = com.k2fsa.sherpa.onnx.OfflineRecognizerConfig(
-            com.k2fsa.sherpa.onnx.OfflineModelConfig(
-                modelOnnx.absolutePath,
-                tokens.absolutePath,
-                /* numThreads= */ 2,
-                /* debug= */ false,
-                /* provider= */ "cpu",
-                /* modelType= */ "sensevoice",
-                /* tokens= */ "",
-                /* modelingUnit= */ "",
-                /* bpeVocab= */ "",
-            ),
-            /* decodingMethod= */ "greedy_search",
-            /* maxActivePaths= */ 4,
-            /* enableEndpoint= */ false,
-            /* rule1= */ "",
-            /* rule2= */ "",
-            /* rule3= */ "",
-            /* rule4= */ "",
-        )
-        return try {
-            com.k2fsa.sherpa.onnx.OfflineRecognizer(cfg).also { recognizer = it }
+        try {
+            val recognizerCls = Class.forName(CLS_RECOGNIZER)
+            val cfgCls = Class.forName(CLS_RECOGNIZER_CFG)
+            val modelCls = Class.forName(CLS_MODEL_CFG)
+
+            val modelCtor = modelCls.getConstructor(
+                String::class.java, String::class.java,
+                Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType,
+                String::class.java, String::class.java,
+                String::class.java, String::class.java, String::class.java,
+            )
+            val modelCfg = modelCtor.newInstance(
+                modelOnnx.absolutePath, tokens.absolutePath,
+                2, false, "cpu", "sensevoice", "", "", "",
+            )
+            val cfgCtor = cfgCls.getConstructor(
+                modelCls, String::class.java,
+                Int::class.javaPrimitiveType, Boolean::class.javaPrimitiveType,
+                String::class.java, String::class.java,
+                String::class.java, String::class.java,
+            )
+            val cfg = cfgCtor.newInstance(
+                modelCfg, "greedy_search", 4, false, "", "", "", "",
+            )
+            val recCtor = recognizerCls.getConstructor(cfgCls)
+            engine = recCtor.newInstance(cfg)
+            return engine!!
+        } catch (e: ClassNotFoundException) {
+            loadFailed = true
+            throw ModelError.BadResponse("SenseVoice 引擎未安装(依赖缺失),请更新 App 或下载模型")
         } catch (e: Throwable) {
             loadFailed = true
             throw ModelError.BadResponse("SenseVoice 引擎加载失败: ${e.message}")
@@ -76,14 +91,19 @@ class SenseVoiceLocal(context: Context) {
     fun transcribe(pcm: ShortArray, sampleRate: Int = 16000): String {
         if (!ready) throw ModelError.BadResponse("SenseVoice 模型未就绪,请先下载到 ${modelDir.path}")
         val rec = ensureLoaded()
-        val stream = rec.createStream()
-        try {
-            stream.acceptWaveform(sampleRate, pcm)
-            stream.inputFinished()
-            val result = rec.decode(stream)
-            return result.text
+        var stream: Any? = null
+        return try {
+            val streamCls = Class.forName(CLS_STREAM)
+            stream = rec.javaClass.getMethod("createStream").invoke(rec)
+            val acceptWaveform = streamCls.getMethod("acceptWaveform", Int::class.javaPrimitiveType, ShortArray::class.java)
+            acceptWaveform.invoke(stream, sampleRate, pcm)
+            streamCls.getMethod("inputFinished").invoke(stream)
+            val decode = rec.javaClass.getMethod("decode", streamCls)
+            val result = decode.invoke(rec, stream)
+            val getText = result.javaClass.getMethod("getText")
+            (getText.invoke(result) as? String) ?: ""
         } finally {
-            stream.release()
+            stream?.let { s -> runCatching { Class.forName(CLS_STREAM).getMethod("release").invoke(s) } }
         }
     }
 }
