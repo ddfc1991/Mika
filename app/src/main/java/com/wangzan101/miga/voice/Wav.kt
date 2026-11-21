@@ -30,4 +30,26 @@ object Wav {
 
     /** 一段全零的静音 WAV,用来试探某个模型能不能转文字(不需要真录音)。 */
     fun silence(ms: Int, rate: Int = RATE): ByteArray = encode(ShortArray(rate * ms / 1000), rate)
+
+    /** 解析 WAV(16 位单声道)取回 PCM 采样;本地 SenseVoice 转写用。 */
+    fun decode16(wav: ByteArray): ShortArray {
+        require(wav.size > HEADER) { "wav too small" }
+        val buf = ByteBuffer.wrap(wav).order(ByteOrder.LITTLE_ENDIAN)
+        require(buf.get(0).toChar() == 'R' && buf.get(1).toChar() == 'I' && buf.get(2).toChar() == 'F' && buf.get(3).toChar() == 'F') { "not wav" }
+        // 找 data 块
+        var pos = 12
+        while (pos + 8 <= wav.size) {
+            val id = String(buf.array(), pos, 4, Charsets.US_ASCII)
+            val size = buf.getInt(pos + 4)
+            if (id == "data") {
+                val dataPos = pos + 8
+                val samples = (wav.size - dataPos) / 2
+                val out = ShortArray(samples)
+                for (i in 0 until samples) out[i] = buf.getShort(dataPos + i * 2)
+                return out
+            }
+            pos += 8 + size + (size and 1)
+        }
+        throw IllegalArgumentException("no data chunk")
+    }
 }

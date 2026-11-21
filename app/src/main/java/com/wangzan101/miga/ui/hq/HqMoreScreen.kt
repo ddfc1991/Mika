@@ -92,6 +92,7 @@ fun HqMoreScreen(
         Spacer(Modifier.height(24.dp))
 
         HqMenuGroup("系统", listOf(
+            HqMoreEntry("bots", "机器人", MikaIcons.Spark, Hq.accent),
             HqMoreEntry("settings", "设置", MikaIcons.Gear, Hq.ink2),
             HqMoreEntry("models", "模型", MikaIcons.Star, Hq.accent),
             HqMoreEntry("groups", "模型组", MikaIcons.Apps, Hq.accent),

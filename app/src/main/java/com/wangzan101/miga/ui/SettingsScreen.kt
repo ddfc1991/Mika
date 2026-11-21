@@ -467,6 +467,9 @@ fun SettingsContent(
     onOpenAbout: () -> Unit = {},
     personalStart: Boolean = false,
     onPersonalStart: ((Boolean) -> Unit)? = null,
+    /** AI 自主管理:AI 能自主使用功能(模型/账户金库/记忆等)并主动找你确认。 */
+    selfServe: Boolean = false,
+    onSelfServe: ((Boolean) -> Unit)? = null,
     /** 自动归档:多久没有新消息的对话自动归档;0 表示关闭。 */
     autoArchiveDays: Int = 0,
     onOpenAutoArchive: () -> Unit = {},
@@ -526,6 +529,12 @@ fun SettingsContent(
                 val label = stringResource(R.string.settings_personal_start)
                 ListRow(MikaIcons.Spark, label, stringResource(R.string.settings_personal_start_sub)) {
                     MikaSwitch(personalStart, change, Modifier.semantics { contentDescription = label })
+                }
+            }
+            onSelfServe?.let { change ->
+                val label = "AI 自主管理"
+                ListRow(MikaIcons.Spark, label, "AI 能自主使用功能(模型/账户金库/记忆/插件)并主动找你确认关键操作") {
+                    MikaSwitch(selfServe, change, Modifier.semantics { contentDescription = label })
                 }
             }
         }

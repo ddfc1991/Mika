@@ -76,6 +76,7 @@ import com.wangzan101.miga.cap.phone.setup.DeveloperSettings
 import com.wangzan101.miga.cap.phone.setup.PairingNotifier
 import com.wangzan101.miga.core.shell.BuiltinShellStatus
 import com.wangzan101.miga.core.knowledge.GuideCatalog
+import com.wangzan101.miga.ui.hq.HqBotsScreen
 import com.wangzan101.miga.ui.hq.HqShell
 import com.wangzan101.miga.ui.theme.MikaTheme
 import com.wangzan101.miga.ui.theme.animationsOff
@@ -644,6 +645,7 @@ private fun MikaRoot(
                 onDeleteSession = { id -> ConversationStore.shared(context).delete(id) },
                 onMoreEntry = { entry ->
                     when (entry.id) {
+                        "bots" -> nav.push(Route.Bots)
                         "settings" -> nav.push(Route.Settings)
                         "models" -> nav.push(Route.Models)
                         "groups" -> nav.push(Route.ModelGroups)
@@ -673,6 +675,7 @@ private fun MikaRoot(
                 onOpenPlans = { nav.push(Route.Plans) },
                 onOpenPersonas = if (personasOn) ({ nav.push(Route.Persona) }) else null,
                 autonomous = autonomous, onAutonomous = app.approvalControl::setAutonomous,
+                selfServe = autonomous, onSelfServe = app.approvalControl::setAutonomous,
                 updateVersion = updateState.update?.version, onOpenAbout = { nav.push(Route.About) },
                 mcpServers = app.mcpServers,
                 openPhoneOps = openPhoneOps, onPhoneOpsOpened = { openPhoneOps = false })
@@ -682,6 +685,7 @@ private fun MikaRoot(
         Route.VoiceModel -> VoiceModelScreen(store, onBack = back)
         Route.ImageModel -> ImageModelScreen(store, onBack = back)
         Route.Persona -> if (personasOn) PersonaScreen(app.personas, onBack = back) else LaunchedEffect(Unit) { nav.back() }
+        Route.Bots -> HqBotsScreen(personas = app.personas.personas.collectAsState().value, onOpenBot = { back() })
         Route.Vault -> VaultScreen(onBack = back)
         Route.GroupChats -> GroupChatsScreen(onBack = back, onNew = { nav.push(Route.Chat) })
         Route.Plugins -> PluginsScreen(app.plugins, onBack = back)

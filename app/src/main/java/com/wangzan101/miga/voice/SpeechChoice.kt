@@ -28,6 +28,9 @@ sealed interface SpeechChoice {
     /** 不用语音输入。 */
     data object Off : SpeechChoice
 
+    /** 本地 SenseVoice 转写(sherpa-onnx):绕开系统识别,不用密钥。 */
+    data object SenseVoice : SpeechChoice
+
     /** 用某个服务商的某个模型转写,[method] 决定请求怎么发。 */
     data class Provider(val providerId: String, val model: String, val method: TranscribeMethod) : SpeechChoice
 
@@ -220,6 +223,7 @@ class SpeechSettings(private val prefs: SharedPreferences, private val cipher: K
             SpeechChoice.Auto -> put(TYPE, JsonPrimitive("auto"))
             SpeechChoice.System -> put(TYPE, JsonPrimitive("system"))
             SpeechChoice.Off -> put(TYPE, JsonPrimitive("off"))
+            SpeechChoice.SenseVoice -> put(TYPE, JsonPrimitive("sensevoice"))
             is SpeechChoice.Doubao -> {
                 put(TYPE, JsonPrimitive("doubao"))
                 put("resourceId", JsonPrimitive(choice.resourceId))
@@ -250,6 +254,7 @@ class SpeechSettings(private val prefs: SharedPreferences, private val cipher: K
         "auto" -> SpeechChoice.Auto
         "system" -> SpeechChoice.System
         "off" -> SpeechChoice.Off
+        "sensevoice" -> SpeechChoice.SenseVoice
         "doubao" -> obj["resourceId"]?.jsonPrimitive?.contentOrNull
             ?.takeIf { it in DoubaoProtocol.resources }?.let { SpeechChoice.Doubao(it) }
         "funasr" -> obj["url"]?.jsonPrimitive?.contentOrNull?.let(FunAsrProtocol::normalize)

@@ -231,6 +231,11 @@ fun SpeechModelContent(
                 tr(R.string.models_off), selected = choice == SpeechChoice.Off, onClick = { actions.pick(SpeechChoice.Off) },
                 subtitle = tr(R.string.speech_off_note),
             )
+            RadioRow(
+                "本地 SenseVoice", selected = choice == SpeechChoice.SenseVoice, onClick = { actions.pick(SpeechChoice.SenseVoice) },
+                subtitle = "sherpa-onnx 离线转写 · 不用密钥 · 需下载模型",
+                trailing = { StatusPill("DeepDeep 那套", PillTone.Neutral) },
+            )
         }
         LiveRows(choice, doubaoConfigured, funAsrConfigured, actions)
         SpeechOptions.groups(ui.providers).forEach { g ->

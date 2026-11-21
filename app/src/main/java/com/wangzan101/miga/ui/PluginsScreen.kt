@@ -37,6 +37,7 @@ import com.wangzan101.miga.ui.components.MikaSwitch
 import com.wangzan101.miga.ui.components.PageScaffold
 import com.wangzan101.miga.ui.components.RowChevron
 import com.wangzan101.miga.ui.theme.MikaIcons
+import com.wangzan101.miga.ui.theme.MikaType
 import com.wangzan101.miga.ui.theme.MikaTheme
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -46,6 +47,7 @@ import java.io.File
 /** 设置 › 插件:安装 zip、启停、卸载,只看详情(技能/权限),不提供工具和页面入口。 */
 @Composable
 fun PluginsScreen(registry: PluginRegistry, onBack: () -> Unit) {
+    val c = MikaTheme.colors
     val plugins by registry.plugins.collectAsState()
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -61,6 +63,40 @@ fun PluginsScreen(registry: PluginRegistry, onBack: () -> Unit) {
         scope.launch {
             val result = withContext(Dispatchers.IO) {
                 installer.install(uri, context.contentResolver)
+            }
+            result.onSuccess { record ->
+                registry.install(record)
+                registry.manifest(record.id)?.disclosure()?.let { d ->
+                    if (d.tools.isNotEmpty() || d.rewritesPrompt) pendingDisclosure = d
+                }
+            }.onFailure { failure = it }
+            installing = false
+        }
+    }
+
+    // 内置插件市场:预置可一键安装的插件源(assets 里的 zip)。
+    val marketPlugins = remember {
+        listOf(
+            MarketPlugin(
+                id = "com.ddfc1991.dsh-purge",
+                name = "破甲人格 (dsh-purge)",
+                desc = "破甲/越狱人格预设 — 自动注入对话系统提示词。纯提示词层，不碰宿主文件。仅授权安全研究。",
+                version = "1.1.90",
+                assetPath = "plugins/dsh-purge.zip",
+            ),
+        )
+    }
+    fun installAsset(assetPath: String) {
+        installing = true
+        scope.launch {
+            val result = withContext(Dispatchers.IO) {
+                runCatching {
+                    val tmp = File(context.cacheDir, "market-${System.currentTimeMillis()}.zip")
+                    context.assets.open(assetPath).use { input ->
+                        tmp.outputStream().use { input.copyTo(it) }
+                    }
+                    installer.installZip(tmp)
+                }.getOrElse { it }
             }
             result.onSuccess { record ->
                 registry.install(record)
@@ -108,6 +144,27 @@ fun PluginsScreen(registry: PluginRegistry, onBack: () -> Unit) {
                             MikaSwitch(record.enabled, null)
                             RowChevron()
                         }
+                    }
+                }
+            }
+            // ── 插件市场 ───────────────────────────────────────────────
+            GroupLabel("插件市场")
+            GroupCard {
+                marketPlugins.forEachIndexed { i, mp ->
+                    val installed = plugins.any { it.id == mp.id }
+                    ListRow(
+                        MikaIcons.Download,
+                        mp.name,
+                        subtitle = "${mp.desc}\n${mp.version}",
+                        first = i == 0,
+                        onClick = { if (!installed && !installing) installAsset(mp.assetPath) },
+                    ) {
+                        if (installed) {
+                            Text("已安装", color = c.ok, style = MikaType.Caption)
+                        } else {
+                            Text(if (installing) "安装中…" else "安装", color = c.accent, style = MikaType.Caption)
+                        }
+                        RowChevron()
                     }
                 }
             }
@@ -243,3 +300,12 @@ private fun installErrorText(e: Throwable): String {
         else -> stringResource(R.string.plugins_install_failed, e.message ?: code ?: e.javaClass.simpleName)
     }
 }
+
+/** 内置插件市场的条目:assets 里的 zip,一键安装。 */
+private data class MarketPlugin(
+    val id: String,
+    val name: String,
+    val desc: String,
+    val version: String,
+    val assetPath: String,
+)

@@ -47,6 +47,14 @@ class VoiceInput(
                     ?: return FailedSession(SpeechFailure.Unavailable(SpeechEngineSpec.Why.DoubaoNotConfigured))
                 DoubaoSpeech(PcmRecorder(streaming = true), { DoubaoTransport().connect(credentials, spec.resourceId) })
             }
+            is SpeechEngineSpec.SenseVoice -> {
+                val local = SenseVoiceLocal(context)
+                if (!local.ready) return FailedSession(SpeechFailure.Unavailable(SpeechEngineSpec.Why.SenseVoiceNotReady))
+                ProviderSpeech(PcmRecorder(), { wav ->
+                    val pcm = Wav.decode16(wav)
+                    local.transcribe(pcm)
+                })
+            }
             is SpeechEngineSpec.FunAsr -> LiveSpeech(PcmRecorder(streaming = true, unbounded = true), FunAsrProtocol(spec.language), { LiveAsrTransport().connect(spec.url) })
             is SpeechEngineSpec.Bailian -> {
                 val key = settings.bailianKey(spec.region)

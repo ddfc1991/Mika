@@ -45,7 +45,6 @@ sealed interface SpeechFailure {
     data class Provider(val error: ModelError) : SpeechFailure
     data class Unavailable(val why: SpeechEngineSpec.Why) : SpeechFailure
 }
-
 interface SpeechSession {
     /** 只给一个收集者;每个事件只送一次,[SpeechEvent.Final]/[SpeechEvent.Failed] 之后或 [cancel] 之后流就结束。 */
     val events: Flow<SpeechEvent>

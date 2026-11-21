@@ -31,18 +31,6 @@ import com.wangzan101.miga.ui.theme.MikaIcons
 /** Bots 屏的一个 bot。 */
 data class HqBot(val name: String, val group: String, val summary: String, val time: String)
 
-private val demoBots = listOf(
-    HqBot("Hermes", "置顶", "就绪。所有系统正常。", "上午 9:41"),
-    HqBot("部署", "置顶", "跑一下测试，告诉我 2.4 是否就绪。", "上午 9:37"),
-    HqBot("研究", "置顶", "对比了三个向量库。", "上午 9:12"),
-    HqBot("收件箱", "工作", "14 条新消息，3 条需要你今天处理。", "上午 9:05"),
-    HqBot("写作", "工作", "从 410 词精简到 180 词。", "上午 7:30"),
-    HqBot("财务", "工作", "两张发票仍需你确认。", "周一"),
-    HqBot("花园", "家庭", "今晚有霜冻，低至 -1°C。", "周日"),
-    HqBot("家", "家庭", "水泵报价 $1,840 回来了。", "周六"),
-    HqBot("旅行", "家庭", "机票和酒店已订好。", "周五"),
-)
-
 /** 顶排 3 个置顶大 blob（pebble 55dp + 名称）。 */
 @Composable
 fun HqTopPebbles(
@@ -76,9 +64,13 @@ fun HqTopPebbles(
 /** Bots 列表屏：大标题 + 图标胶囊 + 顶排大 blob + 分组列表。 */
 @Composable
 fun HqBotsScreen(
+    personas: List<com.wangzan101.miga.settings.Persona> = emptyList(),
     onOpenBot: (HqBot) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    // 主 agent(本能全能) + 分出的 bot(personas 真实数据)
+    val mainBot = HqBot("Miga", "主智能体", "本能全能 · 随时可分 bot 干活", "在线")
+    val botList = personas.map { HqBot(it.name, "分出的 bot", it.description.ifBlank { "自定义人格" }, "就绪") }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -116,11 +108,12 @@ fun HqBotsScreen(
         }
 
         Spacer(Modifier.height(20.dp))
-        HqTopPebbles(demoBots.filter { it.group == "置顶" }, onOpenBot)
+        HqTopPebbles(listOf(mainBot), onOpenBot)
         Spacer(Modifier.height(24.dp))
 
-        // 分组列表
-        demoBots.filter { it.group != "置顶" }.groupBy { it.group }.forEach { (group, items) ->
+        // 分组列表:主智能体 + 分出的 bot
+        listOf("主智能体" to listOf(mainBot), "分出的 bot" to botList).forEach { (group, items) ->
+            if (items.isEmpty()) return@forEach
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
