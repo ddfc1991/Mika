@@ -91,23 +91,25 @@ fun HqMoreScreen(
         }
         Spacer(Modifier.height(24.dp))
 
-        HqMenuGroup("", listOf(
+        HqMenuGroup("系统", listOf(
             HqMoreEntry("settings", "设置", MikaIcons.Gear, Hq.ink2),
+            HqMoreEntry("models", "模型", MikaIcons.Star, Hq.accent),
+            HqMoreEntry("groups", "模型组", MikaIcons.Apps, Hq.accent),
+            HqMoreEntry("vault", "账户金库", MikaIcons.Shield, Color(0xFFAF52DE)),
         ), onEntry)
-        HqMenuGroup("机器人", listOf(
-            HqMoreEntry("profiles", "机器人配置", MikaIcons.Shield, Color(0xFFAF52DE)),
-            HqMoreEntry("capabilities", "能力", MikaIcons.Apps, Hq.accent),
+        HqMenuGroup("消息与数据", listOf(
             HqMoreEntry("messaging", "消息", MikaIcons.Message, Hq.ok),
+            HqMoreEntry("groupchats", "群聊", MikaIcons.Route, Color(0xFF40C8E0)),
+            HqMoreEntry("files", "文件库", MikaIcons.Folder, Hq.accent),
+            HqMoreEntry("memory", "记忆", MikaIcons.Spark, Color(0xFFBF5AF2)),
+            HqMoreEntry("usage", "用量", MikaIcons.Chart, Hq.ok),
         ), onEntry)
-        HqMenuGroup("工作区", listOf(
-            HqMoreEntry("files", "文件", MikaIcons.Folder, Hq.accent),
-            HqMoreEntry("review", "审查", MikaIcons.Chart, Hq.ok),
-            HqMoreEntry("artifacts", "产物", MikaIcons.Photo, Color(0xFFFF375F)),
-        ), onEntry)
-        HqMenuGroup("洞察", listOf(
-            HqMoreEntry("center", "指挥中心", MikaIcons.Clock, Hq.ink2),
-            HqMoreEntry("spawn", "生成树", MikaIcons.Route, Color(0xFF40C8E0)),
-            HqMoreEntry("star", "星图", MikaIcons.Spark, Color(0xFFBF5AF2)),
+        HqMenuGroup("工作与智能", listOf(
+            HqMoreEntry("plans", "计划", MikaIcons.Clock, Hq.ink2),
+            HqMoreEntry("screens", "后台屏", MikaIcons.Route, Color(0xFF40C8E0)),
+            HqMoreEntry("teach", "教", MikaIcons.Edit, Hq.accent),
+            HqMoreEntry("calls", "通话", MikaIcons.Message, Hq.ok),
+            HqMoreEntry("plugins", "插件中心", MikaIcons.Apps, Color(0xFFBF5AF2)),
         ), onEntry)
         Spacer(Modifier.height(80.dp))
     }

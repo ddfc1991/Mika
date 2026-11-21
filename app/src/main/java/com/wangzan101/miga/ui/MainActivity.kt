@@ -644,17 +644,19 @@ private fun MikaRoot(
                 onMoreEntry = { entry ->
                     when (entry.id) {
                         "settings" -> nav.push(Route.Settings)
-                        "memory" -> nav.push(Route.Memory)
                         "models" -> nav.push(Route.Models)
-                        "profiles" -> nav.push(Route.Persona)
-                        "capabilities" -> nav.push(Route.Models)
+                        "groups" -> nav.push(Route.ModelGroups)
+                        "vault" -> nav.push(Route.Vault)
                         "messaging" -> nav.reset()
+                        "groupchats" -> nav.push(Route.GroupChats)
                         "files" -> { filesFromDrawer = false; filesConversation = app.chat.ui.value.conversationId; nav.push(Route.Files) }
-                        "review" -> nav.push(Route.Teach)
-                        "artifacts" -> nav.push(Route.Files)
-                        "center" -> nav.push(Route.Plans)
-                        "spawn" -> nav.push(Route.Teach)
-                        "star" -> nav.push(Route.Memory)
+                        "memory" -> nav.push(Route.Memory)
+                        "usage" -> nav.push(Route.Usage)
+                        "plans" -> nav.push(Route.Plans)
+                        "screens" -> nav.push(Route.Screens)
+                        "teach" -> nav.push(Route.Teach)
+                        "calls" -> nav.push(Route.Calls)
+                        "plugins" -> nav.push(Route.Plugins)
                         else -> {}
                     }
                 },
@@ -679,6 +681,9 @@ private fun MikaRoot(
         Route.VoiceModel -> VoiceModelScreen(store, onBack = back)
         Route.ImageModel -> ImageModelScreen(store, onBack = back)
         Route.Persona -> if (personasOn) PersonaScreen(app.personas, onBack = back) else LaunchedEffect(Unit) { nav.back() }
+        Route.Vault -> VaultScreen(onBack = back)
+        Route.GroupChats -> GroupChatsScreen(onBack = back, onNew = { nav.push(Route.Chat) })
+        Route.Plugins -> PluginsScreen(app.plugins, onBack = back)
         Route.Usage -> UsageScreen(app.usage, store, onBack = back, onOpenUrl = { openInBrowser(context, it) })
         Route.SpeechModel -> SpeechModelScreen(store, onBack = back)
         Route.About -> AboutScreen(
