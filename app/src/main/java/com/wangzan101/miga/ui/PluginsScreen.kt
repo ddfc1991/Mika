@@ -96,7 +96,7 @@ fun PluginsScreen(registry: PluginRegistry, onBack: () -> Unit) {
                         tmp.outputStream().use { input.copyTo(it) }
                     }
                     installer.installZip(tmp).getOrThrow()
-                }.getOrElse { it }
+                }
             }
             result.onSuccess { record ->
                 registry.install(record)

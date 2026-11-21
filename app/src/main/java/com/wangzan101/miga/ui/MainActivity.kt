@@ -681,7 +681,7 @@ private fun MikaRoot(
                 openPhoneOps = openPhoneOps, onPhoneOpsOpened = { openPhoneOps = false })
         }
         Route.Models -> ModelsScreen(store, onBack = back, onOpenSpeech = { nav.push(Route.SpeechModel) }, onOpenVoice = { nav.push(Route.VoiceModel) }, onOpenImage = { nav.push(Route.ImageModel) }, onOpenUsage = { nav.push(Route.Usage) }, onOpenGroups = { nav.push(Route.ModelGroups) })
-        Route.ModelGroups -> ModelGroupsScreen(app.modelGroups, onBack = back)
+        Route.ModelGroups -> ModelGroupsScreen(app.modelGroups, onBack = back, providers = app.providers)
         Route.VoiceModel -> VoiceModelScreen(store, onBack = back)
         Route.ImageModel -> ImageModelScreen(store, onBack = back)
         Route.Persona -> if (personasOn) PersonaScreen(app.personas, onBack = back) else LaunchedEffect(Unit) { nav.back() }

@@ -2,7 +2,6 @@ package com.wangzan101.miga.ui.hq
 
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.getValue
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.runtime.Composable
@@ -34,7 +33,7 @@ fun DissolveParticles(
         progress.animateTo(1f, tween(420, easing = FastOutSlowInEasing))
         onDone()
     }
-    val p by progress
+    val p = progress.value
     val density = LocalDensity.current
     Canvas(modifier) {
         val w = size.width
