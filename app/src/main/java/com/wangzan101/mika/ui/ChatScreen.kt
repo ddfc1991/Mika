@@ -108,6 +108,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.platform.LocalContext
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.PickVisualMediaRequest
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalLayoutDirection
@@ -394,6 +397,11 @@ fun ChatScreen(
     val runMetrics = rememberRunMetrics(endedRuns)
     val context = LocalContext.current
 
+    // 助手头像：长按顶栏头像 → 相册选图 → 存自定义头像（只换图，动画/语言不变）
+    val avatarPicker = rememberLauncherForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
+        if (uri != null) com.wangzan101.mika.settings.AvatarStore.set(context, uri)
+    }
+
     val c = MikaTheme.colors
     val backdrop = rememberGlassBackdrop()
     /** 长按了的那条消息;菜单开着(收起的动画放完才清掉)。 */
@@ -502,7 +510,13 @@ fun ChatScreen(
                         Row(Modifier.clickable(role = Role.Button, onClickLabel = stringResource(R.string.chat_usage_title)) { showUsage = true }
                             .testTag("chat-usage-title").padding(horizontal = 14.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                            CatGirlAvatar(speaking = vm.voice.collectAsState().value != VoicePlayback.Idle, size = 34)
+                            CatGirlAvatar(
+                                speaking = vm.voice.collectAsState().value != VoicePlayback.Idle,
+                                size = 34,
+                                onLongClick = {
+                                    avatarPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                                },
+                            )
                         }
                     }
                     GlassSurface(modifier = Modifier.size(MikaSize.IconButton), backdrop = backdrop, shape = CircleShape) {

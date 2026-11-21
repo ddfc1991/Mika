@@ -6,9 +6,11 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +26,9 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -33,8 +37,10 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -148,20 +154,35 @@ fun GlassChip(text: String, tint: Color? = null, modifier: Modifier = Modifier) 
  * 动态猫娘头像：会动（呼吸/眨眼/说话口型）+ 会发声（说话时口型动，配 TTS/语音）。
  * [speaking] 说话中（口型快速开合 + 声波环）；[blink] 眨眼帧。
  */
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun CatGirlAvatar(
     speaking: Boolean,
     modifier: Modifier = Modifier,
     size: Int = 64,
+    onLongClick: (() -> Unit)? = null,
 ) {
     val c = MikaTheme.colors
     val infinite = rememberInfiniteTransition()
+    val context = LocalContext.current
+    val ver by com.wangzan101.mika.settings.AvatarStore.version.collectAsState()
+    // 自定义头像（用户换过图）优先；否则默认 5934 绿眼猫娘
+    val custom = remember(ver) {
+        if (com.wangzan101.mika.settings.AvatarStore.has(context)) {
+            android.graphics.BitmapFactory.decodeFile(com.wangzan101.mika.settings.AvatarStore.file(context).absolutePath)
+        } else null
+    }
     // 呼吸：整体轻微缩放
     val breathe by infinite.animateFloat(
         initialValue = 1f, targetValue = 1.035f,
         animationSpec = infiniteRepeatable(tween(1600), RepeatMode.Reverse),
     )
-    Box(modifier.size(size.dp), contentAlignment = Alignment.Center) {
+    Box(
+        modifier.size(size.dp).then(
+            if (onLongClick != null) Modifier.combinedClickable(onClick = {}, onLongClick = onLongClick) else Modifier
+        ),
+        contentAlignment = Alignment.Center,
+    ) {
         // 声波环（说话时）
         if (speaking) {
             val ringAlpha by infinite.animateFloat(
@@ -170,17 +191,26 @@ fun CatGirlAvatar(
             )
             Box(Modifier.size((size * 1.15f).dp).border(2.dp, c.ok.copy(alpha = ringAlpha), CircleShape))
         }
-        // 猫娘头像图（复刻 5935，白底圆）
+        // 猫娘头像图（用户自定义 or 默认绿眼猫娘）
         Box(
             Modifier.size((size * 0.95f).dp).scale(breathe)
                 .clip(CircleShape).background(Color.White),
         ) {
-            Image(
-                painter = painterResource(com.wangzan101.mika.R.drawable.miga_catgirl_avatar),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-                contentScale = ContentScale.Crop,
-            )
+            if (custom != null) {
+                Image(
+                    bitmap = custom.asImageBitmap(),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
+                )
+            } else {
+                Image(
+                    painter = painterResource(com.wangzan101.mika.R.drawable.miga_catgirl_avatar),
+                    contentDescription = null,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop,
+                )
+            }
         }
     }
 }
