@@ -59,7 +59,7 @@ object Releases {
             name = o.str("name")?.takeIf { it.isNotBlank() } ?: version,
             notes = body.trim(),
             date = o.str("published_at")?.take(10)?.takeIf { it.length == 10 },
-            pageUrl = o.str("html_url") ?: "${MigaLinks.RELEASES}/tag/$tag",
+            pageUrl = o.str("html_url") ?: "${MikaLinks.RELEASES}/tag/$tag",
             apkUrl = apk?.url,
             apkSize = apk?.size,
             apkDigest = apk?.digest,

@@ -169,6 +169,7 @@ object DiagnosticsCollector {
             SpeechChoice.Auto -> "auto"
             SpeechChoice.System -> "system"
             SpeechChoice.Off -> "off"
+            SpeechChoice.SenseVoice -> "sensevoice-local"
             is SpeechChoice.Doubao -> "doubao-asr-2.0 / ${c.resourceId}"
             is SpeechChoice.FunAsr -> "funasr-ws @ ${Diagnostics.host(c.url)}"
             is SpeechChoice.Bailian -> "bailian-asr / ${c.model} / ${c.region.name}" + if (c.workspace.isNotEmpty()) " / workspace" else ""

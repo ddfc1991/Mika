@@ -938,8 +938,20 @@ class ProviderStore(
         val models = ArrayList<ChatModel>()
         val providerIds = ArrayList<String>()
         val rolePrimaryId = _roles.value.resolve(role)
-        for (id in _roles.value.fallbacks(role)) {
-            if (id == rolePrimaryId) continue
+        // 用户手动配置的备援(项目 3)
+        val configured = _roles.value.fallbacks(role).filter { it != rolePrimaryId }
+        val candidates: List<String> = if (configured.isNotEmpty()) {
+            configured
+        } else {
+            // 没手动配备援:自动备援——同角色所有已配置模型,优先不同服务商的(限流时自动换,像 Mibot 那样)
+            val primaryCfg = rolePrimaryId?.let { configById(it) }
+            val primaryProvider = primaryCfg?.providerId
+            _configs.value
+                .filter { it.id != rolePrimaryId }
+                .sortedBy { if (it.providerId == primaryProvider) 1 else 0 }
+                .map { it.id }
+        }
+        for (id in candidates) {
             val cfg = configById(id) ?: continue
             val m = modelForRoleConfig(role, id, session) ?: continue
             models += m
