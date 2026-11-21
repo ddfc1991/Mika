@@ -32,8 +32,8 @@
 ### Task 1: 抽出 Markdown 里的 `/workspace` 引用（纯逻辑）
 
 **Files:**
-- Modify: `app/src/main/java/com/wangzan101/mika/ui/MarkdownModel.kt`
-- Test: `app/src/test/java/com/wangzan101/mika/ui/MarkdownModelTest.kt`（若已存在则追加）
+- Modify: `app/src/main/java/com/wangzan101/miga/ui/MarkdownModel.kt`
+- Test: `app/src/test/java/com/wangzan101/miga/ui/MarkdownModelTest.kt`（若已存在则追加）
 
 **Interfaces:**
 - Produces: `fun MarkdownModel.workspaceRefs(markdown: String): List<String>` — 返回 Markdown 里所有 `Image`/`Link` 节点的 `destination` 中以 `/workspace` 开头的路径（按出现顺序，去重，保留原样含 `/workspace` 前缀）。
@@ -72,7 +72,7 @@ Expected: PASS
 - [ ] **Step 5: Commit**
 
 ```bash
-git add app/src/main/java/com/wangzan101/mika/ui/MarkdownModel.kt app/src/test/java/com/wangzan101/mika/ui/MarkdownModelTest.kt
+git add app/src/main/java/com/wangzan101/miga/ui/MarkdownModel.kt app/src/test/java/com/wangzan101/miga/ui/MarkdownModelTest.kt
 git commit -m "feat(markdown): 抽出回复里的 /workspace 引用"
 ```
 
@@ -81,8 +81,8 @@ git commit -m "feat(markdown): 抽出回复里的 /workspace 引用"
 ### Task 2: 把引用解析成「类型 + 宿主文件」
 
 **Files:**
-- Create: `app/src/main/java/com/wangzan101/mika/ui/WorkspaceRef.kt`（或并入现有 attachment 文件，见下）
-- Test: `app/src/test/java/com/wangzan101/mika/ui/WorkspaceRefTest.kt`
+- Create: `app/src/main/java/com/wangzan101/miga/ui/WorkspaceRef.kt`（或并入现有 attachment 文件，见下）
+- Test: `app/src/test/java/com/wangzan101/miga/ui/WorkspaceRefTest.kt`
 
 **Interfaces:**
 - Consumes: `MarkdownModel.workspaceRefs(markdown)`（Task 1）

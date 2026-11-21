@@ -2,7 +2,7 @@
 
 这份文档按代码现状描述 Mika 的整体结构,方便找代码。还没做的、做了一半的写在 [`roadmap.md`](roadmap.md)。
 
-路径缩写:`core/…` = `core/src/main/kotlin/com/wangzan101/mika/core/`,`app/…` = `app/src/main/java/com/wangzan101/mika/`。
+路径缩写:`core/…` = `core/src/main/kotlin/com/wangzan101/miga/core/`,`app/…` = `app/src/main/java/com/wangzan101/miga/`。
 
 ## 1. 模块与分层
 

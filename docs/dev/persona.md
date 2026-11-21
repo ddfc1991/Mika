@@ -30,7 +30,7 @@ capabilities/groups.md、channels.md、phone.md、web.md、sandbox.md …（按�
 - 不能改证据、安全、隐私、授权、确认、完成规则；
 - 人格不能授予工具、权限或访问。
 
-`PersonaPrompt`（`core/src/main/kotlin/com/wangzan101/mika/core/prompt/PersonaPrompt.kt`）负责拼装：
+`PersonaPrompt`（`core/src/main/kotlin/com/wangzan101/miga/core/prompt/PersonaPrompt.kt`）负责拼装：
 
 - 名称去掉换行，限长 40，再转义 `& < > "`；
 - 正文去掉除换行/制表符外的控制字符和 bidi 控制符；
