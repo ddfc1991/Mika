@@ -197,10 +197,10 @@ fun HqJobsScreen(modifier: Modifier = Modifier) {
 private data class HqTask(val title: String, val meta: String, val col: String)
 
 private val demoKanban = listOf(
-    HqTask("Approve the 2.4 release notes", "Deploys · 3h · 2 comments", "Blocked"),
-    HqTask("Sign off on vector store", "Research · 1h", "Triage"),
-    HqTask("Draft invoice reminders", "Finance · 5h", "Todo"),
-    HqTask("Prep greenhouse for frost", "Garden · tomorrow", "Scheduled"),
+    HqTask("批准 2.4 发布说明", "部署 · 3小时 · 2条评论", "阻塞"),
+    HqTask("签署向量库方案", "研究 · 1小时", "待办"),
+    HqTask("起草发票提醒", "财务 · 5小时", "待办"),
+    HqTask("为霜冻准备温室", "花园 · 明天", "已计划"),
 )
 
 /** Kanban 屏：列芯片 + 任务卡。 */
@@ -236,10 +236,10 @@ fun HqKanbanScreen(modifier: Modifier = Modifier) {
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
             listOf(
-                Triple("Blocked", Color(0xFFFF453A), true),
-                Triple("Triage", Color(0xFF8E8E93), false),
-                Triple("Todo", Color(0xFFC7C7CC), false),
-                Triple("Scheduled", Color(0xFFBF5AF2), false),
+                Triple("阻塞", Color(0xFFFF453A), true),
+                Triple("待办", Color(0xFF8E8E93), false),
+                Triple("待处理", Color(0xFFC7C7CC), false),
+                Triple("已计划", Color(0xFFBF5AF2), false),
             ).forEach { (name, dot, sel) ->
                 Row(
                     modifier = Modifier
@@ -267,9 +267,9 @@ fun HqKanbanScreen(modifier: Modifier = Modifier) {
                 Text(task.title, style = HqType.RowTitle, color = Hq.ink)
                 Spacer(Modifier.height(4.dp))
                 Text(task.meta, style = HqType.Caption, color = Hq.ink2)
-                if (task.col == "Blocked") {
+                if (task.col == "阻塞") {
                     Spacer(Modifier.height(6.dp))
-                    Text("Needs your input", style = HqType.Caption, color = Color(0xFFFF6B5E))
+                    Text("需要你的输入", style = HqType.Caption, color = Color(0xFFFF6B5E))
                 }
             }
         }
