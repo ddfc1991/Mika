@@ -503,7 +503,6 @@ fun ChatScreen(
                             .testTag("chat-usage-title").padding(horizontal = 14.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                             CatGirlAvatar(speaking = vm.voice.collectAsState().value != VoicePlayback.Idle, size = 34)
-                            Text(ChatCopy.APP_TITLE, style = MikaType.Title, color = c.ink, maxLines = 1)
                         }
                     }
                     GlassSurface(modifier = Modifier.size(MikaSize.IconButton), backdrop = backdrop, shape = CircleShape) {
