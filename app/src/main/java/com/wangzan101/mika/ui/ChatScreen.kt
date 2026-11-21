@@ -510,9 +510,17 @@ fun ChatScreen(
                         Row(Modifier.clickable(role = Role.Button, onClickLabel = stringResource(R.string.chat_usage_title)) { showUsage = true }
                             .testTag("chat-usage-title").padding(horizontal = 14.dp, vertical = 8.dp),
                             verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            // 头像状态：等待模型=思考中/处理中；说话=说话中；否则无
+                            val processing = ui.exchanges.lastOrNull()?.waitingForModel == true
+                            val speakingNow = vm.voice.collectAsState().value != VoicePlayback.Idle
                             CatGirlAvatar(
-                                speaking = vm.voice.collectAsState().value != VoicePlayback.Idle,
+                                speaking = speakingNow,
                                 size = 34,
+                                status = when {
+                                    processing -> stringResource(R.string.chat_working)
+                                    speakingNow -> stringResource(R.string.chat_speaking)
+                                    else -> null
+                                },
                                 onLongClick = {
                                     avatarPicker.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
                                 },

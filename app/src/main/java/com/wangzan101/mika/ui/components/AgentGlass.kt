@@ -3,6 +3,7 @@ package com.wangzan101.mika.ui.components
 import androidx.compose.animation.core.RepeatMode
 import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.keyframes
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
@@ -19,6 +20,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -44,6 +46,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.sp
 import com.wangzan101.mika.ui.theme.MikaTheme
 
@@ -161,6 +164,8 @@ fun CatGirlAvatar(
     modifier: Modifier = Modifier,
     size: Int = 64,
     onLongClick: (() -> Unit)? = null,
+    /** 状态文字（思考中/处理中/说话中…），显示在头像圆圈下方；null=不显示。 */
+    status: String? = null,
 ) {
     val c = MikaTheme.colors
     val infinite = rememberInfiniteTransition()
@@ -172,45 +177,77 @@ fun CatGirlAvatar(
             android.graphics.BitmapFactory.decodeFile(com.wangzan101.mika.settings.AvatarStore.file(context).absolutePath)
         } else null
     }
-    // 呼吸：整体轻微缩放
+    // 呼吸：整体明显缩放
     val breathe by infinite.animateFloat(
-        initialValue = 1f, targetValue = 1.035f,
-        animationSpec = infiniteRepeatable(tween(1600), RepeatMode.Reverse),
+        initialValue = 1f, targetValue = 1.06f,
+        animationSpec = infiniteRepeatable(tween(2000), RepeatMode.Reverse),
     )
-    Box(
-        modifier.size(size.dp).then(
+    // 上下浮动（悬浮感）
+    val floatY by infinite.animateFloat(
+        initialValue = -1.5f, targetValue = 1.5f,
+        animationSpec = infiniteRepeatable(tween(2400), RepeatMode.Reverse),
+    )
+    // 眨眼：每 3.6s 一次快速压扁（模拟闭眼，任何头像通用）
+    val blinkY by infinite.animateFloat(
+        initialValue = 1f, targetValue = 1f,
+        animationSpec = infiniteRepeatable(
+            keyframes { durationMillis = 3600; 1f at 0; 0.93f at 3300; 1f at 3600 }
+        ),
+    )
+    // 口型：说话时快速小幅压扁（模拟嘴动）
+    val mouthY by infinite.animateFloat(
+        initialValue = 1f, targetValue = 0.95f,
+        animationSpec = infiniteRepeatable(tween(160), RepeatMode.Reverse),
+    )
+    val effMouth = if (speaking) mouthY else 1f
+    Column(
+        modifier.width(size.dp).then(
             if (onLongClick != null) Modifier.combinedClickable(onClick = {}, onLongClick = onLongClick) else Modifier
         ),
-        contentAlignment = Alignment.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // 声波环（说话时）
-        if (speaking) {
-            val ringAlpha by infinite.animateFloat(
-                initialValue = 0.5f, targetValue = 0.1f,
-                animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse),
-            )
-            Box(Modifier.size((size * 1.15f).dp).border(2.dp, c.ok.copy(alpha = ringAlpha), CircleShape))
-        }
-        // 猫娘头像图（用户自定义 or 默认绿眼猫娘）
-        Box(
-            Modifier.size((size * 0.95f).dp).scale(breathe)
-                .clip(CircleShape).background(Color.White),
-        ) {
-            if (custom != null) {
-                Image(
-                    bitmap = custom.asImageBitmap(),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
+        Box(contentAlignment = Alignment.Center) {
+            // 声波环（说话时）
+            if (speaking) {
+                val ringAlpha by infinite.animateFloat(
+                    initialValue = 0.5f, targetValue = 0.1f,
+                    animationSpec = infiniteRepeatable(tween(800), RepeatMode.Reverse),
                 )
-            } else {
-                Image(
-                    painter = painterResource(com.wangzan101.mika.R.drawable.miga_catgirl_avatar),
-                    contentDescription = null,
-                    modifier = Modifier.fillMaxSize(),
-                    contentScale = ContentScale.Crop,
-                )
+                Box(Modifier.size((size * 1.2f).dp).border(2.dp, c.ok.copy(alpha = ringAlpha), CircleShape))
             }
+            // 猫娘头像图（用户自定义 or 默认绿眼猫娘）
+            Box(
+                Modifier.size((size * 0.95f).dp).offset(y = floatY.dp).scale(breathe)
+                    .clip(CircleShape).background(Color.White),
+            ) {
+                val imgModifier = Modifier.fillMaxSize().scale(1f, blinkY * effMouth)
+                if (custom != null) {
+                    Image(
+                        bitmap = custom.asImageBitmap(),
+                        contentDescription = null,
+                        modifier = imgModifier,
+                        contentScale = ContentScale.Crop,
+                    )
+                } else {
+                    Image(
+                        painter = painterResource(com.wangzan101.mika.R.drawable.miga_catgirl_avatar),
+                        contentDescription = null,
+                        modifier = imgModifier,
+                        contentScale = ContentScale.Crop,
+                    )
+                }
+            }
+        }
+        // 状态文字：圆圈下方小胶囊（思考中/处理中/说话中）
+        if (status != null) {
+            Text(
+                status,
+                fontSize = (size * 0.24f).sp,
+                color = c.ink,
+                maxLines = 1,
+                modifier = Modifier.padding(top = 3.dp)
+                    .background(c.glass, RoundedCornerShape(50)).padding(horizontal = 6.dp, vertical = 2.dp),
+            )
         }
     }
 }
