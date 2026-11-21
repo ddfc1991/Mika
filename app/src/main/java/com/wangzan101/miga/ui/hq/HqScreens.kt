@@ -255,10 +255,11 @@ fun HqFeedScreen(
         }
         Spacer(Modifier.height(16.dp))
 
-        // 正在跑的任务（实时）
-        if (tasks.isNotEmpty()) {
-            Text("正在跑", style = HqType.RowTitle, color = Hq.ink2, modifier = Modifier.padding(horizontal = HqSpace.Page))
-            Spacer(Modifier.height(8.dp))
+        // 统一时间线（信息茧房：一条流全是你的活动）
+        val sorted = sessions.sortedByDescending { it.updatedAt }
+        if (tasks.isEmpty() && sorted.isEmpty()) {
+            Text("还没有动态——去对话里跟 Miga 聊聊吧", style = HqType.Caption, color = Hq.ink3, modifier = Modifier.padding(horizontal = HqSpace.Page, vertical = 24.dp))
+        } else {
             tasks.forEach { task ->
                 Column(
                     modifier = Modifier.fillMaxWidth().clickable { onOpenTask(task) }
@@ -275,15 +276,8 @@ fun HqFeedScreen(
                 }
             }
             Spacer(Modifier.height(16.dp))
-        }
-
-        // 会话动态（按最近更新倒序）
-        Text("动态", style = HqType.RowTitle, color = Hq.ink2, modifier = Modifier.padding(horizontal = HqSpace.Page))
-        Spacer(Modifier.height(8.dp))
-        val sorted = sessions.sortedByDescending { it.updatedAt }
-        if (sorted.isEmpty()) {
-            Text("还没有动态——去对话里跟 Miga 聊聊吧", style = HqType.Caption, color = Hq.ink3, modifier = Modifier.padding(horizontal = HqSpace.Page, vertical = 24.dp))
-        } else {
+            Text("动态", style = HqType.RowTitle, color = Hq.ink2, modifier = Modifier.padding(horizontal = HqSpace.Page))
+            Spacer(Modifier.height(8.dp))
             sorted.forEach { s ->
                 Box(
                     modifier = Modifier.fillMaxWidth()
