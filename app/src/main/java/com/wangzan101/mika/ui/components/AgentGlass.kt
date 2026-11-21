@@ -6,6 +6,7 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -26,12 +27,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.scale
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -157,16 +161,6 @@ fun CatGirlAvatar(
         initialValue = 1f, targetValue = 1.035f,
         animationSpec = infiniteRepeatable(tween(1600), RepeatMode.Reverse),
     )
-    // 说话：口型开合（快速）
-    val mouth by infinite.animateFloat(
-        initialValue = 0.15f, targetValue = 1f,
-        animationSpec = infiniteRepeatable(tween(140), RepeatMode.Reverse),
-    )
-    // 眨眼：周期闭合（动画）
-    val blinkAlpha by infinite.animateFloat(
-        initialValue = 1f, targetValue = 0.12f,
-        animationSpec = infiniteRepeatable(tween(120, delayMillis = 3000), RepeatMode.Reverse),
-    )
     Box(modifier.size(size.dp), contentAlignment = Alignment.Center) {
         // 声波环（说话时）
         if (speaking) {
@@ -176,47 +170,22 @@ fun CatGirlAvatar(
             )
             Box(Modifier.size((size * 1.15f).dp).border(2.dp, c.ok.copy(alpha = ringAlpha), CircleShape))
         }
-        // 头像底（深色圆 + 白圆）
+        // 猫娘头像图（复刻 5935，白底圆）
         Box(
             Modifier.size((size * 0.95f).dp).scale(breathe)
-                .background(c.bg, CircleShape),
+                .clip(CircleShape).background(Color.White),
         ) {
-            // 猫娘（简笔：白脸 + 黑发 + 猫耳 + 大眼）
-            CatGirlFace(blinkAlpha, mouth, speaking, c)
+            Image(
+                painter = painterResource(com.wangzan101.mika.R.drawable.miga_catgirl_avatar),
+                contentDescription = null,
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.Crop,
+            )
         }
     }
 }
 
 @Composable
 private fun CatGirlFace(blink: Float, mouth: Float, speaking: Boolean, c: com.wangzan101.mika.ui.theme.MikaColors) {
-    // Canvas 简笔猫娘：圆脸白、黑发、猫耳、大眼、嘴（说话开合）、腮红
-    Canvas(Modifier.fillMaxSize()) {
-        val w = size.width
-        val h = size.height
-        // 脸
-        drawCircle(androidx.compose.ui.graphics.Color.White, radius = w * 0.30f, center = center)
-        // 黑发（上半圆）
-        drawArc(androidx.compose.ui.graphics.Color.Black, 180f, 180f, false,
-            topLeft = Offset(w * 0.20f, h * 0.12f), size = Size(w * 0.60f, h * 0.60f))
-        // 猫耳
-        drawPath(
-            androidx.compose.ui.graphics.Path().apply {
-                moveTo(w * 0.28f, h * 0.42f); lineTo(w * 0.34f, h * 0.14f); lineTo(w * 0.52f, h * 0.34f); close()
-            },
-            androidx.compose.ui.graphics.Color.Black,
-        )
-        drawPath(
-            androidx.compose.ui.graphics.Path().apply {
-                moveTo(w * 0.72f, h * 0.42f); lineTo(w * 0.66f, h * 0.14f); lineTo(w * 0.48f, h * 0.34f); close()
-            },
-            androidx.compose.ui.graphics.Color.Black,
-        )
-        // 大眼（眨眼时闭合）
-        val eyeH = w * 0.14f * blink
-        drawOval(androidx.compose.ui.graphics.Color.Black, topLeft = Offset(w * 0.36f, h * 0.48f), size = Size(w * 0.11f, eyeH))
-        drawOval(androidx.compose.ui.graphics.Color.Black, topLeft = Offset(w * 0.53f, h * 0.48f), size = Size(w * 0.11f, eyeH))
-        // 嘴（说话开合）
-        val mouthH = w * (if (speaking) 0.06f * mouth else 0.025f)
-        drawOval(androidx.compose.ui.graphics.Color.Black, topLeft = Offset(w * 0.46f, h * 0.66f), size = Size(w * 0.08f, mouthH))
-    }
+    // 简笔猫娘（旧版，已用图替代）——保留占位
 }
