@@ -164,6 +164,27 @@ object VaultStore {
         }
     }
 
+    /** 预置用户常用账户元数据(secret 留空,打开金库补授权)。首次启动金库为空时执行。 */
+    fun seedAccounts(ctx: Context) {
+        ensureLoaded(ctx)
+        if (_entries.value.isNotEmpty()) return
+        fun add(id: String, site: String, username: String, cat: String, perm: VaultPermission, svc: String? = null) {
+            upsert(ctx, VaultEntry(id, site, username, cat, permission = perm, manifestId = svc, serviceId = svc, kind = "cookie"), null)
+        }
+        add("725a790d", "aistudio.google.com", "deninguang740@gmail.com", "AI 服务", VaultPermission.AUTO, "gemini")
+        add("44f26100", "mail.163.com", "", "邮箱", VaultPermission.ASK, "neteasemail")
+        add("9a2a759a", "github.com", "ddfc1991", "云服务器", VaultPermission.AUTO, "github")
+        add("cde7a6db", "aliyun.com", "", "云服务器", VaultPermission.ASK, "aliyun")
+        add("3572ea11", "cloud.tencent.com", "", "云服务器", VaultPermission.ASK, "tencentcloud")
+        add("7c29eeb1", "x.com", "13690688658", "社交", VaultPermission.AUTO, "x")
+        add("e4ececb8", "bilibili.com", "", "社交", VaultPermission.ASK, "bilibili")
+        add("45d2b525", "accounts.google.com", "", "其他", VaultPermission.ASK, "google")
+        add("22f43290", "notion.so", "", "其他", VaultPermission.ASK, "notion")
+        add("c63bff1c", "feishu.cn", "", "其他", VaultPermission.ASK, "feishu")
+        add("5a54d9d4", "open.774966.xyz/v1", "deningyang740@gmail.com", "AI 服务", VaultPermission.AUTO)
+        add("375b3456", "cloudflare.com", "", "云服务器", VaultPermission.AUTO, "cloudflare")
+    }
+
     /** Debug/CI only: a few sample accounts so the screens have content. */
     fun seedDemo(ctx: Context) {
         ensureLoaded(ctx)
