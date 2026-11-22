@@ -135,7 +135,8 @@ dependencies {
     implementation(libs.zxing.core)
     implementation(libs.shizuku.api)
     implementation(libs.shizuku.provider)
-    // 本地语音转写:SenseVoice 通过反射调用(见 SenseVoiceLocal),引擎依赖可选,不硬连
+    // 本地语音转写:SenseVoice(sherpa-onnx)AAR 来自 GitHub releases,放 app/libs
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.aar", "*.jar"))))
 
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
