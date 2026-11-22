@@ -685,7 +685,10 @@ private fun MikaRoot(
         Route.VoiceModel -> VoiceModelScreen(store, onBack = back)
         Route.ImageModel -> ImageModelScreen(store, onBack = back)
         Route.Persona -> if (personasOn) PersonaScreen(app.personas, onBack = back) else LaunchedEffect(Unit) { nav.back() }
-        Route.Bots -> HqBotsScreen(personas = app.personas.personas.collectAsState().value, onOpenBot = { back() })
+        Route.Bots -> HqBotsScreen(
+            personas = app.personas.personas.collectAsState().value,
+            onOpenBot = { nav.push(Route.Chat) },
+        )
         Route.Vault -> VaultScreen(onBack = back)
         Route.GroupChats -> GroupChatsScreen(onBack = back, onNew = { nav.push(Route.Chat) })
         Route.Plugins -> PluginsScreen(app.plugins, onBack = back)
